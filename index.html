@@ -371,7 +371,7 @@
                   <svg class="form-input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path d="M21 3H3v18M9 3v18M3 9h6M3 15h6"/>
                   </svg>
-                  <input class="form-input" type="number" placeholder="Ex: 2.00" min="0" step="0.01" />
+                  <input class="form-input" id="Altura" type="number" placeholder="Ex: 2.00" min="0" step="0.01" />
                 </div>
               </div>
               <div class="form-group">
@@ -380,7 +380,7 @@
                   <svg class="form-input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path d="M3 21V3h18M3 9h18M3 15h18"/>
                   </svg>
-                  <input class="form-input" type="number" placeholder="Ex: 1.50" min="0" step="0.01" />
+                  <input class="form-input" id="Largura" type="number" placeholder="Ex: 1.50" min="0" step="0.01" />
                 </div>
               </div>
             </div>
@@ -405,13 +405,13 @@
             <!-- Área de resultado -->
             <div class="result-area">
               <div class="result-label">Valor Estimado</div>
-              <div class="result-value">R$ —</div>
+              <div class="result-value" id="resultado">R$ —</div>
               <div class="result-placeholder">Preencha os campos acima para calcular</div>
             </div>
 
             <!-- Ações -->
             <div class="calc-actions">
-              <button class="btn-calc">
+              <button class="btn-calc" onclick="calcular()">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                   <rect x="4" y="2" width="16" height="20" rx="2"/>
                   <line x1="8" y1="6" x2="16" y2="6"/>
@@ -530,6 +530,6 @@
     </div>
   </div>
 </footer>
-
+<script src="script.js"></script>
 </body>
 </html>
