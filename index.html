@@ -435,17 +435,34 @@
 
 <div id="overlay" class="overlay">
     <div class="box">
-        <h2>Orçamento</h2>
 
-        <p id="valorFinal">R$ 0,00</p>
+        <h2>Resumo do seu orçamento</h2>
 
+        <!-- MENSAGEM PRINCIPAL -->
+        <p class="mensagem">
+            Confira os dados do seu orçamento abaixo:
+        </p>
+
+        <!-- DADOS DO ORÇAMENTO -->
+        <div class="dados">
+            <p><strong>Altura:</strong> <span id="resAltura"></span></p>
+            <p><strong>Largura:</strong> <span id="resLargura"></span></p>
+            <p><strong>Tipo:</strong> <span id="resTipo"></span></p>
+        </div>
+
+        <!-- VALOR FINAL -->
+        <p class="valor" id="valorFinal">R$ 0,00</p>
+
+        <!-- CAMPO PRA MENSAGEM DINÂMICA -->
+        <p id="mensagemFinal"></p>
+
+        <!-- BOTÃO -->
         <a id="btnWhats" target="_blank">Entrar em contato</a>
 
         <br><br>
         <button onclick="fecharTela()">Fechar</button>
     </div>
 </div>
-
 
 <!-- ══════════════════════════════
      RODAPÉ

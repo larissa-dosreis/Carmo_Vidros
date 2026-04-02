@@ -14,7 +14,8 @@ function calcular() {
     const resultado = (altura * largura) * opcoes;
 
     
-    abrirTela(resultado);
+    abrirTela(resultado, altura, largura);
+
 }
 
 document.getElementById("opcoes").addEventListener("change", function() {
@@ -34,15 +35,30 @@ document.getElementById("opcoes").addEventListener("change", function() {
     document.getElementById("resultado").innerText = "R$ " + resultado.toFixed(2);
 });
 
-function abrirTela(valor) {
+function abrirTela(valor, altura, largura) {
     
 
-    const mensagem = `Olá, vi o orçamento de R$ ${valor} e quero mais informações`;
-
-    const link = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+    
 
     document.getElementById("valorFinal").innerText =
         `R$ ${valor.toFixed(2)}`;
+
+    document.getElementById("resAltura").innerText = `${altura} cm`;
+    document.getElementById("resLargura").innerText = `${largura} cm`;
+    document.getElementById("resTipo").innerText = document.getElementById("opcoes").value;
+
+    
+    const mensagem = `Olá! Acabei de fazer um orçamento pelo site e gostaria de dar continuidade.
+
+Dados do orçamento:
+- Altura: ${altura}
+- Largura: ${largura}
+- Tipo: ${opcoes}
+- Valor: R$ ${valor.toFixed(2)}
+
+Poderia me confirmar os detalhes, prazo e forma de pagamento?`;
+
+    const link = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
 
     document.getElementById("btnWhats").href = link;
 

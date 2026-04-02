@@ -1024,36 +1024,129 @@ footer {
 }
 
 /* Sobre a Tela que aparece depois do orçamento compelto quando clica */
+/* FUNDO */
+/* ══════════════════════════════
+   MODAL ORÇAMENTO (ALINHADO AO TEMA)
+══════════════════════════════ */
+
+/* FUNDO */
 .overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
 
-    background: rgba(0,0,0,0.7);
+    background: rgba(11,30,58,0.75);
+    backdrop-filter: blur(12px);
 
     display: none;
-
     justify-content: center;
     align-items: center;
 
     z-index: 9999;
 }
 
+/* CAIXA PRINCIPAL (glass style igual seu site) */
 .box {
-    background: white;
-    padding: 25px;
-    border-radius: 10px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    backdrop-filter: blur(20px);
+
+    padding: 32px;
+    border-radius: 20px;
     text-align: center;
+
+    width: 390px;
+    max-width: 92%;
+
+    box-shadow: 0 24px 80px rgba(0,0,0,0.35),
+                inset 0 1px 0 rgba(255,255,255,0.15);
 }
 
+/* TÍTULO */
+.box h2 {
+    font-family: 'Playfair Display', serif;
+    color: #fff;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+/* TEXTO */
+.mensagem {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 18px;
+}
+
+/* DADOS */
+.dados {
+    text-align: left;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.10);
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin-bottom: 18px;
+}
+
+.dados p {
+    margin: 6px 0;
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+}
+
+/* VALOR (DESTAQUE COM LARANJA DO TEMA) */
+.valor {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 900;
+    color: var(--orange-light);
+    margin: 18px 0;
+}
+
+/* MENSAGEM FINAL */
+#mensagemFinal {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 18px;
+}
+
+/* BOTÃO WHATSAPP (PADRÃO DO SITE) */
 #btnWhats {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 20px;
+    display: block;
+    width: 100%;
+    padding: 14px;
+
     background: #25D366;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
+    color: #fff;
+
+    border-radius: 10px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+
+    transition: 0.2s;
+    box-shadow: 0 6px 24px rgba(232,101,10,0.35);
+}
+
+#btnWhats:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 40px rgba(4, 218, 51, 0.45);
+}
+
+/* BOTÃO FECHAR */
+.box button {
+    margin-top: 10px;
+    padding: 12px;
+    width: 100%;
+
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.6);
+
+    border-radius: 10px;
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.box button:hover {
+    background: rgba(255,255,255,0.08);
+    color: #fff;
 }
