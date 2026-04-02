@@ -97,6 +97,11 @@ nav {
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
+.logo-img {
+  height: 50px;   /* controla o tamanho */
+  width: auto;    /* mantém proporção */
+  display: block;
+}
 
 /* Links de navegação */
 .nav-links {
