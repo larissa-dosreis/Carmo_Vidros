@@ -366,7 +366,7 @@
             <!-- Campos de dimensão -->
             <div class="form-row">
               <div class="form-group">
-                <label class="form-label">Altura (metros)</label>
+                <label class="form-label">Altura (Centimetros)</label>
                 <div class="form-input-wrap">
                   <svg class="form-input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path d="M21 3H3v18M9 3v18M3 9h6M3 15h6"/>
@@ -375,7 +375,7 @@
                 </div>
               </div>
               <div class="form-group">
-                <label class="form-label">Largura (metros)</label>
+                <label class="form-label">Largura (centimetros)</label>
                 <div class="form-input-wrap">
                   <svg class="form-input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path d="M3 21V3h18M3 9h18M3 15h18"/>
@@ -388,7 +388,7 @@
             <!-- Seletor de produto -->
             <div class="form-group" style="margin-bottom: 16px">
               <label class="form-label">Tipo de Produto</label>
-              <select class="form-select">
+              <select class="form-select" id="opcoes">
                 <option value="" disabled selected>Selecione o tipo de vidro...</option>
                 <option>Box de Banheiro — Vidro 8mm</option>
                 <option>Box de Banheiro — Vidro 10mm</option>
@@ -399,12 +399,13 @@
                 <option>Espelho Bisotado</option>
                 <option>Vidro Laminado</option>
                 <option>Fachada em Vidro</option>
+                <option>Nenhuma</option>
               </select>
             </div>
 
             <!-- Área de resultado -->
             <div class="result-area">
-              <div class="result-label">Valor Estimado</div>
+              <div class="result-label">Valor do M2</div>
               <div class="result-value" id="resultado">R$ —</div>
               <div class="result-placeholder">Preencha os campos acima para calcular</div>
             </div>
@@ -420,7 +421,7 @@
                 </svg>
                 Calcular Orçamento
               </button>
-              <button class="btn-clear">Limpar</button>
+              <button class="btn-clear" id="limpar" onclick="limparCampos()">Limpar</button>
             </div>
           </div>
         </div>
@@ -429,6 +430,21 @@
     </div>
   </div>
 </section>
+
+<!-- Tela de orçamento que fica sobreposta à página quando o usuário clica em "Solicitar orçamento" ou "Fazer Orçamento Agora" -->
+
+<div id="overlay" class="overlay">
+    <div class="box">
+        <h2>Orçamento</h2>
+
+        <p id="valorFinal">R$ 0,00</p>
+
+        <a id="btnWhats" target="_blank">Entrar em contato</a>
+
+        <br><br>
+        <button onclick="fecharTela()">Fechar</button>
+    </div>
+</div>
 
 
 <!-- ══════════════════════════════
