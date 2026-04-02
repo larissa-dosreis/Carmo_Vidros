@@ -1,0 +1,228 @@
+/* ═══════════════════════════════════════════════
+   Carmo Vidros — Estilos da Página de Orçamento
+   ═══════════════════════════════════════════════ */
+
+/* ── Indicador ativo na navegação ── */
+.nav-active {
+  color: #fff !important;
+}
+.nav-active::after {
+  transform: scaleX(1) !important;
+}
+
+/* ══════════════════════════════
+   HERO DO ORÇAMENTO
+══════════════════════════════ */
+.orc-hero {
+  min-height: 60vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 120px 32px 60px;
+}
+
+.orc-hero-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, var(--blue-deep) 0%, var(--blue-mid) 55%, #0E2A48 100%);
+}
+.orc-hero-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 40%, rgba(232,101,10,0.10) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 80% 80%, rgba(200,223,245,0.08) 0%, transparent 60%);
+}
+
+.orc-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 700px;
+  animation: fadeInUp 0.8s ease-out both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.orc-hero-content .hero-badge {
+  justify-content: center;
+}
+
+.orc-hero-content .hero-title {
+  text-align: center;
+}
+
+.orc-hero-content .hero-subtitle {
+  text-align: center;
+  max-width: 520px;
+  margin: 0 auto 40px;
+}
+
+.orc-hero-scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.45);
+  animation: bounce 2s infinite;
+}
+
+.orc-hero-scroll svg {
+  width: 24px;
+  height: 24px;
+}
+
+.orc-hero-scroll span {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+/* ══════════════════════════════
+   SEÇÃO DA CALCULADORA
+══════════════════════════════ */
+.orc-calc-section {
+  background: linear-gradient(160deg, var(--blue-deep) 0%, var(--blue-mid) 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 80px 32px 100px;
+}
+
+.orc-calc-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 50% 60% at 90% 20%, rgba(232,101,10,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 50% at 10% 80%, rgba(200,223,245,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* ══════════════════════════════
+   COMO FUNCIONA
+══════════════════════════════ */
+.orc-howto {
+  background: var(--cream);
+  padding: 100px 32px;
+}
+
+.howto-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 20px;
+}
+
+.howto-card {
+  position: relative;
+  background: var(--white);
+  border: 1px solid rgba(11,30,58,0.07);
+  border-radius: var(--radius);
+  padding: 40px 28px 32px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+}
+
+.howto-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--orange), var(--orange-light));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.howto-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(11,30,58,0.10);
+}
+
+.howto-card:hover::before {
+  opacity: 1;
+}
+
+.howto-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 900;
+  color: rgba(232,101,10,0.10);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.howto-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 20px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(232,101,10,0.12), rgba(232,101,10,0.06));
+  border: 1px solid rgba(232,101,10,0.20);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.howto-icon svg {
+  width: 26px;
+  height: 26px;
+  color: var(--orange);
+}
+
+.howto-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--blue-deep);
+  margin-bottom: 10px;
+}
+
+.howto-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ══════════════════════════════
+   RESPONSIVIDADE ORÇAMENTO
+══════════════════════════════ */
+@media (max-width: 768px) {
+  .orc-hero {
+    min-height: 50vh;
+    padding: 100px 20px 40px;
+  }
+
+  .orc-calc-section {
+    padding: 60px 20px 80px;
+  }
+
+  .howto-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .orc-howto {
+    padding: 72px 20px;
+  }
+}

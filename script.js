@@ -1,5 +1,27 @@
 const numero = "5537998628364"; // seu número
-let = opcoes;
+let opcoes;
+
+// Só inicializa a calculadora se os elementos existirem na página
+const opcoesEl = document.getElementById("opcoes");
+
+if (opcoesEl) {
+    opcoesEl.addEventListener("change", function() {
+        const valor = this.value;
+        let resultado = "";
+
+        if (valor === "Box de Banheiro — Vidro 8mm") {
+            resultado = 100;
+        } else if (valor === "Box de Banheiro — Vidro 10mm") {
+            resultado = 200;
+        } else if (valor === "Janela de Correr") {
+            resultado = 300;
+        } else {
+            resultado = "";
+        }
+        opcoes = resultado;
+        document.getElementById("resultado").innerText = "R$ " + resultado.toFixed(2);
+    });
+}
 
 function calcular() {
     const altura = parseFloat(document.getElementById("Altura").value);
@@ -10,36 +32,12 @@ function calcular() {
         return;
     }
 
-    
     const resultado = (altura * largura) * opcoes;
 
-    
     abrirTela(resultado, altura, largura);
-
 }
 
-document.getElementById("opcoes").addEventListener("change", function() {
-    const valor = this.value;
-    let resultado = "";
-
-    if (valor === "Box de Banheiro — Vidro 8mm") {
-        resultado = 100;
-    } else if (valor === "Box de Banheiro — Vidro 10mm") {
-        resultado = 200;
-    } else if (valor === "Janela de Correr") {
-        resultado = 300;
-    } else {
-        resultado = "";
-    }
-    opcoes = resultado;
-    document.getElementById("resultado").innerText = "R$ " + resultado.toFixed(2);
-});
-
 function abrirTela(valor, altura, largura) {
-    
-
-    
-
     document.getElementById("valorFinal").innerText =
         `R$ ${valor.toFixed(2)}`;
 
@@ -47,7 +45,6 @@ function abrirTela(valor, altura, largura) {
     document.getElementById("resLargura").innerText = `${largura} cm`;
     document.getElementById("resTipo").innerText = document.getElementById("opcoes").value;
 
-    
     const mensagem = `Olá! Acabei de fazer um orçamento pelo site e gostaria de dar continuidade.
 
 Dados do orçamento:
@@ -68,7 +65,6 @@ Poderia me confirmar os detalhes, prazo e forma de pagamento?`;
 function fecharTela() {
     document.getElementById("overlay").style.display = "none";
 }
-
 
 function limparCampos() {
     document.getElementById("Altura").value = "";
