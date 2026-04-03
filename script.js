@@ -5,35 +5,37 @@ let valorDinheiro;
 const opcoesEl = document.getElementById("opcoes");
 const subopcoesEl = document.getElementById("subOpcoes");
 
+
+
 if (opcoesEl) {
     opcoesEl.addEventListener("change", function() {
         const valor = this.value;
+        const indexSelecionado = this.selectedIndex;
         document.getElementById("resultado").innerText = "R$ —";  // isso para limpar o resultado toda vez
        limparSubopcoes();
+       ajuda = false;
        subopcoesEl.selectedIndex = 0; 
        
 
-        if (valor === "Vidro temperado sem película") {
+        if (indexSelecionado === 1) {
             adicionarOpcao("Vidro incolor com acabamento fosco (cor original do alumínio)");
             adicionarOpcao("Vidro incolor com acabamento com cor (Preto, branco, bronze e grafite)");
             adicionarOpcao("Vidro com cor (fumê, verde, bronze e espelhado) com acabamento fosco");
             adicionarOpcao("Vidro com cor com acabamento com cor");
-        } else if (valor === "Vidro temperado com película") {
+        } else if (indexSelecionado === 2) {
             adicionarOpcao("Vidro incolor com acabamento fosco (cor original do alumínio)");
             adicionarOpcao("Vidro incolor com acabamento com cor (Preto, branco, bronze e grafite)");
             adicionarOpcao("Vidro com cor (fumê, verde, bronze (Vidro espelhado não tem película))");
             adicionarOpcao("Vidro com cor com acabamento com cor");
            
-        } else if (valor === "Fechamentos de pia de vidro com película") {
+        } else if (indexSelecionado === 3) {
             adicionarOpcao("Película e acabamento fosco");
             adicionarOpcao("Película e acabamento com cor");
-        } else if (valor === "Vidro laminado") {
+        } else if (indexSelecionado === 4) {
             adicionarOpcao("6mm");
             adicionarOpcao("8mm");
             adicionarOpcao("10mm");
-        } else if (valor === "Nenhuma") {
-            
-        }
+        } 
 
         
     });
@@ -153,6 +155,7 @@ function calcular() {
    document.getElementById("resultado").innerText = "Selecione um valor para tipo e subtipo";
         return;
 } 
+    
 
     const resultado = ((altura) * (largura))  * valorDinheiro;
 
