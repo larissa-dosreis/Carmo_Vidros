@@ -155,22 +155,27 @@
               <label class="form-label">Tipo de Produto</label>
               <select class="form-select" id="opcoes">
                 <option value="" disabled selected>Selecione o tipo de vidro...</option>
-                <option>Box de Banheiro — Vidro 8mm</option>
-                <option>Box de Banheiro — Vidro 10mm</option>
-                <option>Janela de Correr</option>
-                <option>Janela Basculante</option>
-                <option>Porta de Vidro Temperado</option>
-                <option>Espelho Simples</option>
-                <option>Espelho Bisotado</option>
-                <option>Vidro Laminado</option>
-                <option>Fachada em Vidro</option>
+                <option>Vidro temperado sem película</option>
+                <option>Vidro temperado com película</option>
+                <option>Fechamentos de pia de vidro com película</option>
+                <option>Vidro laminado</option>
                 <option>Nenhuma</option>
+              </select>
+            </div>
+
+            <!-- Seletor de Sub Produto -->
+
+            <div class="form-group" style=" margin-bottom: 16px" id="subProduto" >
+              <label class="form-label">Tipo de Sub-Produto</label>
+              <select class="form-select" id="subOpcoes">
+                <option value="" disabled selected>Selecione os subprodutos...</option>
+                
               </select>
             </div>
 
             <!-- Área de resultado -->
             <div class="result-area">
-              <div class="result-label">Valor do M2</div>
+              <div class="result-label">Valor do Centimetro Quadrado</div>
               <div class="result-value" id="resultado">R$ —</div>
               <div class="result-placeholder">Preencha os campos acima para calcular</div>
             </div>
@@ -212,10 +217,15 @@
             <p><strong>Altura:</strong> <span id="resAltura"></span></p>
             <p><strong>Largura:</strong> <span id="resLargura"></span></p>
             <p><strong>Tipo:</strong> <span id="resTipo"></span></p>
+            <p><strong>Subtipo:</strong> <span id="resSubtipo"></span></p>
+            <p><strong>Valor por Metro Quadrado:</strong> <span id="resValorDinheiro"></span></p>
         </div>
 
         <!-- VALOR FINAL -->
+        <p class="valor">Valor Total</p>
+
         <p class="valor" id="valorFinal">R$ 0,00</p>
+
 
         <!-- CAMPO PRA MENSAGEM DINÂMICA -->
         <p id="mensagemFinal"></p>
