@@ -356,12 +356,6 @@ nav {
   overflow: hidden;
   box-shadow: 0 24px 80px rgba(0,0,0,0.30), inset 0 1px 0 rgba(255,255,255,0.25);
 }
-.glass-panel::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 50%; width: 1px; height: 100%;
-  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.12) 30%, rgba(255,255,255,0.12) 70%, transparent);
-}
 .glass-panel-inner {
   position: absolute;
   inset: 0;
@@ -1150,3 +1144,38 @@ footer {
     background: rgba(255,255,255,0.08);
     color: #fff;
 }
+/* ── Card "Muitos outros produtos" ── */
+.bg-mais {
+  background: linear-gradient(135deg, #1A3A5C, #0B1E3A);
+}
+.product-card--more .product-tag { color: var(--orange-light); }
+.product-card--more .product-link { color: var(--orange-light); }
+.product-card--more .product-link svg { stroke: var(--orange-light); }
+
+/* ── Botão CTA "Ver catálogo completo" ── */
+.products-cta {
+  text-align: center;
+  margin-top: 48px;
+}
+.btn-products-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  color: var(--blue-deep);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 16px 36px;
+  border-radius: 50px;
+  border: 2px solid var(--blue-deep);
+  letter-spacing: 0.02em;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.btn-products-all:hover {
+  background: var(--blue-deep);
+  color: #fff;
+  box-shadow: var(--shadow-blue);
+}
+
+

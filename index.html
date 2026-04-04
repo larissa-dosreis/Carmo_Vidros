@@ -17,7 +17,7 @@
 <header>
   <nav>
     <a href="#home" class="logo">
-      <img src="logo.png" alt="Carmo Vidros" class="logo-img">
+      <img src="fotos/logo.png" alt="Carmo Vidros" class="logo-img">
       <div class="logo-text">
         <span class="logo-name">Carmo Vidros</span>
         <span class="logo-tagline">Qualidade e Transparência</span>
@@ -25,7 +25,7 @@
     </a>
     <ul class="nav-links">
       <li><a href="#sobre">Sobre</a></li>
-      <li><a href="#produtos">Produtos</a></li>
+      <li><a href="produtos.html">Produtos</a></li>
       <li><a href="orcamento.html">Orçamento</a></li>
       <li><a href="#contato">Contato</a></li>
       <li><a href="orcamento.html" class="nav-cta">Fazer Orçamento</a></li>
@@ -65,7 +65,7 @@
           </svg>
           Fazer Orçamento Agora
         </a>
-        <a href="#produtos" class="btn-ghost">Ver Produtos</a>
+        <a href="produtos.html" class="btn-ghost">Ver Produtos</a>
       </div>
 
       <!-- Cards de estatísticas -->
@@ -118,23 +118,8 @@
       <!-- Imagem ilustrativa -->
       <div class="about-image-wrap">
         <div class="about-image">
-          <div class="about-image-svg">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 380" width="280" height="360">
-              <!-- Janela principal -->
-              <rect x="40" y="60" width="220" height="260" rx="8" fill="rgba(200,223,245,0.10)" stroke="rgba(200,223,245,0.40)" stroke-width="2"/>
-              <line x1="150" y1="60" x2="150" y2="320" stroke="rgba(200,223,245,0.30)" stroke-width="1.5"/>
-              <line x1="40" y1="190" x2="260" y2="190" stroke="rgba(200,223,245,0.30)" stroke-width="1.5"/>
-              <!-- Reflexo no vidro -->
-              <path d="M60 80 L120 80 L100 160 L60 160 Z" fill="rgba(255,255,255,0.06)" />
-              <path d="M165 80 L200 80 L195 140 L165 140 Z" fill="rgba(255,255,255,0.04)" />
-              <!-- Frame com destaque laranja -->
-              <rect x="40" y="60" width="220" height="260" rx="8" fill="none" stroke="rgba(232,101,10,0.50)" stroke-width="3"/>
-              <!-- Maçaneta -->
-              <circle cx="155" cy="190" r="8" fill="none" stroke="rgba(232,101,10,0.80)" stroke-width="2"/>
-              <circle cx="155" cy="190" r="3" fill="rgba(232,101,10,0.80)"/>
-              <!-- Marca d'água -->
-              <text x="150" y="370" text-anchor="middle" fill="rgba(255,255,255,0.15)" font-family="serif" font-size="11" letter-spacing="2">CARMO VIDROS</text>
-            </svg>
+          <div class="about-image">
+            <img src="fotos/CV.jpg" alt="Carmo Vidros" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;" />
           </div>
         </div>
         <div class="about-badge">
@@ -191,7 +176,7 @@
               <line x1="150" y1="62" x2="150" y2="80" stroke="#1A3A5C" stroke-width="1.5" opacity="0.4"/>
             </svg>
           </div>
-          <div class="product-overlay"><span class="product-overlay-text">Ver detalhes →</span></div>
+          <div class="product-overlay"><a href="produtos.html#box" class="product-overlay-text">Ver detalhes →</a></div>
         </div>
         <div class="product-body">
           <div class="product-tag">Mais Vendido</div>
@@ -222,7 +207,7 @@
               <path d="M108 38 L125 38 L118 58 L108 58 Z" fill="rgba(255,255,255,0.35)"/>
             </svg>
           </div>
-          <div class="product-overlay"><span class="product-overlay-text">Ver detalhes →</span></div>
+          <div class="product-overlay"><a href="produtos.html#janelas" class="product-overlay-text">Ver detalhes →</a></div>
         </div>
         <div class="product-body">
           <div class="product-tag">Alta Demanda</div>
@@ -251,7 +236,7 @@
               <rect x="55" y="130" width="7" height="14" rx="2" fill="#1A3A5C" opacity="0.4"/>
             </svg>
           </div>
-          <div class="product-overlay"><span class="product-overlay-text">Ver detalhes →</span></div>
+          <div class="product-overlay"><a href="produtos.html#portas" class="product-overlay-text">Ver detalhes →</a></div>
         </div>
         <div class="product-body">
           <div class="product-tag">Premium</div>
@@ -266,36 +251,57 @@
         </div>
       </div>
 
-      <!-- Espelhos -->
-      <div class="product-card">
-        <div class="product-image bg-espelho">
+      <!-- Muitos outros produtos -->
+      <div class="product-card product-card--more">
+        <div class="product-image bg-mais">
           <div class="product-svg-bg">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="160">
-              <rect x="45" y="25" width="110" height="150" rx="8" fill="rgba(212,194,232,0.30)" stroke="#6B4F9B" stroke-width="2" opacity="0.7"/>
-              <rect x="55" y="35" width="90" height="130" rx="4" fill="rgba(255,255,255,0.15)"/>
-              <ellipse cx="80" cy="70" rx="8" ry="25" fill="rgba(255,255,255,0.40)" transform="rotate(-20,80,70)"/>
-              <ellipse cx="115" cy="90" rx="4" ry="15" fill="rgba(255,255,255,0.25)" transform="rotate(-20,115,90)"/>
-              <ellipse cx="100" cy="80" rx="15" ry="18" fill="rgba(107,79,155,0.15)"/>
-              <rect x="88" y="95" width="24" height="40" rx="12" fill="rgba(107,79,155,0.10)"/>
-              <circle cx="68" cy="48" r="4" fill="rgba(255,255,255,0.6)"/>
+              <!-- Grade de ícones representando variedade -->
+              <!-- Guarda-corpo -->
+              <rect x="30" y="50" width="6" height="80" rx="3" fill="rgba(232,101,10,0.50)"/>
+              <rect x="50" y="50" width="6" height="80" rx="3" fill="rgba(232,101,10,0.35)"/>
+              <rect x="70" y="50" width="6" height="80" rx="3" fill="rgba(232,101,10,0.50)"/>
+              <rect x="25" y="46" width="56" height="6" rx="3" fill="rgba(232,101,10,0.70)"/>
+              <!-- Basculante -->
+              <rect x="100" y="50" width="70" height="50" rx="4" fill="rgba(200,223,245,0.20)" stroke="rgba(200,223,245,0.50)" stroke-width="1.5"/>
+              <line x1="100" y1="75" x2="170" y2="50" stroke="rgba(200,223,245,0.40)" stroke-width="1"/>
+              <!-- Fechamento de pia -->
+              <rect x="30" y="148" width="65" height="12" rx="6" fill="rgba(200,223,245,0.30)" stroke="rgba(200,223,245,0.50)" stroke-width="1.5"/>
+              <rect x="35" y="136" width="55" height="14" rx="3" fill="rgba(200,223,245,0.15)" stroke="rgba(200,223,245,0.35)" stroke-width="1"/>
+              <!-- Mais (+) central -->
+              <circle cx="148" cy="148" r="22" fill="rgba(232,101,10,0.15)" stroke="rgba(232,101,10,0.40)" stroke-width="1.5"/>
+              <line x1="148" y1="136" x2="148" y2="160" stroke="rgba(232,101,10,0.80)" stroke-width="3" stroke-linecap="round"/>
+              <line x1="136" y1="148" x2="160" y2="148" stroke="rgba(232,101,10,0.80)" stroke-width="3" stroke-linecap="round"/>
             </svg>
           </div>
-          <div class="product-overlay"><span class="product-overlay-text">Ver detalhes →</span></div>
+          <div class="product-overlay"><a href="produtos.html" class="product-overlay-text">Ver todos →</a></div>
         </div>
         <div class="product-body">
-          <div class="product-tag">Decorativo</div>
-          <div class="product-name">Espelhos</div>
-          <p class="product-desc">Espelhos decorativos para sala, banheiro e academia. Bisotados, lapidados ou com moldura personalizada.</p>
+          <div class="product-tag">E muito mais</div>
+          <div class="product-name">Muitos Outros Produtos</div>
+          <p class="product-desc">Guarda-corpos, basculantes, fechamentos de pia, vidros comuns e muito mais. Conheça todo o nosso catálogo.</p>
         </div>
         <div class="product-footer">
-          <a href="orcamento.html" class="product-link">
-            Solicitar orçamento
+          <a href="produtos.html" class="product-link">
+            Ver catálogo completo
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         </div>
       </div>
 
     </div>
+
+    <!-- Botão Ver todos os produtos -->
+    <div class="products-cta">
+      <a href="produtos.html" class="btn-products-all">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+          <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+        </svg>
+        Ver Catálogo Completo de Produtos
+      </a>
+    </div>
+
   </div>
 </section>
 
@@ -312,7 +318,7 @@
       <!-- Coluna: Marca -->
       <div class="footer-brand">
         <a href="#home" class="logo">
-          <img src="logo.png" alt="Carmo Vidros" class="logo-img">
+          <img src="fotos/logo.png" alt="Carmo Vidros" class="logo-img">
           <div class="logo-text">
             <span class="logo-name">Carmo Vidros</span>
             <span class="logo-tagline">Qualidade e Transparência</span>
@@ -353,12 +359,12 @@
       <div>
         <div class="footer-col-title">Produtos</div>
         <ul class="footer-links">
-          <li><a href="#produtos">Box de Banheiro</a></li>
-          <li><a href="#produtos">Janelas de Vidro</a></li>
-          <li><a href="#produtos">Portas de Vidro</a></li>
-          <li><a href="#produtos">Espelhos</a></li>
-          <li><a href="#produtos">Fachadas</a></li>
-          <li><a href="#produtos">Vidro Laminado</a></li>
+          <li><a href="produtos.html#box">Box de Banheiro</a></li>
+          <li><a href="produtos.html#janelas">Janelas de Vidro</a></li>
+          <li><a href="produtos.html#portas">Portas de Vidro</a></li>
+          <li><a href="produtos.html#guarda-corpo">Guarda-corpos</a></li>
+          <li><a href="produtos.html#basculantes">Basculantes</a></li>
+          <li><a href="produtos.html#fechamento-pia">Fechamento de Pia</a></li>
         </ul>
       </div>
 
