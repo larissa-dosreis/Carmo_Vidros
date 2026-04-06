@@ -1,759 +1,1008 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Produtos — Carmo Vidros</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="produtos.css" />
 </head>
+
 <body>
 
-<!-- ══════════════════════════════
+  <!-- ══════════════════════════════
      HEADER / NAVEGAÇÃO
 ══════════════════════════════ -->
-<header>
-  <nav>
-    <a href="index.html" class="logo">
-      <img src="fotos/logo.png" alt="Carmo Vidros" class="logo-img">
-      <div class="logo-text">
-        <span class="logo-name">Carmo Vidros</span>
-        <span class="logo-tagline">Qualidade e Transparência</span>
-      </div>
-    </a>
-    <ul class="nav-links">
-      <li><a href="index.html#sobre">Sobre</a></li>
-      <li><a href="produtos.html" class="nav-active">Produtos</a></li>
-      <li><a href="orcamento.html">Orçamento</a></li>
-      <li><a href="index.html#contato">Contato</a></li>
-      <li><a href="orcamento.html" class="nav-cta">Fazer Orçamento</a></li>
-    </ul>
-  </nav>
-</header>
+  <header>
+    <nav>
+      <a href="index.html" class="logo">
+        <img src="fotos/logo.png" alt="Carmo Vidros" class="logo-img">
+        <div class="logo-text">
+          <span class="logo-name">Carmo Vidros</span>
+          <span class="logo-tagline">Qualidade e Transparência</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#sobre">Sobre</a></li>
+        <li><a href="produtos.html" class="nav-active">Produtos</a></li>
+        <li><a href="orcamento.html">Orçamento</a></li>
+        <li><a href="index.html#contato">Contato</a></li>
+        <li><a href="orcamento.html" class="nav-cta">Fazer Orçamento</a></li>
+      </ul>
+    </nav>
+  </header>
 
 
-<!-- ══════════════════════════════
+  <!-- ══════════════════════════════
      HERO DA PÁGINA DE PRODUTOS
 ══════════════════════════════ -->
-<section class="prod-hero">
-  <div class="prod-hero-bg">
-    <div class="shard shard-1"></div>
-    <div class="shard shard-2"></div>
-    <div class="shard shard-3"></div>
-  </div>
-  <div class="prod-hero-content">
-    <div class="hero-badge">
-      <div class="hero-badge-dot"></div>
-      <span>Catálogo Completo</span>
+  <section class="prod-hero">
+    <div class="prod-hero-bg">
+      <div class="shard shard-1"></div>
+      <div class="shard shard-2"></div>
+      <div class="shard shard-3"></div>
     </div>
-    <h1 class="hero-title">Nossos <em>Produtos</em></h1>
-    <p class="hero-subtitle">
-      Soluções completas em vidro e alumínio, todas sob medida e com instalação profissional. Conheça o que a Carmo Vidros oferece para sua residência ou comércio.
-    </p>
-    <!-- Âncoras de navegação rápida -->
-    <div class="prod-anchors">
-      <a href="#box" class="prod-anchor-btn">Box de Banheiro</a>
-      <a href="#janelas" class="prod-anchor-btn">Janelas</a>
-      <a href="#portas" class="prod-anchor-btn">Portas</a>
-      <a href="#guarda-corpo" class="prod-anchor-btn">Guarda-corpos</a>
-      <a href="#espelhos" class="prod-anchor-btn">Espelhos</a>
-      <a href="#fechamento-pia" class="prod-anchor-btn">Fechamento de Pia</a>
-      <a href="#vidros-comuns" class="prod-anchor-btn">Vidros Comuns</a>
+    <div class="prod-hero-content">
+      <div class="hero-badge">
+        <div class="hero-badge-dot"></div>
+        <span>Catálogo Completo</span>
+      </div>
+      <h1 class="hero-title">Nossos <em>Produtos</em></h1>
+      <p class="hero-subtitle">
+        Soluções completas em vidro e alumínio, todas sob medida e com instalação profissional. Conheça o que a Carmo
+        Vidros oferece para sua residência ou comércio.
+      </p>
+      <!-- Âncoras de navegação rápida -->
+      <div class="prod-anchors">
+        <a href="#box" class="prod-anchor-btn">Box de Banheiro</a>
+        <a href="#janelas" class="prod-anchor-btn">Janelas</a>
+        <a href="#portas" class="prod-anchor-btn">Portas</a>
+        <a href="#guarda-corpo" class="prod-anchor-btn">Guarda-corpos</a>
+        <a href="#espelhos" class="prod-anchor-btn">Espelhos</a>
+        <a href="#fechamento-pia" class="prod-anchor-btn">Fechamento de Pia</a>
+        <a href="#vidros-comuns" class="prod-anchor-btn">Vidros Comuns</a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
 
-<!-- ══════════════════════════════
+  <!-- ══════════════════════════════
      BOX DE BANHEIRO
 ══════════════════════════════ -->
-<section class="prod-section prod-section--light" id="box">
-  <div class="section-inner">
-    <div class="prod-section-grid">
+  <section class="prod-section prod-section--light" id="box">
+    <div class="section-inner">
+      <div class="prod-section-grid">
 
-      <!-- Galeria de fotos -->
-      <div class="prod-gallery">
-        <div class="prod-gallery-main">
-          <img src="fotos/box-principal.jpeg" alt="Box de Banheiro em vidro temperado" onerror="this.parentNode.classList.add('img-placeholder')" />
-          <div class="img-placeholder-content">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span>Box de Banheiro</span>
-          </div>
-        </div>
-        <div class="prod-gallery-thumbs">
-          <div class="prod-thumb">
-            <img src="fotos/box-2.jpeg" alt="Box de Banheiro detalhe" onerror="this.parentNode.classList.add('img-placeholder-sm')" />
-            <div class="img-placeholder-content-sm"><span>Detalhe</span></div>
-          </div>
-          <div class="prod-thumb">
-            <img src="fotos/box-3.jpeg" alt="Box de Banheiro aberto" onerror="this.parentNode.classList.add('img-placeholder-sm')" />
-            <div class="img-placeholder-content-sm"><span>Aberto</span></div>
-          </div>
-          <div class="prod-thumb">
-            <img src="fotos/box-4.jpeg" alt="Box de Banheiro instalado" onerror="this.parentNode.classList.add('img-placeholder-sm')" />
-            <div class="img-placeholder-content-sm"><span>Instalado</span></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Detalhes do produto -->
-      <div class="prod-info">
-        <div class="section-label">Produto 01</div>
-        <h2 class="prod-title">Box de Banheiro</h2>
-        <p class="prod-desc">
-          Boxes em vidro temperado sob medida, ideais para modernizar qualquer banheiro. Fabricados com vidro de alta resistência e perfis de alumínio de qualidade, garantindo durabilidade, segurança e beleza.
-        </p>
-
-        <div class="prod-specs">
-          <div class="prod-spec-group">
-            <div class="prod-spec-title">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              Cores de vidro
-            </div>
-            <div class="prod-spec-tags">
-              <span class="spec-tag spec-tag--glass">Transparente</span>
-              <span class="spec-tag spec-tag--glass">Fumê</span>
-              <span class="spec-tag spec-tag--glass">Verde</span>
-              <span class="spec-tag spec-tag--glass">Jateado</span>
+        <!-- Galeria de fotos -->
+        <div class="prod-gallery">
+          <div class="prod-gallery-main">
+            <img src="fotos/box-principal.jpeg" alt="Box de Banheiro em vidro temperado"
+              onerror="this.parentNode.classList.add('img-placeholder')" />
+            <div class="img-placeholder-content">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <polyline points="21 15 16 10 5 21" />
+              </svg>
+              <span>Box de Banheiro</span>
             </div>
           </div>
-          <div class="prod-spec-group">
-            <div class="prod-spec-title">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-              Acabamento do alumínio
+          <div class="prod-gallery-thumbs">
+            <div class="prod-thumb">
+              <img src="fotos/box-2.jpeg" alt="Box de Banheiro detalhe"
+                onerror="this.parentNode.classList.add('img-placeholder-sm')" />
+              <div class="img-placeholder-content-sm"><span>Detalhe</span></div>
             </div>
-            <div class="prod-spec-tags">
-              <span class="spec-tag spec-tag--alum">Fosco</span>
-              <span class="spec-tag spec-tag--alum">Preto</span>
-              <span class="spec-tag spec-tag--alum">Branco</span>
-              <span class="spec-tag spec-tag--alum">Bronze</span>
+            <div class="prod-thumb">
+              <img src="fotos/box-3.jpeg" alt="Box de Banheiro aberto"
+                onerror="this.parentNode.classList.add('img-placeholder-sm')" />
+              <div class="img-placeholder-content-sm"><span>Aberto</span></div>
+            </div>
+            <div class="prod-thumb">
+              <img src="fotos/box-4.jpeg" alt="Box de Banheiro instalado"
+                onerror="this.parentNode.classList.add('img-placeholder-sm')" />
+              <div class="img-placeholder-content-sm"><span>Instalado</span></div>
             </div>
           </div>
         </div>
 
-        <div class="prod-highlight">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-          Todos os produtos são fabricados sob medida
-        </div>
-        <div class="prod-highlight">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-          Instalação profissional inclusa
-        </div>
+        <!-- Detalhes do produto -->
+        <div class="prod-info">
+          <div class="section-label">Produto 01</div>
+          <h2 class="prod-title">Box de Banheiro</h2>
+          <p class="prod-desc">
+            Boxes em vidro temperado sob medida, ideais para modernizar qualquer banheiro. Fabricados com vidro de alta
+            resistência e perfis de alumínio de qualidade, garantindo durabilidade, segurança e beleza.
+          </p>
 
-        <a href="orcamento.html" class="btn-primary" style="margin-top: 28px; display: inline-flex;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-          Solicitar Orçamento
-        </a>
+          <div class="prod-specs">
+            <div class="prod-spec-group">
+              <div class="prod-spec-title">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+                Cores de vidro
+              </div>
+              <div class="prod-spec-tags">
+                <span class="spec-tag spec-tag--glass">Transparente</span>
+                <span class="spec-tag spec-tag--glass">Fumê</span>
+                <span class="spec-tag spec-tag--glass">Verde</span>
+                <span class="spec-tag spec-tag--glass">Jateado</span>
+              </div>
+            </div>
+            <div class="prod-spec-group">
+              <div class="prod-spec-title">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                  <path d="M3 9h18M9 21V9" />
+                </svg>
+                Acabamento do alumínio
+              </div>
+              <div class="prod-spec-tags">
+                <span class="spec-tag spec-tag--alum">Fosco</span>
+                <span class="spec-tag spec-tag--alum">Preto</span>
+                <span class="spec-tag spec-tag--alum">Branco</span>
+                <span class="spec-tag spec-tag--alum">Bronze</span>
+                <span class="spec-tag spec-tag--alum">Grafite</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="prod-highlight">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+            Todos os produtos são fabricados sob medida
+          </div>
+          <div class="prod-highlight">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+            Instalação profissional inclusa
+          </div>
+
+          <a href="orcamento.html" class="btn-primary" style="margin-top: 28px; display: inline-flex;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2" />
+              <path d="M8 21h8M12 17v4" />
+            </svg>
+            Solicitar Orçamento
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
 
-<!-- ══════════════════════════════
+  <!-- ══════════════════════════════
      JANELAS DE VIDRO
 ══════════════════════════════ -->
-<section class="prod-section prod-section--dark" id="janelas">
-  <div class="section-inner">
-    <div class="prod-section-grid prod-section-grid--reverse">
+  <section class="prod-section prod-section--dark" id="janelas">
+    <div class="section-inner">
+      <div class="prod-section-grid prod-section-grid--reverse">
 
-      <div class="prod-info">
-        <div class="section-label" style="color: var(--orange-light)">Produto 02</div>
-        <h2 class="prod-title" style="color: #fff">Janelas de Vidro</h2>
-        <p class="prod-desc" style="color: rgba(255,255,255,0.65)">
-          Janelas em alumínio e vidro para residências e comércios. Fabricadas sob medida, oferecem estética moderna, boa vedação e durabilidade. Dispomos de diferentes modelos para atender todos os tipos de projeto.
-        </p>
+        <div class="prod-info">
+          <div class="section-label" style="color: var(--orange-light)">Produto 02</div>
+          <h2 class="prod-title" style="color: #fff">Janelas de Vidro</h2>
+          <p class="prod-desc" style="color: rgba(255,255,255,0.65)">
+            Janelas em alumínio e vidro para residências e comércios. Fabricadas sob medida, oferecem estética moderna,
+            boa vedação e durabilidade. Dispomos de diferentes modelos para atender todos os tipos de projeto.
+          </p>
 
-        <div class="prod-specs">
-          <div class="prod-spec-group prod-spec-group--dark">
-            <div class="prod-spec-title" style="color: rgba(255,255,255,0.8)">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              Cores de vidro
+          <div class="prod-specs">
+            <div class="prod-spec-group prod-spec-group--dark">
+              <div class="prod-spec-title" style="color: rgba(255,255,255,0.8)">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+                Cores de vidro
+              </div>
+              <div class="prod-spec-tags">
+                <span class="spec-tag spec-tag--white">Transparente</span>
+                <span class="spec-tag spec-tag--white">Fumê</span>
+                <span class="spec-tag spec-tag--white">Verde</span>
+                <span class="spec-tag spec-tag--white">Jateado</span>
+              </div>
             </div>
-            <div class="prod-spec-tags">
-              <span class="spec-tag spec-tag--white">Transparente</span>
-              <span class="spec-tag spec-tag--white">Fumê</span>
-              <span class="spec-tag spec-tag--white">Verde</span>
-              <span class="spec-tag spec-tag--white">Jateado</span>
+            <div class="prod-spec-group prod-spec-group--dark">
+              <div class="prod-spec-title" style="color: rgba(255,255,255,0.8)">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 8v4l3 3" />
+                </svg>
+                Acabamento do alumínio
+              </div>
+              <div class="prod-spec-tags">
+                <span class="spec-tag spec-tag--white">Fosco</span>
+                <span class="spec-tag spec-tag--white">Preto</span>
+                <span class="spec-tag spec-tag--white">Branco</span>
+                <span class="spec-tag spec-tag--white">Bronze</span>
+                <span class="spec-tag spec-tag--white">Grafite</span>
+              </div>
             </div>
           </div>
-          <div class="prod-spec-group prod-spec-group--dark">
-            <div class="prod-spec-title" style="color: rgba(255,255,255,0.8)">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-              Acabamento do alumínio
+
+          <a href="orcamento.html" class="btn-primary" style="margin-top: 28px; display: inline-flex;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2" />
+              <path d="M8 21h8M12 17v4" />
+            </svg>
+            Solicitar Orçamento
+          </a>
+        </div>
+
+        <!-- Galeria -->
+        <div class="prod-gallery">
+          <div class="prod-gallery-main">
+            <img src="fotos/janela-principal.jpeg" alt="Janela de vidro e alumínio"
+              onerror="this.parentNode.classList.add('img-placeholder')" />
+            <div class="img-placeholder-content">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <polyline points="21 15 16 10 5 21" />
+              </svg>
+              <span>Janelas de Vidro</span>
             </div>
-            <div class="prod-spec-tags">
-              <span class="spec-tag spec-tag--white">Fosco</span>
-              <span class="spec-tag spec-tag--white">Preto</span>
-              <span class="spec-tag spec-tag--white">Branco</span>
-              <span class="spec-tag spec-tag--white">Bronze</span>
+          </div>
+          <div class="prod-gallery-thumbs">
+            <div class="prod-thumb">
+              <img src="fotos/janela-2.jpeg" alt="Janela detalhe"
+                onerror="this.parentNode.classList.add('img-placeholder-sm')" />
+              <div class="img-placeholder-content-sm"><span>Detalhe</span></div>
+            </div>
+            <div class="prod-thumb">
+              <img src="fotos/janela-3.jpeg" alt="Janela interna"
+                onerror="this.parentNode.classList.add('img-placeholder-sm')" />
+              <div class="img-placeholder-content-sm"><span>Interna</span></div>
+            </div>
+            <div class="prod-thumb">
+              <img src="fotos/janela-4.jpeg" alt="Janela externa"
+                onerror="this.parentNode.classList.add('img-placeholder-sm')" />
+              <div class="img-placeholder-content-sm"><span>Externa</span></div>
             </div>
           </div>
         </div>
 
-        <a href="orcamento.html" class="btn-primary" style="margin-top: 28px; display: inline-flex;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-          Solicitar Orçamento
-        </a>
       </div>
-
-      <!-- Galeria -->
-      <div class="prod-gallery">
-        <div class="prod-gallery-main">
-          <img src="fotos/janela-principal.jpeg" alt="Janela de vidro e alumínio" onerror="this.parentNode.classList.add('img-placeholder')" />
-          <div class="img-placeholder-content">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span>Janelas de Vidro</span>
-          </div>
-        </div>
-        <div class="prod-gallery-thumbs">
-          <div class="prod-thumb">
-            <img src="fotos/janela-2.jpeg" alt="Janela detalhe" onerror="this.parentNode.classList.add('img-placeholder-sm')" />
-            <div class="img-placeholder-content-sm"><span>Detalhe</span></div>
-          </div>
-          <div class="prod-thumb">
-            <img src="fotos/janela-3.jpeg" alt="Janela interna" onerror="this.parentNode.classList.add('img-placeholder-sm')" />
-            <div class="img-placeholder-content-sm"><span>Interna</span></div>
-          </div>
-          <div class="prod-thumb">
-            <img src="fotos/janela-4.jpeg" alt="Janela externa" onerror="this.parentNode.classList.add('img-placeholder-sm')" />
-            <div class="img-placeholder-content-sm"><span>Externa</span></div>
-          </div>
-        </div>
-      </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
 
-<!-- ══════════════════════════════
+  <!-- ══════════════════════════════
      PORTAS DE VIDRO
 ══════════════════════════════ -->
-<section class="prod-section prod-section--light" id="portas">
-  <div class="section-inner">
-    <div class="prod-section-grid">
-      <div class="prod-gallery">
-        <div class="prod-gallery-main">
-          <img src="fotos/porta-principal.jpeg" alt="Porta de vidro temperado" onerror="this.parentNode.classList.add('img-placeholder')" />
-          <div class="img-placeholder-content">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span>Portas de Vidro</span>
-          </div>
-        </div>
-        <div class="prod-gallery-thumbs">
-          <div class="prod-thumb">
-            <img src="fotos/porta-2.jpeg" alt="Porta de vidro detalhe" onerror="this.parentNode.classList.add('img-placeholder-sm')" />
-            <div class="img-placeholder-content-sm"><span>Detalhe</span></div>
-          </div>
-          <div class="prod-thumb">
-            <img src="fotos/porta-3.jpeg" alt="Porta de vidro instalada" onerror="this.parentNode.classList.add('img-placeholder-sm')" />
-            <div class="img-placeholder-content-sm"><span>Instalada</span></div>
-          </div>
-          <div class="prod-thumb">
-            <img src="fotos/porta-4.jpeg" alt="Porta de vidro comercial" onerror="this.parentNode.classList.add('img-placeholder-sm')" />
-            <div class="img-placeholder-content-sm"><span>Comercial</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="prod-info">
-        <div class="section-label">Produto 03</div>
-        <h2 class="prod-title">Portas de Vidro</h2>
-        <p class="prod-desc">
-          Portas em vidro temperado para ambientes internos e externos, residenciais ou comerciais. Combinam elegância e segurança, com perfis de alumínio nos acabamentos disponíveis.
-        </p>
-
-        <div class="prod-specs">
-          <div class="prod-spec-group">
-            <div class="prod-spec-title">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              Cores de vidro
-            </div>
-            <div class="prod-spec-tags">
-              <span class="spec-tag spec-tag--glass">Transparente</span>
-              <span class="spec-tag spec-tag--glass">Fumê</span>
-              <span class="spec-tag spec-tag--glass">Verde</span>
-              <span class="spec-tag spec-tag--glass">Jateado</span>
+  <section class="prod-section prod-section--light" id="portas">
+    <div class="section-inner">
+      <div class="prod-section-grid">
+        <div class="prod-gallery">
+          <div class="prod-gallery-main">
+            <img src="fotos/porta-principal.jpeg" alt="Porta de vidro temperado"
+              onerror="this.parentNode.classList.add('img-placeholder')" />
+            <div class="img-placeholder-content">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <polyline points="21 15 16 10 5 21" />
+              </svg>
+              <span>Portas de Vidro</span>
             </div>
           </div>
-          <div class="prod-spec-group">
-            <div class="prod-spec-title">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
-              Acabamento do alumínio
+          <div class="prod-gallery-thumbs">
+            <div class="prod-thumb">
+              <img src="fotos/porta-2.jpeg" alt="Porta de vidro detalhe"
+                onerror="this.parentNode.classList.add('img-placeholder-sm')" />
+              <div class="img-placeholder-content-sm"><span>Detalhe</span></div>
             </div>
-            <div class="prod-spec-tags">
-              <span class="spec-tag spec-tag--alum">Fosco</span>
-              <span class="spec-tag spec-tag--alum">Preto</span>
-              <span class="spec-tag spec-tag--alum">Branco</span>
-              <span class="spec-tag spec-tag--alum">Bronze</span>
+            <div class="prod-thumb">
+              <img src="fotos/porta-3.jpeg" alt="Porta de vidro instalada"
+                onerror="this.parentNode.classList.add('img-placeholder-sm')" />
+              <div class="img-placeholder-content-sm"><span>Instalada</span></div>
+            </div>
+            <div class="prod-thumb">
+              <img src="fotos/porta-4.jpeg" alt="Porta de vidro comercial"
+                onerror="this.parentNode.classList.add('img-placeholder-sm')" />
+              <div class="img-placeholder-content-sm"><span>Comercial</span></div>
             </div>
           </div>
         </div>
 
-        <div class="prod-highlight">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-          Ideal para escritórios, lojas e residências
-        </div>
-        <div class="prod-highlight">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-          Vidro temperado com alta resistência
-        </div>
+        <div class="prod-info">
+          <div class="section-label">Produto 03</div>
+          <h2 class="prod-title">Portas de Vidro</h2>
+          <p class="prod-desc">
+            Portas em vidro temperado para ambientes internos e externos, residenciais ou comerciais. Combinam elegância
+            e segurança, com perfis de alumínio nos acabamentos disponíveis.
+          </p>
 
-        <a href="orcamento.html" class="btn-primary" style="margin-top: 28px; display: inline-flex;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-          Solicitar Orçamento
-        </a>
+          <div class="prod-specs">
+            <div class="prod-spec-group">
+              <div class="prod-spec-title">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+                Cores de vidro
+              </div>
+              <div class="prod-spec-tags">
+                <span class="spec-tag spec-tag--glass">Transparente</span>
+                <span class="spec-tag spec-tag--glass">Fumê</span>
+                <span class="spec-tag spec-tag--glass">Verde</span>
+                <span class="spec-tag spec-tag--glass">Jateado</span>
+              </div>
+            </div>
+            <div class="prod-spec-group">
+              <div class="prod-spec-title">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                </svg>
+                Acabamento do alumínio
+              </div>
+              <div class="prod-spec-tags">
+                <span class="spec-tag spec-tag--alum">Fosco</span>
+                <span class="spec-tag spec-tag--alum">Preto</span>
+                <span class="spec-tag spec-tag--alum">Branco</span>
+                <span class="spec-tag spec-tag--alum">Bronze</span>
+                <span class="spec-tag spec-tag--alum">Grafite</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="prod-highlight">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+            Ideal para escritórios, lojas e residências
+          </div>
+          <div class="prod-highlight">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+            Vidro temperado com alta resistência
+          </div>
+
+          <a href="orcamento.html" class="btn-primary" style="margin-top: 28px; display: inline-flex;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2" />
+              <path d="M8 21h8M12 17v4" />
+            </svg>
+            Solicitar Orçamento
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
 
-<!-- ══════════════════════════════
+  <!-- ══════════════════════════════
      GUARDA-CORPOS
 ══════════════════════════════ -->
-<section class="prod-section prod-section--dark" id="guarda-corpo">
-  <div class="section-inner">
-    <div class="prod-section-grid prod-section-grid--reverse">
+  <section class="prod-section prod-section--dark" id="guarda-corpo">
+    <div class="section-inner">
+      <div class="prod-section-grid prod-section-grid--reverse">
 
-      <div class="prod-info">
-        <div class="section-label" style="color: var(--orange-light)">Produto 04</div>
-        <h2 class="prod-title" style="color: #fff">Guarda-corpos</h2>
-        <p class="prod-desc" style="color: rgba(255,255,255,0.65)">
-          Guarda-corpos em vidro temperado para escadas, varandas, terraços e piscinas. Garantem segurança sem obstruir a visão, proporcionando uma estética limpa e moderna para o ambiente.
-        </p>
+        <div class="prod-info">
+          <div class="section-label" style="color: var(--orange-light)">Produto 04</div>
+          <h2 class="prod-title" style="color: #fff">Guarda-corpos</h2>
+          <p class="prod-desc" style="color: rgba(255,255,255,0.65)">
+            Guarda-corpos em vidro temperado para escadas, varandas, terraços e piscinas. Garantem segurança sem
+            obstruir a visão, proporcionando uma estética limpa e moderna para o ambiente.
+          </p>
 
-        <div class="prod-specs">
-          <div class="prod-spec-group prod-spec-group--dark">
-            <div class="prod-spec-title" style="color: rgba(255,255,255,0.8)">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              Cores de vidro
+          <div class="prod-specs">
+            <div class="prod-spec-group prod-spec-group--dark">
+              <div class="prod-spec-title" style="color: rgba(255,255,255,0.8)">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+                Cores de vidro
+              </div>
+              <div class="prod-spec-tags">
+                <span class="spec-tag spec-tag--white">Transparente</span>
+                <span class="spec-tag spec-tag--white">Fumê</span>
+                <span class="spec-tag spec-tag--white">Verde</span>
+                <span class="spec-tag spec-tag--white">Jateado</span>
+              </div>
             </div>
-            <div class="prod-spec-tags">
-              <span class="spec-tag spec-tag--white">Transparente</span>
-              <span class="spec-tag spec-tag--white">Fumê</span>
-              <span class="spec-tag spec-tag--white">Verde</span>
-              <span class="spec-tag spec-tag--white">Jateado</span>
+            <div class="prod-spec-group prod-spec-group--dark">
+              <div class="prod-spec-title" style="color: rgba(255,255,255,0.8)">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                </svg>
+                Acabamento do alumínio
+              </div>
+              <div class="prod-spec-tags">
+                <span class="spec-tag spec-tag--white">Fosco</span>
+                <span class="spec-tag spec-tag--white">Preto</span>
+                <span class="spec-tag spec-tag--white">Branco</span>
+                <span class="spec-tag spec-tag--white">Bronze</span>
+                <span class="spec-tag spec-tag--white">Grafite</span>
+              </div>
             </div>
           </div>
-          <div class="prod-spec-group prod-spec-group--dark">
-            <div class="prod-spec-title" style="color: rgba(255,255,255,0.8)">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
-              Acabamento do alumínio
+
+          <div class="prod-highlight prod-highlight--dark">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+            Ideal para varandas, escadas e piscinas
+          </div>
+          <div class="prod-highlight prod-highlight--dark">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+            Segurança sem abrir mão da vista
+          </div>
+
+          <a href="orcamento.html" class="btn-primary" style="margin-top: 28px; display: inline-flex;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2" />
+              <path d="M8 21h8M12 17v4" />
+            </svg>
+            Solicitar Orçamento
+          </a>
+        </div>
+
+        <div class="prod-gallery">
+          <div class="prod-gallery-main">
+            <img src="fotos/guarda-corpo-principal.jpeg" alt="Guarda-corpo de vidro"
+              onerror="this.parentNode.classList.add('img-placeholder')" />
+            <div class="img-placeholder-content">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <polyline points="21 15 16 10 5 21" />
+              </svg>
+              <span>Guarda-corpos</span>
             </div>
-            <div class="prod-spec-tags">
-              <span class="spec-tag spec-tag--white">Fosco</span>
-              <span class="spec-tag spec-tag--white">Preto</span>
-              <span class="spec-tag spec-tag--white">Branco</span>
-              <span class="spec-tag spec-tag--white">Bronze</span>
+          </div>
+          <div class="prod-gallery-thumbs">
+            <div class="prod-thumb">
+              <img src="fotos/guarda-corpo-2.jpeg" alt="Guarda-corpo varanda"
+                onerror="this.parentNode.classList.add('img-placeholder-sm')" />
+              <div class="img-placeholder-content-sm"><span>Varanda</span></div>
+            </div>
+            <div class="prod-thumb">
+              <img src="fotos/guarda-corpo-3.jpeg" alt="Guarda-corpo escada"
+                onerror="this.parentNode.classList.add('img-placeholder-sm')" />
+              <div class="img-placeholder-content-sm"><span>Escada</span></div>
+            </div>
+            <div class="prod-thumb">
+              <img src="fotos/guarda-corpo-4.jpg" alt="Guarda-corpo piscina"
+                onerror="this.parentNode.classList.add('img-placeholder-sm')" />
+              <div class="img-placeholder-content-sm"><span>Piscina</span></div>
             </div>
           </div>
         </div>
 
-        <div class="prod-highlight prod-highlight--dark">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-          Ideal para varandas, escadas e piscinas
-        </div>
-        <div class="prod-highlight prod-highlight--dark">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-          Segurança sem abrir mão da vista
-        </div>
-
-        <a href="orcamento.html" class="btn-primary" style="margin-top: 28px; display: inline-flex;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-          Solicitar Orçamento
-        </a>
       </div>
-
-      <div class="prod-gallery">
-        <div class="prod-gallery-main">
-          <img src="fotos/guarda-corpo-principal.jpeg" alt="Guarda-corpo de vidro" onerror="this.parentNode.classList.add('img-placeholder')" />
-          <div class="img-placeholder-content">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span>Guarda-corpos</span>
-          </div>
-        </div>
-        <div class="prod-gallery-thumbs">
-          <div class="prod-thumb">
-            <img src="fotos/guarda-corpo-2.jpeg" alt="Guarda-corpo varanda" onerror="this.parentNode.classList.add('img-placeholder-sm')" />
-            <div class="img-placeholder-content-sm"><span>Varanda</span></div>
-          </div>
-          <div class="prod-thumb">
-            <img src="fotos/guarda-corpo-3.jpeg" alt="Guarda-corpo escada" onerror="this.parentNode.classList.add('img-placeholder-sm')" />
-            <div class="img-placeholder-content-sm"><span>Escada</span></div>
-          </div>
-          <div class="prod-thumb">
-            <img src="fotos/guarda-corpo-4.jpg" alt="Guarda-corpo piscina" onerror="this.parentNode.classList.add('img-placeholder-sm')" />
-            <div class="img-placeholder-content-sm"><span>Piscina</span></div>
-          </div>
-        </div>
-      </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
 
-<!-- ══════════════════════════════
+  <!-- ══════════════════════════════
      ESPELHOS
 ══════════════════════════════ -->
-<section class="prod-section prod-section--light" id="espelhos">
-  <div class="section-inner">
-    <div class="prod-section-grid">
-      <div class="prod-gallery prod-gallery--zoom">
-        <div class="prod-gallery-main">
-          <img src="fotos/espelho-principal.jpeg" alt="Espelho sob medida" onerror="this.parentNode.classList.add('img-placeholder')" />
-          <div class="img-placeholder-content">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span>Espelhos</span>
-          </div>
-        </div>
-        <div class="prod-gallery-thumbs prod-gallery-thumbs--2col">
-          <div class="prod-thumb">
-            <img src="fotos/espelho-2.jpeg" alt="Espelho banheiro" onerror="this.parentNode.classList.add('img-placeholder-sm')" />
-            <div class="img-placeholder-content-sm"><span>Banheiro</span></div>
-          </div>
-          <div class="prod-thumb">
-            <img src="fotos/espelho-3.jpg" alt="Espelho decorativo" onerror="this.parentNode.classList.add('img-placeholder-sm')" />
-            <div class="img-placeholder-content-sm"><span>Decorativo</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="prod-info">
-        <div class="section-label">Produto 05</div>
-        <h2 class="prod-title">Espelhos</h2>
-        <p class="prod-desc">
-          Espelhos sob medida para banheiros, quartos, salas e comércios. Trabalhamos com diferentes espessuras e acabamentos, com ou sem moldura, para valorizar qualquer ambiente com elegância e sofisticação.
-        </p>
-
-        <div class="prod-specs">
-          <div class="prod-spec-group">
-            <div class="prod-spec-title">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
-              Acabamentos de borda
+  <section class="prod-section prod-section--light" id="espelhos">
+    <div class="section-inner">
+      <div class="prod-section-grid">
+        <div class="prod-gallery prod-gallery--zoom">
+          <div class="prod-gallery-main">
+            <img src="fotos/espelho-principal.jpeg" alt="Espelho sob medida"
+              onerror="this.parentNode.classList.add('img-placeholder')" />
+            <div class="img-placeholder-content">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <polyline points="21 15 16 10 5 21" />
+              </svg>
+              <span>Espelhos</span>
             </div>
-            <div class="prod-spec-tags">
-              <span class="spec-tag spec-tag--alum">Lapidado</span>
-              <span class="spec-tag spec-tag--alum">Bisotê</span>
+          </div>
+          <div class="prod-gallery-thumbs prod-gallery-thumbs--2col">
+            <div class="prod-thumb">
+              <img src="fotos/espelho-2.jpeg" alt="Espelho banheiro"
+                onerror="this.parentNode.classList.add('img-placeholder-sm')" />
+              <div class="img-placeholder-content-sm"><span>Banheiro</span></div>
+            </div>
+            <div class="prod-thumb">
+              <img src="fotos/espelho-3.jpg" alt="Espelho decorativo"
+                onerror="this.parentNode.classList.add('img-placeholder-sm')" />
+              <div class="img-placeholder-content-sm"><span>Decorativo</span></div>
             </div>
           </div>
         </div>
 
-        <div class="prod-highlight">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-          Corte sob medida para qualquer ambiente
-        </div>
-        <div class="prod-highlight">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-          Instalação profissional inclusa
-        </div>
+        <div class="prod-info">
+          <div class="section-label">Produto 05</div>
+          <h2 class="prod-title">Espelhos</h2>
+          <p class="prod-desc">
+            Espelhos sob medida para banheiros, quartos, salas e comércios. Trabalhamos com diferentes espessuras e
+            acabamentos, com ou sem moldura, para valorizar qualquer ambiente com elegância e sofisticação.
+          </p>
 
-        <a href="orcamento.html" class="btn-primary" style="margin-top: 28px; display: inline-flex;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-          Solicitar Orçamento
-        </a>
+          <div class="prod-specs">
+            <div class="prod-spec-group">
+              <div class="prod-spec-title">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                </svg>
+                Acabamentos de borda
+              </div>
+              <div class="prod-spec-tags">
+                <span class="spec-tag spec-tag--alum">Lapidado</span>
+                <span class="spec-tag spec-tag--alum">Bisotê</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="prod-highlight">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+            Corte sob medida para qualquer ambiente
+          </div>
+          <div class="prod-highlight">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+            Instalação profissional inclusa
+          </div>
+
+          <a href="orcamento.html" class="btn-primary" style="margin-top: 28px; display: inline-flex;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2" />
+              <path d="M8 21h8M12 17v4" />
+            </svg>
+            Solicitar Orçamento
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
 
-<!-- ══════════════════════════════
+  <!-- ══════════════════════════════
      FECHAMENTO DE PIA
 ══════════════════════════════ -->
-<section class="prod-section prod-section--dark" id="fechamento-pia">
-  <div class="section-inner">
-    <div class="prod-section-grid prod-section-grid--reverse">
+  <section class="prod-section prod-section--dark" id="fechamento-pia">
+    <div class="section-inner">
+      <div class="prod-section-grid prod-section-grid--reverse">
 
-      <div class="prod-info">
-        <div class="section-label" style="color: var(--orange-light)">Produto 06</div>
-        <h2 class="prod-title" style="color: #fff">Fechamento de Pia</h2>
-        <p class="prod-desc" style="color: rgba(255,255,255,0.65)">
-          Fechamentos de pia em vidro ou acrílico, perfeitos para cozinhas, banheiros e lavabos. Oferecem proteção contra umidade com visual clean e fácil limpeza. O acrílico está disponível somente na cor branca; o vidro pode ser em qualquer cor.
-        </p>
+        <div class="prod-info">
+          <div class="section-label" style="color: var(--orange-light)">Produto 06</div>
+          <h2 class="prod-title" style="color: #fff">Fechamento de Pia</h2>
+          <p class="prod-desc" style="color: rgba(255,255,255,0.65)">
+            Fechamentos de pia em vidro ou acrílico, perfeitos para cozinhas, banheiros e lavabos. Oferecem proteção
+            contra umidade com visual clean e fácil limpeza. O acrílico está disponível somente na cor branca; o vidro
+            pode ser em qualquer cor.
+          </p>
 
-        <div class="prod-specs">
-          <div class="prod-spec-group prod-spec-group--dark">
-            <div class="prod-spec-title" style="color: rgba(255,255,255,0.8)">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-              Materiais disponíveis
+          <div class="prod-specs">
+            <div class="prod-spec-group prod-spec-group--dark">
+              <div class="prod-spec-title" style="color: rgba(255,255,255,0.8)">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path
+                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                </svg>
+                Acabamentos Disponíveis
+              </div>
+              <div class="prod-spec-tags">
+                <span class="spec-tag spec-tag--white">Fosco</span>
+                <span class="spec-tag spec-tag--white">Preto</span>
+                <span class="spec-tag spec-tag--white">Branco</span>
+                <span class="spec-tag spec-tag--white">Bronze</span>
+                <span class="spec-tag spec-tag--white">Grafite</span>
+              </div>
             </div>
-            <div class="prod-spec-tags">
-              <span class="spec-tag spec-tag--white">Vidro (qualquer cor)</span>
-              <span class="spec-tag spec-tag--white">Acrílico Branco</span>
+            <div class="prod-spec-group prod-spec-group--dark">
+              <div class="prod-spec-title" style="color: rgba(255,255,255,0.8)">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+                Cores de Película
+              </div>
+              <div class="prod-spec-tags">
+                <span class="spec-tag spec-tag--white">Todas Cores Disponiveis</span>
+              </div>
             </div>
           </div>
-          <div class="prod-spec-group prod-spec-group--dark">
-            <div class="prod-spec-title" style="color: rgba(255,255,255,0.8)">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              Cores de vidro
+
+          <div class="prod-highlight prod-highlight--dark">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+            Fácil limpeza e manutenção
+          </div>
+          <div class="prod-highlight prod-highlight--dark">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+            Proteção contra umidade e respingos
+          </div>
+
+          <a href="orcamento.html" class="btn-primary" style="margin-top: 28px; display: inline-flex;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2" />
+              <path d="M8 21h8M12 17v4" />
+            </svg>
+            Solicitar Orçamento
+          </a>
+        </div>
+
+        <div class="prod-gallery">
+          <div class="prod-gallery-main">
+            <img src="fotos/fechamento-pia-principal.jpeg" alt="Fechamento de pia em vidro"
+              onerror="this.parentNode.classList.add('img-placeholder')" />
+            <div class="img-placeholder-content">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <polyline points="21 15 16 10 5 21" />
+              </svg>
+              <span>Fechamento de Pia</span>
             </div>
-            <div class="prod-spec-tags">
-              <span class="spec-tag spec-tag--white">Transparente</span>
-              <span class="spec-tag spec-tag--white">Fumê</span>
-              <span class="spec-tag spec-tag--white">Verde</span>
-              <span class="spec-tag spec-tag--white">Jateado</span>
-              <span class="spec-tag spec-tag--white">Qualquer cor</span>
+          </div>
+          <div class="prod-gallery-thumbs">
+            <div class="prod-thumb">
+              <img src="fotos/fechamento-pia-2.jpeg" alt="Fechamento em vidro"
+                onerror="this.parentNode.classList.add('img-placeholder-sm')" />
+              <div class="img-placeholder-content-sm"><span>Vidro</span></div>
+            </div>
+            <div class="prod-thumb">
+              <img src="fotos/fechamento-pia-3.jpeg" alt="Fechamento acrílico"
+                onerror="this.parentNode.classList.add('img-placeholder-sm')" />
+              <div class="img-placeholder-content-sm"><span>Acrílico</span></div>
+            </div>
+            <div class="prod-thumb">
+              <img src="fotos/fechamento-pia-4.jpeg" alt="Fechamento instalado"
+                onerror="this.parentNode.classList.add('img-placeholder-sm')" />
+              <div class="img-placeholder-content-sm"><span>Instalado</span></div>
             </div>
           </div>
         </div>
 
-        <div class="prod-highlight prod-highlight--dark">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-          Fácil limpeza e manutenção
-        </div>
-        <div class="prod-highlight prod-highlight--dark">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-          Proteção contra umidade e respingos
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════
+     VIDROS COMUNS
+══════════════════════════════ -->
+  <section class="prod-section prod-section--light" id="vidros-comuns">
+    <div class="section-inner">
+      <div class="section-label">Produto 07</div>
+      <h2 class="prod-title" style="margin-bottom: 12px">Vidros Comuns</h2>
+      <p class="prod-desc" style="max-width: 620px; margin-bottom: 48px">
+        Trabalhamos também com vidros comuns para janelas, portas e vedações em geral. Disponíveis em diversos tipos e
+        texturas para atender projetos residenciais e comerciais.
+      </p>
+
+      <div class="vidros-grid">
+
+        <div class="vidro-card">
+          <div class="vidro-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+            </svg>
+          </div>
+          <div class="vidro-card-name">Transparente</div>
+          <div class="vidro-card-desc">Vidro comum liso e transparente. Clássico e versátil, ideal para a maioria dos
+            projetos.</div>
         </div>
 
-        <a href="orcamento.html" class="btn-primary" style="margin-top: 28px; display: inline-flex;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        <div class="vidro-card">
+          <div class="vidro-card-icon vidro-card-icon--canelado">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <line x1="5" y1="3" x2="5" y2="21" />
+              <line x1="9" y1="3" x2="9" y2="21" />
+              <line x1="13" y1="3" x2="13" y2="21" />
+              <line x1="17" y1="3" x2="17" y2="21" />
+              <line x1="21" y1="3" x2="21" y2="21" />
+            </svg>
+          </div>
+          <div class="vidro-card-name">Canelado</div>
+          <div class="vidro-card-desc">Textura com estrias verticais. Difunde a luz mantendo a privacidade no ambiente.
+          </div>
+        </div>
+
+        <div class="vidro-card">
+          <div class="vidro-card-icon vidro-card-icon--fume">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <path d="M3 9l18 0" opacity="0.3" />
+              <path d="M3 15l18 0" opacity="0.3" />
+            </svg>
+          </div>
+          <div class="vidro-card-name">Fumê</div>
+          <div class="vidro-card-desc">Vidro com tonalidade escura que reduz a visibilidade e a incidência de luz solar.
+          </div>
+        </div>
+
+        <div class="vidro-card">
+          <div class="vidro-card-icon vidro-card-icon--artico">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M12 3a9 9 0 0 1 0 18" opacity="0.5" />
+            </svg>
+          </div>
+          <div class="vidro-card-name">Ártico</div>
+          <div class="vidro-card-desc">Vidro com textura suave que cria privacidade com aspecto delicado e sofisticado.
+          </div>
+        </div>
+
+        <div class="vidro-card">
+          <div class="vidro-card-icon vidro-card-icon--martelado">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <path d="M3 3l18 18M3 21L21 3" opacity="0.2" />
+              <circle cx="7" cy="7" r="2" opacity="0.6" />
+              <circle cx="17" cy="7" r="2" opacity="0.6" />
+              <circle cx="7" cy="17" r="2" opacity="0.6" />
+              <circle cx="17" cy="17" r="2" opacity="0.6" />
+              <circle cx="12" cy="12" r="2" opacity="0.6" />
+            </svg>
+          </div>
+          <div class="vidro-card-name">Martelado</div>
+          <div class="vidro-card-desc">Superfície irregular que simula o efeito de marteladas, criando texturas únicas e
+            rusticamente elegantes.</div>
+        </div>
+
+        <div class="vidro-card">
+          <div class="vidro-card-icon vidro-card-icon--pontilhado">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <circle cx="6" cy="6" r="1.5" fill="currentColor" />
+              <circle cx="12" cy="6" r="1.5" fill="currentColor" />
+              <circle cx="18" cy="6" r="1.5" fill="currentColor" />
+              <circle cx="6" cy="12" r="1.5" fill="currentColor" />
+              <circle cx="12" cy="12" r="1.5" fill="currentColor" />
+              <circle cx="18" cy="12" r="1.5" fill="currentColor" />
+              <circle cx="6" cy="18" r="1.5" fill="currentColor" />
+              <circle cx="12" cy="18" r="1.5" fill="currentColor" />
+              <circle cx="18" cy="18" r="1.5" fill="currentColor" />
+            </svg>
+          </div>
+          <div class="vidro-card-name">Pontilhado</div>
+          <div class="vidro-card-desc">Padrão com pontos que criam um efeito visual diferenciado, combinando estética e
+            privacidade.</div>
+        </div>
+
+        <div class="vidro-card">
+          <div class="vidro-card-icon vidro-card-icon--antilope">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <path d="M3 8 Q6 4 9 8 Q12 12 15 8 Q18 4 21 8" />
+              <path d="M3 13 Q6 9 9 13 Q12 17 15 13 Q18 9 21 13" />
+              <path d="M3 18 Q6 14 9 18 Q12 22 15 18 Q18 14 21 18" />
+            </svg>
+          </div>
+          <div class="vidro-card-name">Antílope</div>
+          <div class="vidro-card-desc">Textura ondulada que difunde a luz de maneira suave, criando ambientes com
+            iluminação natural agradável.</div>
+        </div>
+
+        <div class="vidro-card">
+          <div class="vidro-card-icon vidro-card-icon--mineboreal">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <path d="M5 3h14v18H5z" opacity="0.3" />
+              <path d="M5 8l7-5 7 5" />
+              <path d="M5 13l7-5 7 5" />
+              <path d="M5 18l7-5 7 5" />
+            </svg>
+          </div>
+          <div class="vidro-card-name">Mineboreal</div>
+          <div class="vidro-card-desc">Padrão geométrico exclusivo que une funcionalidade e design, ideal para projetos
+            modernos.</div>
+        </div>
+
+      </div>
+
+      <div style="text-align: center; margin-top: 48px;">
+        <a href="orcamento.html" class="btn-primary" style="display: inline-flex;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2">
+            <rect x="2" y="3" width="20" height="14" rx="2" />
+            <path d="M8 21h8M12 17v4" />
+          </svg>
           Solicitar Orçamento
         </a>
       </div>
-
-      <div class="prod-gallery">
-        <div class="prod-gallery-main">
-          <img src="fotos/fechamento-pia-principal.jpeg" alt="Fechamento de pia em vidro" onerror="this.parentNode.classList.add('img-placeholder')" />
-          <div class="img-placeholder-content">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span>Fechamento de Pia</span>
-          </div>
-        </div>
-        <div class="prod-gallery-thumbs">
-          <div class="prod-thumb">
-            <img src="fotos/fechamento-pia-2.jpeg" alt="Fechamento em vidro" onerror="this.parentNode.classList.add('img-placeholder-sm')" />
-            <div class="img-placeholder-content-sm"><span>Vidro</span></div>
-          </div>
-          <div class="prod-thumb">
-            <img src="fotos/fechamento-pia-3.jpeg" alt="Fechamento acrílico" onerror="this.parentNode.classList.add('img-placeholder-sm')" />
-            <div class="img-placeholder-content-sm"><span>Acrílico</span></div>
-          </div>
-          <div class="prod-thumb">
-            <img src="fotos/fechamento-pia-4.jpeg" alt="Fechamento instalado" onerror="this.parentNode.classList.add('img-placeholder-sm')" />
-            <div class="img-placeholder-content-sm"><span>Instalado</span></div>
-          </div>
-        </div>
-      </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
 
-<!-- ══════════════════════════════
-     VIDROS COMUNS
-══════════════════════════════ -->
-<section class="prod-section prod-section--light" id="vidros-comuns">
-  <div class="section-inner">
-    <div class="section-label">Produto 07</div>
-    <h2 class="prod-title" style="margin-bottom: 12px">Vidros Comuns</h2>
-    <p class="prod-desc" style="max-width: 620px; margin-bottom: 48px">
-      Trabalhamos também com vidros comuns para janelas, portas e vedações em geral. Disponíveis em diversos tipos e texturas para atender projetos residenciais e comerciais.
-    </p>
-
-    <div class="vidros-grid">
-
-      <div class="vidro-card">
-        <div class="vidro-card-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
-        </div>
-        <div class="vidro-card-name">Transparente</div>
-        <div class="vidro-card-desc">Vidro comum liso e transparente. Clássico e versátil, ideal para a maioria dos projetos.</div>
-      </div>
-
-      <div class="vidro-card">
-        <div class="vidro-card-icon vidro-card-icon--canelado">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="3" x2="5" y2="21"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="13" y1="3" x2="13" y2="21"/><line x1="17" y1="3" x2="17" y2="21"/><line x1="21" y1="3" x2="21" y2="21"/></svg>
-        </div>
-        <div class="vidro-card-name">Canelado</div>
-        <div class="vidro-card-desc">Textura com estrias verticais. Difunde a luz mantendo a privacidade no ambiente.</div>
-      </div>
-
-      <div class="vidro-card">
-        <div class="vidro-card-icon vidro-card-icon--fume">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9l18 0" opacity="0.3"/><path d="M3 15l18 0" opacity="0.3"/></svg>
-        </div>
-        <div class="vidro-card-name">Fumê</div>
-        <div class="vidro-card-desc">Vidro com tonalidade escura que reduz a visibilidade e a incidência de luz solar.</div>
-      </div>
-
-      <div class="vidro-card">
-        <div class="vidro-card-icon vidro-card-icon--artico">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18" opacity="0.5"/></svg>
-        </div>
-        <div class="vidro-card-name">Ártico</div>
-        <div class="vidro-card-desc">Vidro com textura suave que cria privacidade com aspecto delicado e sofisticado.</div>
-      </div>
-
-      <div class="vidro-card">
-        <div class="vidro-card-icon vidro-card-icon--martelado">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3l18 18M3 21L21 3" opacity="0.2"/><circle cx="7" cy="7" r="2" opacity="0.6"/><circle cx="17" cy="7" r="2" opacity="0.6"/><circle cx="7" cy="17" r="2" opacity="0.6"/><circle cx="17" cy="17" r="2" opacity="0.6"/><circle cx="12" cy="12" r="2" opacity="0.6"/></svg>
-        </div>
-        <div class="vidro-card-name">Martelado</div>
-        <div class="vidro-card-desc">Superfície irregular que simula o efeito de marteladas, criando texturas únicas e rusticamente elegantes.</div>
-      </div>
-
-      <div class="vidro-card">
-        <div class="vidro-card-icon vidro-card-icon--pontilhado">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="1.5" fill="currentColor"/><circle cx="12" cy="6" r="1.5" fill="currentColor"/><circle cx="18" cy="6" r="1.5" fill="currentColor"/><circle cx="6" cy="12" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><circle cx="18" cy="12" r="1.5" fill="currentColor"/><circle cx="6" cy="18" r="1.5" fill="currentColor"/><circle cx="12" cy="18" r="1.5" fill="currentColor"/><circle cx="18" cy="18" r="1.5" fill="currentColor"/></svg>
-        </div>
-        <div class="vidro-card-name">Pontilhado</div>
-        <div class="vidro-card-desc">Padrão com pontos que criam um efeito visual diferenciado, combinando estética e privacidade.</div>
-      </div>
-
-      <div class="vidro-card">
-        <div class="vidro-card-icon vidro-card-icon--antilope">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8 Q6 4 9 8 Q12 12 15 8 Q18 4 21 8"/><path d="M3 13 Q6 9 9 13 Q12 17 15 13 Q18 9 21 13"/><path d="M3 18 Q6 14 9 18 Q12 22 15 18 Q18 14 21 18"/></svg>
-        </div>
-        <div class="vidro-card-name">Antílope</div>
-        <div class="vidro-card-desc">Textura ondulada que difunde a luz de maneira suave, criando ambientes com iluminação natural agradável.</div>
-      </div>
-
-      <div class="vidro-card">
-        <div class="vidro-card-icon vidro-card-icon--mineboreal">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 3h14v18H5z" opacity="0.3"/><path d="M5 8l7-5 7 5"/><path d="M5 13l7-5 7 5"/><path d="M5 18l7-5 7 5"/></svg>
-        </div>
-        <div class="vidro-card-name">Mineboreal</div>
-        <div class="vidro-card-desc">Padrão geométrico exclusivo que une funcionalidade e design, ideal para projetos modernos.</div>
-      </div>
-
-    </div>
-
-    <div style="text-align: center; margin-top: 48px;">
-      <a href="orcamento.html" class="btn-primary" style="display: inline-flex;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-        Solicitar Orçamento
-      </a>
-    </div>
-  </div>
-</section>
-
-
-<!-- ══════════════════════════════
+  <!-- ══════════════════════════════
      CTA FINAL
 ══════════════════════════════ -->
-<section class="prod-cta-section">
-  <div class="prod-cta-bg"></div>
-  <div class="section-inner" style="position: relative; z-index: 1; text-align: center;">
-    <div class="section-label" style="color: var(--orange-light); justify-content: center; display: flex;">Pronto para começar?</div>
-    <h2 class="section-title" style="color: #fff; text-align: center; margin-bottom: 16px;">Solicite seu Orçamento Agora</h2>
-    <p class="section-subtitle" style="color: rgba(255,255,255,0.55); text-align: center; margin: 0 auto 40px;">
-      Todos os produtos são fabricados sob medida. Entre em contato ou use nossa calculadora online para receber uma estimativa rápida.
-    </p>
-    <div class="prod-cta-actions">
-      <a href="orcamento.html" class="btn-primary">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-        Calcular Orçamento Online
-      </a>
-      <a href="https://wa.me/5537998628364" target="_blank" class="btn-ghost">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Falar pelo WhatsApp
-      </a>
+  <section class="prod-cta-section">
+    <div class="prod-cta-bg"></div>
+    <div class="section-inner" style="position: relative; z-index: 1; text-align: center;">
+      <div class="section-label" style="color: var(--orange-light); justify-content: center; display: flex;">Pronto para
+        começar?</div>
+      <h2 class="section-title" style="color: #fff; text-align: center; margin-bottom: 16px;">Solicite seu Orçamento
+        Agora</h2>
+      <p class="section-subtitle" style="color: rgba(255,255,255,0.55); text-align: center; margin: 0 auto 40px;">
+        Todos os produtos são fabricados sob medida. Entre em contato ou use nossa calculadora online para receber uma
+        estimativa rápida.
+      </p>
+      <div class="prod-cta-actions">
+        <a href="orcamento.html" class="btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2">
+            <rect x="2" y="3" width="20" height="14" rx="2" />
+            <path d="M8 21h8M12 17v4" />
+          </svg>
+          Calcular Orçamento Online
+        </a>
+        <a href="https://wa.me/5537998628364" target="_blank" class="btn-ghost">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          </svg>
+          Falar pelo WhatsApp
+        </a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
 
-<!-- ══════════════════════════════
+  <!-- ══════════════════════════════
      RODAPÉ
 ══════════════════════════════ -->
-<footer id="contato">
-  <div class="footer-inner">
-    <div class="footer-grid">
+  <footer id="contato">
+    <div class="footer-inner">
+      <div class="footer-grid">
 
-      <div class="footer-brand">
-        <a href="index.html" class="logo">
-          <img src="fotos/logo.png" alt="Carmo Vidros" class="logo-img">
-          <div class="logo-text">
-            <span class="logo-name">Carmo Vidros</span>
-            <span class="logo-tagline">Qualidade e Transparência</span>
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <img src="fotos/logo.png" alt="Carmo Vidros" class="logo-img">
+            <div class="logo-text">
+              <span class="logo-name">Carmo Vidros</span>
+              <span class="logo-tagline">Qualidade e Transparência</span>
+            </div>
+          </a>
+          <p class="footer-brand-desc">
+            Há mais de 20 anos transformando espaços com vidros de qualidade em Carmo da Mata e região. Sua satisfação é
+            o nosso maior projeto.
+          </p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/carmovidros?igsh=NXlxa3lhYnF6bWx4" target="_blank" class="social-link" title="Instagram">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+              </svg>
+            </a>
+            <a href="https://www.facebook.com/carmo.vidros.3" target="_blank" class="social-link" title="Facebook">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+              </svg>
+            </a>
+            <a href="https://wa.me/5537998628364" target="_blank" class="social-link" title="WhatsApp">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+              </svg>
+            </a>
           </div>
-        </a>
-        <p class="footer-brand-desc">
-          Há mais de 20 anos transformando espaços com vidros de qualidade em Carmo da Mata e região. Sua satisfação é o nosso maior projeto.
-        </p>
-        <div class="social-links">
-          <a href="https://www.instagram.com/carmovidros?igsh=NXlxa3lhYnF6bWx4" class="social-link" title="Instagram">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          </a>
-          <a href="https://www.facebook.com/carmo.vidros.3" target="_blank" class="social-link" title="Facebook">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-          </a>
-          <a href="https://wa.me/5537998628364" target="_blank" class="social-link" title="WhatsApp">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          </a>
         </div>
-      </div>
 
-      <div>
-        <div class="footer-col-title">Navegação</div>
-        <ul class="footer-links">
-          <li><a href="index.html">Início</a></li>
-          <li><a href="index.html#sobre">Sobre a Empresa</a></li>
-          <li><a href="produtos.html">Produtos</a></li>
-          <li><a href="orcamento.html">Orçamento Online</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <div class="footer-col-title">Produtos</div>
-        <ul class="footer-links">
-          <li><a href="#box">Box de Banheiro</a></li>
-          <li><a href="#janelas">Janelas de Vidro</a></li>
-          <li><a href="#portas">Portas de Vidro</a></li>
-          <li><a href="#guarda-corpo">Guarda-corpos</a></li>
-          <li><a href="#espelhos">Espelhos</a></li>
-          <li><a href="#fechamento-pia">Fechamento de Pia</a></li>
-          <li><a href="#vidros-comuns">Vidros Comuns</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <div class="footer-col-title">Contato</div>
-        <div class="footer-contact-item">
-          <svg class="footer-contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
-          </svg>
-          <span class="footer-contact-text">Rua João Machado, 181<br />Carmo da Mata, MG<br />CEP 35547-000</span>
+        <div>
+          <div class="footer-col-title">Navegação</div>
+          <ul class="footer-links">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="index.html#sobre">Sobre a Empresa</a></li>
+            <li><a href="produtos.html">Produtos</a></li>
+            <li><a href="orcamento.html">Orçamento Online</a></li>
+          </ul>
         </div>
-        <div class="footer-contact-item">
-          <svg class="footer-contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .9h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.75a16 16 0 006.13 6.13l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
-          </svg>
-          <span class="footer-contact-text">(37) 99862-8364</span>
-        </div>
-        <div class="footer-contact-item">
-          <svg class="footer-contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-          </svg>
-          <span class="footer-contact-text">Seg–Sex: 7h às 17h</span>
-        </div>
-      </div>
 
+        <div>
+          <div class="footer-col-title">Produtos</div>
+          <ul class="footer-links">
+            <li><a href="#box">Box de Banheiro</a></li>
+            <li><a href="#janelas">Janelas de Vidro</a></li>
+            <li><a href="#portas">Portas de Vidro</a></li>
+            <li><a href="#guarda-corpo">Guarda-corpos</a></li>
+            <li><a href="#espelhos">Espelhos</a></li>
+            <li><a href="#fechamento-pia">Fechamento de Pia</a></li>
+            <li><a href="#vidros-comuns">Vidros Comuns</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Contato</div>
+          <div class="footer-contact-item">
+            <svg class="footer-contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            <a href="https://www.google.com/maps?q=Rua+João+Machado,+181,+Carmo+da+Mata,+MG,+35547-000" target="_blank">
+    <span class="footer-contact-text">
+    Rua João Machado, 181<br />
+    Carmo da Mata, MG<br />
+    CEP 35547-000
+    </span>
+    </a>
+          </div>
+          <div class="footer-contact-item">
+            <svg class="footer-contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path
+                d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .9h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.75a16 16 0 006.13 6.13l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+            </svg>
+            <span class="footer-contact-text">(37) 99862-8364</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg class="footer-contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+            <span class="footer-contact-text">Seg–Sex: 7h às 17h</span>
+          </div>
+        </div>
+
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2025 <span>Carmo Vidros</span>. Todos os direitos reservados.</p>
+        <p class="footer-copy">Feito com 💙 em Carmo da Mata — MG</p>
+      </div>
     </div>
-    <div class="footer-bottom">
-      <p class="footer-copy">© 2025 <span>Carmo Vidros</span>. Todos os direitos reservados.</p>
-      <p class="footer-copy">Feito com 💙 em Carmo da Mata — MG</p>
-    </div>
-  </div>
-</footer>
+  </footer>
 
-<!-- ══════════════════════════════
+  <!-- ══════════════════════════════
      MODAL DE IMAGEM COM CARROSSEL
 ══════════════════════════════ -->
-<div id="img-modal" style="
+  <div id="img-modal" style="
   display:none; position:fixed; inset:0; z-index:9999;
   background:rgba(8,18,36,0.93); backdrop-filter:blur(12px);
   align-items:center; justify-content:center;
 ">
-  <button id="modal-close" style="
+    <button id="modal-close" style="
     position:absolute; top:20px; right:24px;
     background:rgba(255,255,255,0.10); border:1px solid rgba(255,255,255,0.20);
     color:#fff; width:44px; height:44px; border-radius:50%;
@@ -761,8 +1010,9 @@
     justify-content:center; transition:background 0.2s; z-index:2;
   ">×</button>
 
-  <div style="position:relative; display:flex; align-items:center; gap:16px; width:100%; max-width:900px; padding:0 70px;">
-    <button id="modal-prev" style="
+    <div
+      style="position:relative; display:flex; align-items:center; gap:16px; width:100%; max-width:900px; padding:0 70px;">
+      <button id="modal-prev" style="
       position:absolute; left:8px;
       background:rgba(255,255,255,0.10); border:1px solid rgba(255,255,255,0.20);
       color:#fff; width:48px; height:48px; border-radius:50%;
@@ -770,216 +1020,223 @@
       justify-content:center; transition:background 0.2s; flex-shrink:0;
     ">‹</button>
 
-    <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:16px;">
-      <div id="modal-img-wrap" style="
+      <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:16px;">
+        <div id="modal-img-wrap" style="
         width:100%; max-height:75vh; border-radius:16px; overflow:hidden;
         display:flex; align-items:center; justify-content:center;
         background:rgba(255,255,255,0.04);
       ">
-        <img id="modal-img" src="" alt="" style="
+          <img id="modal-img" src="" alt="" style="
           max-width:100%; max-height:75vh; object-fit:contain;
           border-radius:12px; display:block;
           transition:opacity 0.25s ease, transform 0.25s ease;
-        "/>
-        <div id="modal-placeholder" style="
+        " />
+          <div id="modal-placeholder" style="
           display:none; flex-direction:column; align-items:center;
           justify-content:center; gap:16px; color:rgba(255,255,255,0.35);
           padding:60px; min-height:260px;
         ">
-          <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          <span id="modal-placeholder-label" style="font-size:15px; letter-spacing:0.06em; text-transform:uppercase;"></span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="1.2">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <polyline points="21 15 16 10 5 21" />
+            </svg>
+            <span id="modal-placeholder-label"
+              style="font-size:15px; letter-spacing:0.06em; text-transform:uppercase;"></span>
+          </div>
         </div>
+
+        <div id="modal-counter" style="font-size:13px; color:rgba(255,255,255,0.45); letter-spacing:0.06em;"></div>
+        <div id="modal-thumbs" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;"></div>
       </div>
 
-      <div id="modal-counter" style="font-size:13px; color:rgba(255,255,255,0.45); letter-spacing:0.06em;"></div>
-      <div id="modal-thumbs" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;"></div>
-    </div>
-
-    <button id="modal-next" style="
+      <button id="modal-next" style="
       position:absolute; right:8px;
       background:rgba(255,255,255,0.10); border:1px solid rgba(255,255,255,0.20);
       color:#fff; width:48px; height:48px; border-radius:50%;
       font-size:22px; cursor:pointer; display:flex; align-items:center;
       justify-content:center; transition:background 0.2s; flex-shrink:0;
     ">›</button>
+    </div>
   </div>
-</div>
 
-<script>
-(function() {
+  <script>
+    (function () {
 
-  /* ── 1. Efeito hover ── */
-  document.querySelectorAll('.prod-gallery .prod-gallery-main, .prod-gallery .prod-thumb').forEach(function(container) {
-    container.style.overflow   = 'visible';
-    container.style.cursor     = 'pointer';
-    container.style.transition = 'transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s ease';
-    container.style.position   = 'relative';
-    container.style.zIndex     = '1';
-    container.style.borderRadius = '16px';
+      /* ── 1. Efeito hover ── */
+      document.querySelectorAll('.prod-gallery .prod-gallery-main, .prod-gallery .prod-thumb').forEach(function (container) {
+        container.style.overflow = 'visible';
+        container.style.cursor = 'pointer';
+        container.style.transition = 'transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s ease';
+        container.style.position = 'relative';
+        container.style.zIndex = '1';
+        container.style.borderRadius = '16px';
 
-    container.addEventListener('mouseenter', function() {
-      container.style.transform  = 'scale(1.08)';
-      container.style.boxShadow  = '0 24px 60px rgba(11,30,58,0.35)';
-      container.style.zIndex     = '10';
-    });
-    container.addEventListener('mouseleave', function() {
-      container.style.transform  = 'scale(1)';
-      container.style.boxShadow  = 'none';
-      container.style.zIndex     = '1';
-    });
-  });
-
-  /* ── 2. Coleta imagens de cada galeria ── */
-  function getGalleryImages(gallery) {
-    var images = [];
-    gallery.querySelectorAll('.prod-gallery-main, .prod-thumb').forEach(function(container) {
-      var img = container.querySelector('img');
-      var isPlaceholder = container.classList.contains('img-placeholder') || container.classList.contains('img-placeholder-sm');
-      var labelEl = container.querySelector('.img-placeholder-content span') || container.querySelector('.img-placeholder-content-sm span') || container.querySelector('span');
-      images.push({
-        src:   (img && !isPlaceholder) ? img.src : null,
-        alt:   img ? img.alt : '',
-        label: labelEl ? labelEl.textContent.trim() : ''
+        container.addEventListener('mouseenter', function () {
+          container.style.transform = 'scale(1.08)';
+          container.style.boxShadow = '0 24px 60px rgba(11,30,58,0.35)';
+          container.style.zIndex = '10';
+        });
+        container.addEventListener('mouseleave', function () {
+          container.style.transform = 'scale(1)';
+          container.style.boxShadow = 'none';
+          container.style.zIndex = '1';
+        });
       });
-    });
-    return images;
-  }
 
-  /* ── 3. Modal ── */
-  var modal     = document.getElementById('img-modal');
-  var modalImg  = document.getElementById('modal-img');
-  var modalPh   = document.getElementById('modal-placeholder');
-  var modalPhLb = document.getElementById('modal-placeholder-label');
-  var modalCnt  = document.getElementById('modal-counter');
-  var modalThs  = document.getElementById('modal-thumbs');
-  var btnClose  = document.getElementById('modal-close');
-  var btnPrev   = document.getElementById('modal-prev');
-  var btnNext   = document.getElementById('modal-next');
-
-  var currentImages = [];
-  var currentIndex  = 0;
-
-  function showModal(images, index) {
-    currentImages = images;
-    currentIndex  = index;
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-    renderModal();
-    buildThumbs();
-  }
-
-  function closeModal() {
-    modal.style.display = 'none';
-    document.body.style.overflow = '';
-  }
-
-  function renderModal() {
-    var item = currentImages[currentIndex];
-    modalImg.style.opacity   = '0';
-    modalImg.style.transform = 'scale(0.96)';
-
-    setTimeout(function() {
-      if (item.src) {
-        modalImg.style.display = 'block';
-        modalPh.style.display  = 'none';
-        modalImg.src = item.src;
-        modalImg.alt = item.alt;
-        modalImg.onload = function() {
-          modalImg.style.opacity   = '1';
-          modalImg.style.transform = 'scale(1)';
-        };
-        modalImg.onerror = function() {
-          modalImg.style.display = 'none';
-          modalPh.style.display  = 'flex';
-          modalPhLb.textContent  = item.label || item.alt;
-        };
-      } else {
-        modalImg.style.display = 'none';
-        modalPh.style.display  = 'flex';
-        modalPhLb.textContent  = item.label || item.alt;
+      /* ── 2. Coleta imagens de cada galeria ── */
+      function getGalleryImages(gallery) {
+        var images = [];
+        gallery.querySelectorAll('.prod-gallery-main, .prod-thumb').forEach(function (container) {
+          var img = container.querySelector('img');
+          var isPlaceholder = container.classList.contains('img-placeholder') || container.classList.contains('img-placeholder-sm');
+          var labelEl = container.querySelector('.img-placeholder-content span') || container.querySelector('.img-placeholder-content-sm span') || container.querySelector('span');
+          images.push({
+            src: (img && !isPlaceholder) ? img.src : null,
+            alt: img ? img.alt : '',
+            label: labelEl ? labelEl.textContent.trim() : ''
+          });
+        });
+        return images;
       }
-    }, 80);
 
-    modalCnt.textContent = (currentIndex + 1) + ' / ' + currentImages.length;
-    updateThumbActive();
-  }
+      /* ── 3. Modal ── */
+      var modal = document.getElementById('img-modal');
+      var modalImg = document.getElementById('modal-img');
+      var modalPh = document.getElementById('modal-placeholder');
+      var modalPhLb = document.getElementById('modal-placeholder-label');
+      var modalCnt = document.getElementById('modal-counter');
+      var modalThs = document.getElementById('modal-thumbs');
+      var btnClose = document.getElementById('modal-close');
+      var btnPrev = document.getElementById('modal-prev');
+      var btnNext = document.getElementById('modal-next');
 
-  function buildThumbs() {
-    modalThs.innerHTML = '';
-    currentImages.forEach(function(item, i) {
-      var t = document.createElement('div');
-      t.style.cssText = 'width:56px;height:56px;border-radius:8px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:border-color 0.2s,opacity 0.2s;background:rgba(255,255,255,0.08);flex-shrink:0;';
-      if (item.src) {
-        var ti = document.createElement('img');
-        ti.src = item.src;
-        ti.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;';
-        t.appendChild(ti);
-      } else {
-        t.style.display = 'flex';
-        t.style.alignItems = 'center';
-        t.style.justifyContent = 'center';
-        var tl = document.createElement('span');
-        tl.textContent = (i + 1);
-        tl.style.cssText = 'font-size:11px;color:rgba(255,255,255,0.4);';
-        t.appendChild(tl);
+      var currentImages = [];
+      var currentIndex = 0;
+
+      function showModal(images, index) {
+        currentImages = images;
+        currentIndex = index;
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        renderModal();
+        buildThumbs();
       }
-      t.addEventListener('click', function() { currentIndex = i; renderModal(); });
-      t.dataset.thumbIndex = i;
-      modalThs.appendChild(t);
-    });
-    updateThumbActive();
-  }
 
-  function updateThumbActive() {
-    modalThs.querySelectorAll('[data-thumb-index]').forEach(function(t) {
-      t.style.borderColor = (parseInt(t.dataset.thumbIndex) === currentIndex) ? '#E8650A' : 'transparent';
-      t.style.opacity     = (parseInt(t.dataset.thumbIndex) === currentIndex) ? '1' : '0.5';
-    });
-  }
+      function closeModal() {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+      }
 
-  function navigate(dir) {
-    currentIndex = (currentIndex + dir + currentImages.length) % currentImages.length;
-    renderModal();
-  }
+      function renderModal() {
+        var item = currentImages[currentIndex];
+        modalImg.style.opacity = '0';
+        modalImg.style.transform = 'scale(0.96)';
 
-  btnClose.addEventListener('click', closeModal);
-  btnPrev.addEventListener('click',  function() { navigate(-1); });
-  btnNext.addEventListener('click',  function() { navigate(1); });
+        setTimeout(function () {
+          if (item.src) {
+            modalImg.style.display = 'block';
+            modalPh.style.display = 'none';
+            modalImg.src = item.src;
+            modalImg.alt = item.alt;
+            modalImg.onload = function () {
+              modalImg.style.opacity = '1';
+              modalImg.style.transform = 'scale(1)';
+            };
+            modalImg.onerror = function () {
+              modalImg.style.display = 'none';
+              modalPh.style.display = 'flex';
+              modalPhLb.textContent = item.label || item.alt;
+            };
+          } else {
+            modalImg.style.display = 'none';
+            modalPh.style.display = 'flex';
+            modalPhLb.textContent = item.label || item.alt;
+          }
+        }, 80);
 
-  modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
+        modalCnt.textContent = (currentIndex + 1) + ' / ' + currentImages.length;
+        updateThumbActive();
+      }
 
-  document.addEventListener('keydown', function(e) {
-    if (modal.style.display !== 'flex') return;
-    if (e.key === 'Escape')     closeModal();
-    if (e.key === 'ArrowLeft')  navigate(-1);
-    if (e.key === 'ArrowRight') navigate(1);
-  });
+      function buildThumbs() {
+        modalThs.innerHTML = '';
+        currentImages.forEach(function (item, i) {
+          var t = document.createElement('div');
+          t.style.cssText = 'width:56px;height:56px;border-radius:8px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:border-color 0.2s,opacity 0.2s;background:rgba(255,255,255,0.08);flex-shrink:0;';
+          if (item.src) {
+            var ti = document.createElement('img');
+            ti.src = item.src;
+            ti.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;';
+            t.appendChild(ti);
+          } else {
+            t.style.display = 'flex';
+            t.style.alignItems = 'center';
+            t.style.justifyContent = 'center';
+            var tl = document.createElement('span');
+            tl.textContent = (i + 1);
+            tl.style.cssText = 'font-size:11px;color:rgba(255,255,255,0.4);';
+            t.appendChild(tl);
+          }
+          t.addEventListener('click', function () { currentIndex = i; renderModal(); });
+          t.dataset.thumbIndex = i;
+          modalThs.appendChild(t);
+        });
+        updateThumbActive();
+      }
 
-  /* Swipe mobile */
-  var touchStartX = 0;
-  modal.addEventListener('touchstart', function(e) { touchStartX = e.touches[0].clientX; }, {passive:true});
-  modal.addEventListener('touchend',   function(e) {
-    var diff = touchStartX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 50) navigate(diff > 0 ? 1 : -1);
-  }, {passive:true});
+      function updateThumbActive() {
+        modalThs.querySelectorAll('[data-thumb-index]').forEach(function (t) {
+          t.style.borderColor = (parseInt(t.dataset.thumbIndex) === currentIndex) ? '#E8650A' : 'transparent';
+          t.style.opacity = (parseInt(t.dataset.thumbIndex) === currentIndex) ? '1' : '0.5';
+        });
+      }
 
-  /* Hover nas setas e fechar */
-  [btnPrev, btnNext, btnClose].forEach(function(btn) {
-    btn.addEventListener('mouseenter', function() { btn.style.background = 'rgba(232,101,10,0.7)'; btn.style.borderColor = 'transparent'; });
-    btn.addEventListener('mouseleave', function() { btn.style.background = 'rgba(255,255,255,0.10)'; btn.style.borderColor = 'rgba(255,255,255,0.20)'; });
-  });
+      function navigate(dir) {
+        currentIndex = (currentIndex + dir + currentImages.length) % currentImages.length;
+        renderModal();
+      }
 
-  /* ── 4. Clique abre o modal ── */
-  document.querySelectorAll('.prod-gallery').forEach(function(gallery) {
-    var images = getGalleryImages(gallery);
-    gallery.querySelectorAll('.prod-gallery-main, .prod-thumb').forEach(function(container, i) {
-      container.addEventListener('click', function() { showModal(images, i); });
-    });
-  });
+      btnClose.addEventListener('click', closeModal);
+      btnPrev.addEventListener('click', function () { navigate(-1); });
+      btnNext.addEventListener('click', function () { navigate(1); });
 
-})();
-</script>
+      modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
 
-<script src="script.js"></script>
+      document.addEventListener('keydown', function (e) {
+        if (modal.style.display !== 'flex') return;
+        if (e.key === 'Escape') closeModal();
+        if (e.key === 'ArrowLeft') navigate(-1);
+        if (e.key === 'ArrowRight') navigate(1);
+      });
+
+      /* Swipe mobile */
+      var touchStartX = 0;
+      modal.addEventListener('touchstart', function (e) { touchStartX = e.touches[0].clientX; }, { passive: true });
+      modal.addEventListener('touchend', function (e) {
+        var diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) navigate(diff > 0 ? 1 : -1);
+      }, { passive: true });
+
+      /* Hover nas setas e fechar */
+      [btnPrev, btnNext, btnClose].forEach(function (btn) {
+        btn.addEventListener('mouseenter', function () { btn.style.background = 'rgba(232,101,10,0.7)'; btn.style.borderColor = 'transparent'; });
+        btn.addEventListener('mouseleave', function () { btn.style.background = 'rgba(255,255,255,0.10)'; btn.style.borderColor = 'rgba(255,255,255,0.20)'; });
+      });
+
+      /* ── 4. Clique abre o modal ── */
+      document.querySelectorAll('.prod-gallery').forEach(function (gallery) {
+        var images = getGalleryImages(gallery);
+        gallery.querySelectorAll('.prod-gallery-main, .prod-thumb').forEach(function (container, i) {
+          container.addEventListener('click', function () { showModal(images, i); });
+        });
+      });
+
+    })();
+  </script>
+
+  <script src="script.js"></script>
 </body>
+
 </html>

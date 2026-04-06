@@ -35,7 +35,13 @@ if (opcoesEl) {
             adicionarOpcao("6mm");
             adicionarOpcao("8mm");
             adicionarOpcao("10mm");
-        } 
+        } else if (indexSelecionado === 5) {
+            adicionarOpcao("Instalar após limpar o vão e remover os excessos de massa.");
+            adicionarOpcao("Instalar sem a necessidade de limpar o vão ou remover os excessos de massa.");
+        }else if (indexSelecionado === 6) {
+            adicionarOpcao("Espelho comum");
+            adicionarOpcao("Espelho Bizotado")
+        }
 
         
     });
@@ -98,6 +104,16 @@ if(subopcoesEl){
                 }
                 if(valor === "10mm"){
                     valorDinheiro = 0.08;
+                }
+                if(valor === "Instalar após limpar o vão e remover os excessos de massa."){
+                    valorDinheiro = 0.027;
+                }
+                if(valor === "Instalar sem ter que limpar o vão e tirar as massas"){
+                    valorDinheiro = 0.024;
+                }if(valor === "Espelho comum"){
+                    valorDinheiro = 0.03;
+                }if(valor === "Espelho Bizotado"){
+                    valorDinheiro = 0.035;
                 }
 
 
