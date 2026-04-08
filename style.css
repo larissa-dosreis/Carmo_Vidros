@@ -1089,10 +1089,25 @@ footer {
 /* VALOR (DESTAQUE COM LARANJA DO TEMA) */
 .valor {
     font-family: 'Playfair Display', serif;
-    font-size: 30px;
-    font-weight: 900;
+    font-size: 18px;
+    font-weight: 700;
     color: var(--orange-light);
-    margin: 18px 0;
+    margin: 14px auto 4px auto;
+    text-align: center;
+    width: 100%;
+    display: block;
+}
+
+#valorFinal {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 34px;
+    font-weight: 700;
+    margin: 0 auto 14px auto;
+    letter-spacing: 0.01em;
+    text-align: center;
+    width: 100%;
+    display: block;
+    font-variant-numeric: tabular-nums;
 }
 
 /* MENSAGEM FINAL */
@@ -1126,7 +1141,7 @@ footer {
 
 /* BOTÃO FECHAR */
 .box button {
-    margin-top: 10px;
+    margin-top: 6px;
     padding: 12px;
     width: 100%;
 

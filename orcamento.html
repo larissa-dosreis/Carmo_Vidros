@@ -84,7 +84,7 @@
           </svg>
         </div>
         <h3 class="howto-title">Informe as Medidas</h3>
-        <p class="howto-desc">Digite a altura e a largura do vidro desejado em centímetros.</p>
+        <p class="howto-desc">Digite a altura e a largura do vidro desejado em metros.</p>
       </div>
       <div class="howto-card">
         <div class="howto-number">02</div>
@@ -176,21 +176,21 @@
             <!-- Campos de dimensão -->
             <div class="form-row">
               <div class="form-group">
-                <label class="form-label">Altura (Centimetros)</label>
+                <label class="form-label">Altura (Metros)</label>
                 <div class="form-input-wrap">
                   <svg class="form-input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path d="M21 3H3v18M9 3v18M3 9h6M3 15h6"/>
                   </svg>
-                  <input class="form-input" id="Altura" type="number" placeholder="Ex: 2.00" min="0" step="0.01" />
+                  <input class="form-input" id="Altura" type="text" inputmode="decimal" placeholder="Ex: 2,00" />
                 </div>
               </div>
               <div class="form-group">
-                <label class="form-label">Largura (centimetros)</label>
+                <label class="form-label">Largura (Metros)</label>
                 <div class="form-input-wrap">
                   <svg class="form-input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path d="M3 21V3h18M3 9h18M3 15h18"/>
                   </svg>
-                  <input class="form-input" id="Largura" type="number" placeholder="Ex: 1.50" min="0" step="0.01" />
+                  <input class="form-input" id="Largura" type="text" inputmode="decimal" placeholder="Ex: 1,50" />
                 </div>
               </div>
             </div>
@@ -221,8 +221,8 @@
             </div>
 
             <!-- Área de resultado -->
-            <div class="result-area">
-              <div class="result-label">Valor do Centimetro Quadrado</div>
+            <div class="result-area" style="display:none;">
+              <div class="result-label"></div>
               <div class="result-value" id="resultado">R$ —</div>
               <div class="result-placeholder">Preencha os campos acima para calcular</div>
             </div>
@@ -265,7 +265,6 @@
             <p><strong>Largura:</strong> <span id="resLargura"></span></p>
             <p><strong>Tipo:</strong> <span id="resTipo"></span></p>
             <p><strong>Subtipo:</strong> <span id="resSubtipo"></span></p>
-            <p><strong>Valor por Centimetro Quadrado:</strong> <span id="resValorDinheiro"></span></p>
         </div>
 
         <!-- VALOR FINAL -->
@@ -280,7 +279,6 @@
         <!-- BOTÃO -->
         <a id="btnWhats" target="_blank">Entrar em contato</a>
 
-        <br><br>
         <button onclick="fecharTela()">Fechar</button>
     </div>
 </div>
