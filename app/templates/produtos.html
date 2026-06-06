@@ -10,8 +10,8 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="produtos.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/produtos.css') }}">
 </head>
 
 <body>
@@ -22,18 +22,22 @@
   <header>
     <nav>
       <a href="index.html" class="logo">
-        <img src="fotos/logo.png" alt="Carmo Vidros" class="logo-img">
-        <div class="logo-text">
+        <img src="{{ url_for('static', filename='fotos/logo.png') }}"
+     alt="Carmo Vidros"
+     class="logo-img">
           <span class="logo-name">Carmo Vidros</span>
           <span class="logo-tagline">Qualidade e Transparência</span>
         </div>
       </a>
       <ul class="nav-links">
-        <li><a href="index.html#sobre">Sobre</a></li>
-        <li><a href="produtos.html" class="nav-active">Produtos</a></li>
-        <li><a href="orcamento.html">Orçamento</a></li>
-        <li><a href="index.html#contato">Contato</a></li>
-        <li><a href="orcamento.html" class="nav-cta">Fazer Orçamento</a></li>
+        <li><a href="{{ url_for('site.home') }}#sobre">Sobre</a></li>
+
+        <li><a href="{{ url_for('site.produtos') }}" class="nav-active" >Produtos</a></li>
+
+        <li><a href="{{ url_for('site.orcamento') }}" >Orçamento</a></li>
+
+        <li><a href="{{ url_for('site.home') }}#contato">Contato</a></li>
+        <li><a href="{{ url_for('site.orcamento') }}" class="nav-cta">Fazer Orçamento</a></li>
       </ul>
     </nav>
   </header>
@@ -82,7 +86,7 @@
         <!-- Galeria de fotos -->
         <div class="prod-gallery">
           <div class="prod-gallery-main">
-            <img src="fotos/box-principal.jpeg" alt="Box de Banheiro em vidro temperado"
+            <img src="{{ url_for('static', filename='fotos/box-principal.jpeg') }}" alt="Box de Banheiro em vidro temperado"
               onerror="this.parentNode.classList.add('img-placeholder')" />
             <div class="img-placeholder-content">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -96,17 +100,17 @@
           </div>
           <div class="prod-gallery-thumbs">
             <div class="prod-thumb">
-              <img src="fotos/box-2.jpeg" alt="Box de Banheiro detalhe"
+              <img src="{{ url_for('static', filename='fotos/box-2.jpeg') }}" alt="Box de Banheiro detalhe"
                 onerror="this.parentNode.classList.add('img-placeholder-sm')" />
               <div class="img-placeholder-content-sm"><span>Detalhe</span></div>
             </div>
             <div class="prod-thumb">
-              <img src="fotos/box-3.jpeg" alt="Box de Banheiro aberto"
+              <img  src="{{ url_for('static', filename='fotos/box-3.jpeg') }}" alt="Box de Banheiro aberto"
                 onerror="this.parentNode.classList.add('img-placeholder-sm')" />
               <div class="img-placeholder-content-sm"><span>Aberto</span></div>
             </div>
             <div class="prod-thumb">
-              <img src="fotos/box-4.jpeg" alt="Box de Banheiro instalado"
+              <img src="{{ url_for('static', filename='fotos/box-4.jpeg') }}"alt="Box de Banheiro instalado"
                 onerror="this.parentNode.classList.add('img-placeholder-sm')" />
               <div class="img-placeholder-content-sm"><span>Instalado</span></div>
             </div>
@@ -172,7 +176,7 @@
             Instalação profissional inclusa
           </div>
 
-          <a href="orcamento.html" class="btn-primary" style="margin-top: 28px; display: inline-flex;">
+          <a href="{{ url_for('site.orcamento') }}" class="btn-primary" style="margin-top: 28px; display: inline-flex;">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2">
               <rect x="2" y="3" width="20" height="14" rx="2" />
@@ -180,7 +184,7 @@
             </svg>
             Solicitar Orçamento
           </a>
-        </div>
+        </div>  
       </div>
     </div>
   </section>
@@ -236,7 +240,7 @@
             </div>
           </div>
 
-          <a href="orcamento.html" class="btn-primary" style="margin-top: 28px; display: inline-flex;">
+          <a href="{{ url_for('site.orcamento') }}" class="btn-primary" style="margin-top: 28px; display: inline-flex;">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2">
               <rect x="2" y="3" width="20" height="14" rx="2" />
@@ -249,7 +253,7 @@
         <!-- Galeria -->
         <div class="prod-gallery">
           <div class="prod-gallery-main">
-            <img src="fotos/janela-principal.jpeg" alt="Janela de vidro e alumínio"
+            <img src="{{ url_for('static', filename='fotos/janela-principal.jpeg') }}" alt="Janela de vidro e alumínio"
               onerror="this.parentNode.classList.add('img-placeholder')" />
             <div class="img-placeholder-content">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -263,17 +267,17 @@
           </div>
           <div class="prod-gallery-thumbs">
             <div class="prod-thumb">
-              <img src="fotos/janela-2.jpeg" alt="Janela detalhe"
+              <img src="{{ url_for('static', filename='fotos/janela-2.jpeg') }}" alt="Janela detalhe"
                 onerror="this.parentNode.classList.add('img-placeholder-sm')" />
               <div class="img-placeholder-content-sm"><span>Detalhe</span></div>
             </div>
             <div class="prod-thumb">
-              <img src="fotos/janela-3.jpeg" alt="Janela interna"
+              <img  src="{{ url_for('static', filename='fotos/janela-3.jpeg') }}" alt="Janela interna"
                 onerror="this.parentNode.classList.add('img-placeholder-sm')" />
               <div class="img-placeholder-content-sm"><span>Interna</span></div>
             </div>
             <div class="prod-thumb">
-              <img src="fotos/janela-4.jpeg" alt="Janela externa"
+              <img src="{{ url_for('static', filename='fotos/janela-4.jpeg') }}" alt="Janela externa"
                 onerror="this.parentNode.classList.add('img-placeholder-sm')" />
               <div class="img-placeholder-content-sm"><span>Externa</span></div>
             </div>
@@ -293,7 +297,7 @@
       <div class="prod-section-grid">
         <div class="prod-gallery">
           <div class="prod-gallery-main">
-            <img src="fotos/porta-principal.jpeg" alt="Porta de vidro temperado"
+            <img  src="{{ url_for('static', filename='fotos/porta-principal.jpeg') }}" alt="Porta de vidro temperado"
               onerror="this.parentNode.classList.add('img-placeholder')" />
             <div class="img-placeholder-content">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -307,17 +311,17 @@
           </div>
           <div class="prod-gallery-thumbs">
             <div class="prod-thumb">
-              <img src="fotos/porta-2.jpeg" alt="Porta de vidro detalhe"
+              <img src="{{ url_for('static', filename='fotos/porta-2.jpeg') }}" alt="Porta de vidro detalhe"
                 onerror="this.parentNode.classList.add('img-placeholder-sm')" />
               <div class="img-placeholder-content-sm"><span>Detalhe</span></div>
             </div>
             <div class="prod-thumb">
-              <img src="fotos/porta-3.jpeg" alt="Porta de vidro instalada"
+              <img src="{{ url_for('static', filename='fotos/porta-3.jpeg') }}" alt="Porta de vidro instalada"
                 onerror="this.parentNode.classList.add('img-placeholder-sm')" />
               <div class="img-placeholder-content-sm"><span>Instalada</span></div>
             </div>
             <div class="prod-thumb">
-              <img src="fotos/porta-4.jpeg" alt="Porta de vidro comercial"
+              <img src="{{ url_for('static', filename='fotos/porta-4.jpeg') }}" alt="Porta de vidro comercial"
                 onerror="this.parentNode.classList.add('img-placeholder-sm')" />
               <div class="img-placeholder-content-sm"><span>Comercial</span></div>
             </div>
@@ -381,7 +385,7 @@
             Vidro temperado com alta resistência
           </div>
 
-          <a href="orcamento.html" class="btn-primary" style="margin-top: 28px; display: inline-flex;">
+          <a href="{{ url_for('site.orcamento') }}" class="btn-primary" style="margin-top: 28px; display: inline-flex;">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2">
               <rect x="2" y="3" width="20" height="14" rx="2" />
@@ -459,7 +463,7 @@
             Segurança sem abrir mão da vista
           </div>
 
-          <a href="orcamento.html" class="btn-primary" style="margin-top: 28px; display: inline-flex;">
+          <a href="{{ url_for('site.orcamento') }}" class="btn-primary" style="margin-top: 28px; display: inline-flex;">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2">
               <rect x="2" y="3" width="20" height="14" rx="2" />
@@ -471,7 +475,7 @@
 
         <div class="prod-gallery">
           <div class="prod-gallery-main">
-            <img src="fotos/guarda-corpo-principal.jpeg" alt="Guarda-corpo de vidro"
+            <img src="{{ url_for('static', filename='fotos/guarda-corpo-principal.jpeg') }}" alt="Guarda-corpo de vidro"
               onerror="this.parentNode.classList.add('img-placeholder')" />
             <div class="img-placeholder-content">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -485,17 +489,17 @@
           </div>
           <div class="prod-gallery-thumbs">
             <div class="prod-thumb">
-              <img src="fotos/guarda-corpo-2.jpeg" alt="Guarda-corpo varanda"
+              <img src="{{ url_for('static', filename='fotos/guarda-corpo-2.jpeg') }}" alt="Guarda-corpo varanda"
                 onerror="this.parentNode.classList.add('img-placeholder-sm')" />
               <div class="img-placeholder-content-sm"><span>Varanda</span></div>
             </div>
             <div class="prod-thumb">
-              <img src="fotos/guarda-corpo-3.jpeg" alt="Guarda-corpo escada"
+              <img  src="{{ url_for('static', filename='fotos/guarda-corpo-3.jpeg') }}" alt="Guarda-corpo escada"
                 onerror="this.parentNode.classList.add('img-placeholder-sm')" />
               <div class="img-placeholder-content-sm"><span>Escada</span></div>
             </div>
             <div class="prod-thumb">
-              <img src="fotos/guarda-corpo-4.jpg" alt="Guarda-corpo piscina"
+              <img  src="{{ url_for('static', filename='fotos/guarda-corpo-4.jpg') }}" alt="Guarda-corpo piscina"
                 onerror="this.parentNode.classList.add('img-placeholder-sm')" />
               <div class="img-placeholder-content-sm"><span>Piscina</span></div>
             </div>
@@ -515,7 +519,7 @@
       <div class="prod-section-grid">
         <div class="prod-gallery prod-gallery--zoom">
           <div class="prod-gallery-main">
-            <img src="fotos/espelho-principal.jpeg" alt="Espelho sob medida"
+            <img  src="{{ url_for('static', filename='fotos/espelho-principal.jpeg') }}" alt="Espelho sob medida"
               onerror="this.parentNode.classList.add('img-placeholder')" />
             <div class="img-placeholder-content">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -529,12 +533,12 @@
           </div>
           <div class="prod-gallery-thumbs prod-gallery-thumbs--2col">
             <div class="prod-thumb">
-              <img src="fotos/espelho-2.jpeg" alt="Espelho banheiro"
+              <img  src="{{ url_for('static', filename='fotos/espelho-2.jpeg') }}" alt="Espelho banheiro"
                 onerror="this.parentNode.classList.add('img-placeholder-sm')" />
               <div class="img-placeholder-content-sm"><span>Banheiro</span></div>
             </div>
             <div class="prod-thumb">
-              <img src="fotos/espelho-3.jpg" alt="Espelho decorativo"
+              <img src="{{ url_for('static', filename='fotos/espelho-3.jpg') }}" alt="Espelho decorativo"
                 onerror="this.parentNode.classList.add('img-placeholder-sm')" />
               <div class="img-placeholder-content-sm"><span>Decorativo</span></div>
             </div>
@@ -580,7 +584,7 @@
             Instalação profissional inclusa
           </div>
 
-          <a href="orcamento.html" class="btn-primary" style="margin-top: 28px; display: inline-flex;">
+          <a href="{{ url_for('site.orcamento') }}" class="btn-primary" style="margin-top: 28px; display: inline-flex;">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2">
               <rect x="2" y="3" width="20" height="14" rx="2" />
@@ -657,7 +661,7 @@
             Proteção contra umidade e respingos
           </div>
 
-          <a href="orcamento.html" class="btn-primary" style="margin-top: 28px; display: inline-flex;">
+          <a href="{{ url_for('site.orcamento') }}" class="btn-primary" style="margin-top: 28px; display: inline-flex;">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2">
               <rect x="2" y="3" width="20" height="14" rx="2" />
@@ -669,7 +673,7 @@
 
         <div class="prod-gallery">
           <div class="prod-gallery-main">
-            <img src="fotos/fechamento-pia-principal.jpeg" alt="Fechamento de pia em vidro"
+            <img  src="{{ url_for('static', filename='fotos/fechamento-pia-principal.jpeg') }}"  alt="Fechamento de pia em vidro"
               onerror="this.parentNode.classList.add('img-placeholder')" />
             <div class="img-placeholder-content">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -683,17 +687,17 @@
           </div>
           <div class="prod-gallery-thumbs">
             <div class="prod-thumb">
-              <img src="fotos/fechamento-pia-2.jpeg" alt="Fechamento em vidro"
+              <img  src="{{ url_for('static', filename='fotos/fechamento-pia-2.jpeg') }}" alt="Fechamento em vidro"
                 onerror="this.parentNode.classList.add('img-placeholder-sm')" />
               <div class="img-placeholder-content-sm"><span>Vidro</span></div>
             </div>
             <div class="prod-thumb">
-              <img src="fotos/fechamento-pia-3.jpeg" alt="Fechamento acrílico"
+              <img  src="{{ url_for('static', filename='fotos/fechamento-pia-3.jpeg') }}" alt="Fechamento acrílico"
                 onerror="this.parentNode.classList.add('img-placeholder-sm')" />
               <div class="img-placeholder-content-sm"><span>Acrílico</span></div>
             </div>
             <div class="prod-thumb">
-              <img src="fotos/fechamento-pia-4.jpeg" alt="Fechamento instalado"
+              <img  src="{{ url_for('static', filename='fotos/fechamento-pia-4.jpeg') }}" alt="Fechamento instalado"
                 onerror="this.parentNode.classList.add('img-placeholder-sm')" />
               <div class="img-placeholder-content-sm"><span>Instalado</span></div>
             </div>
@@ -843,7 +847,7 @@
       </div>
 
       <div style="text-align: center; margin-top: 48px;">
-        <a href="orcamento.html" class="btn-primary" style="display: inline-flex;">
+        <a href="{{ url_for('site.orcamento') }}" class="btn-primary" style="display: inline-flex;">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2">
             <rect x="2" y="3" width="20" height="14" rx="2" />
@@ -900,7 +904,7 @@
 
         <div class="footer-brand">
           <a href="index.html" class="logo">
-            <img src="fotos/logo.png" alt="Carmo Vidros" class="logo-img">
+            <img  src="{{ url_for('static', filename='fotos/logo.png') }}" alt="Carmo Vidros" class="logo-img">
             <div class="logo-text">
               <span class="logo-name">Carmo Vidros</span>
               <span class="logo-tagline">Qualidade e Transparência</span>
@@ -932,28 +936,29 @@
           </div>
         </div>
 
-        <div>
-          <div class="footer-col-title">Navegação</div>
-          <ul class="footer-links">
-            <li><a href="index.html">Início</a></li>
-            <li><a href="index.html#sobre">Sobre a Empresa</a></li>
-            <li><a href="produtos.html">Produtos</a></li>
-            <li><a href="orcamento.html">Orçamento Online</a></li>
-          </ul>
-        </div>
+                <!-- Coluna: Navegação -->
+          <div>
+            <div class="footer-col-title">Navegação</div>
+            <ul class="footer-links">
+              <li><a href="{{ url_for('site.home') }}#home">Início</a></li>
+              <li><a href="{{ url_for('site.home') }}#sobre">Sobre a Empresa</a></li>
+              <li><a href="{{ url_for('site.home') }}#produtos">Produtos</a></li>
+              <li><a href="{{ url_for('site.orcamento') }}">Orçamento Online</a></li>
+            </ul>
+          </div>
 
-        <div>
-          <div class="footer-col-title">Produtos</div>
-          <ul class="footer-links">
-            <li><a href="#box">Box de Banheiro</a></li>
-            <li><a href="#janelas">Janelas de Vidro</a></li>
-            <li><a href="#portas">Portas de Vidro</a></li>
-            <li><a href="#guarda-corpo">Guarda-corpos</a></li>
-            <li><a href="#espelhos">Espelhos</a></li>
-            <li><a href="#fechamento-pia">Fechamento de Pia</a></li>
-            <li><a href="#vidros-comuns">Vidros Comuns</a></li>
-          </ul>
-        </div>
+          <!-- Coluna: Produtos -->
+          <div>
+            <div class="footer-col-title">Produtos</div>
+            <ul class="footer-links">
+              <li><a href="{{ url_for('site.produtos') }}#box">Box de Banheiro</a></li>
+              <li><a href="{{ url_for('site.produtos') }}#janelas">Janelas de Vidro</a></li>
+              <li><a href="{{ url_for('site.produtos') }}#portas">Portas de Vidro</a></li>
+              <li><a href="{{ url_for('site.produtos') }}#guarda-corpo">Guarda-corpos</a></li>
+              <li><a href="{{ url_for('site.produtos') }}#espelho">Espelho</a></li>
+              <li><a href="{{ url_for('site.produtos') }}#fechamento-pia">Fechamento de Pia</a></li>
+            </ul>
+          </div>
 
         <div>
           <div class="footer-col-title">Contato</div>

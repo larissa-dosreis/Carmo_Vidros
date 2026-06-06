@@ -1,0 +1,30 @@
+<body>
+
+<header>
+  <nav>
+    <a href="{{ url_for('site.home') }}" class="logo">
+      <img src="{{ url_for('static', filename='fotos/logo.png') }}"
+           alt="Carmo Vidros"
+           class="logo-img">
+
+      <div class="logo-text">
+        <span class="logo-name">Carmo Vidros</span>
+        <span class="logo-tagline">Qualidade e Transparência</span>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="{{ url_for('site.produtos') }}">Produtos</a></li>
+      <li><a href="{{ url_for('site.orcamento') }}">Orçamento</a></li>
+      <li><a href="#contato">Contato</a></li>
+      <li><a href="{{ url_for('site.orcamento') }}" class="nav-cta">Fazer Orçamento</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  {% block content %}{% endblock %}
+</main>
+
+</body>

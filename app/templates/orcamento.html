@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="orcamento.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/orcamento.css') }}">
 </head>
 <body>
 
@@ -19,17 +19,22 @@
 <header>
   <nav>
     <a href="index.html" class="logo">
-      <img src="fotos/logo.png" alt="Carmo Vidros" class="logo-img">
+      <img src="{{ url_for('static', filename='fotos/logo.png') }}"
+     alt="Carmo Vidros"
+     class="logo-img">
       <div class="logo-text">
         <span class="logo-name">Carmo Vidros</span>
         <span class="logo-tagline">Qualidade e Transparência</span>
       </div>
     </a>
     <ul class="nav-links">
-      <li><a href="index.html#sobre">Sobre</a></li>
-      <li><a href="produtos.html">Produtos</a></li>
-      <li><a href="orcamento.html" class="nav-active">Orçamento</a></li>
-      <li><a href="index.html#contato">Contato</a></li>
+        <li><a href="{{ url_for('site.home') }}#sobre">Sobre</a></li>
+
+        <li><a href="{{ url_for('site.produtos') }}">Produtos</a></li>
+
+        <li><a href="{{ url_for('site.orcamento') }}" class="nav-active">Orçamento</a></li>
+
+        <li><a href="{{ url_for('site.home') }}#contato">Contato</a></li>
     </ul>
   </nav>
 </header>
@@ -296,7 +301,7 @@
       <!-- Coluna: Marca -->
       <div class="footer-brand">
         <a href="index.html" class="logo">
-          <img src="fotos/logo.png" alt="Carmo Vidros" class="logo-img">
+          <img src="{{ url_for('static', filename='fotos/logo.png') }}" alt="Carmo Vidros" class="logo-img">
           <div class="logo-text">
             <span class="logo-name">Carmo Vidros</span>
             <span class="logo-tagline">Qualidade e Transparência</span>
@@ -324,29 +329,29 @@
         </div>
       </div>
 
-      <!-- Coluna: Navegação -->
-      <div>
-        <div class="footer-col-title">Navegação</div>
-        <ul class="footer-links">
-          <li><a href="index.html">Início</a></li>
-          <li><a href="index.html#sobre">Sobre a Empresa</a></li>
-          <li><a href="index.html#produtos">Produtos</a></li>
-          <li><a href="orcamento.html">Orçamento Online</a></li>
-        </ul>
-      </div>
+                <!-- Coluna: Navegação -->
+          <div>
+            <div class="footer-col-title">Navegação</div>
+            <ul class="footer-links">
+              <li><a href="{{ url_for('site.home') }}#home">Início</a></li>
+              <li><a href="{{ url_for('site.home') }}#sobre">Sobre a Empresa</a></li>
+              <li><a href="{{ url_for('site.home') }}#produtos">Produtos</a></li>
+              <li><a href="{{ url_for('site.orcamento') }}">Orçamento Online</a></li>
+            </ul>
+          </div>
 
-      <!-- Coluna: Produtos -->
-      <div>
-        <div class="footer-col-title">Produtos</div>
-        <ul class="footer-links">
-          <li><a href="index.html#produtos">Box de Banheiro</a></li>
-          <li><a href="index.html#produtos">Janelas de Vidro</a></li>
-          <li><a href="index.html#produtos">Portas de Vidro</a></li>
-          <li><a href="index.html#produtos">Espelhos</a></li>
-          <li><a href="index.html#produtos">Fachadas</a></li>
-          <li><a href="index.html#produtos">Vidro Laminado</a></li>
-        </ul>
-      </div>
+          <!-- Coluna: Produtos -->
+          <div>
+            <div class="footer-col-title">Produtos</div>
+            <ul class="footer-links">
+              <li><a href="{{ url_for('site.produtos') }}#box">Box de Banheiro</a></li>
+              <li><a href="{{ url_for('site.produtos') }}#janelas">Janelas de Vidro</a></li>
+              <li><a href="{{ url_for('site.produtos') }}#portas">Portas de Vidro</a></li>
+              <li><a href="{{ url_for('site.produtos') }}#guarda-corpo">Guarda-corpos</a></li>
+              <li><a href="{{ url_for('site.produtos') }}#espelho">Espelho</a></li>
+              <li><a href="{{ url_for('site.produtos') }}#fechamento-pia">Fechamento de Pia</a></li>
+            </ul>
+          </div>
 
       <!-- Coluna: Contato -->
       <div>
@@ -387,6 +392,6 @@
     </div>
   </div>
 </footer>
-<script src="script.js"></script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
