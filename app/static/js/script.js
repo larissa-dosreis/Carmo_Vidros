@@ -2,154 +2,102 @@ const numero = "5537998628364"; // seu número
 let opcoes;
 let valorDinheiro;
 let opcaoSelecionada = 0; // Índice da opção principal selecionada
+let dadosProdutos = []; // Dados dinâmicos do banco de dados
+
 // Só inicializa a calculadora se os elementos existirem na página
 const opcoesEl = document.getElementById("opcoes");
 const subopcoesEl = document.getElementById("subOpcoes");
 
 
+// ══════════════════════════════
+//  CARREGAR DADOS DO BANCO
+// ══════════════════════════════
+async function carregarTiposVidro() {
+    try {
+        const response = await fetch('/api/tipos_vidro');
+        dadosProdutos = await response.json();
+        popularCategorias();
+    } catch (err) {
+        console.error('Erro ao carregar tipos de vidro:', err);
+        // Se falhar, a calculadora fica sem opções
+    }
+}
 
-if (opcoesEl) {
-    opcoesEl.addEventListener("change", function() {
-        const valor = this.value;
-        const indexSelecionado = this.selectedIndex;
-        opcaoSelecionada = indexSelecionado;
-        document.getElementById("resultado").innerText = "R$ —";  // isso para limpar o resultado toda vez
-       limparSubopcoes();
-       ajuda = false;
-       subopcoesEl.selectedIndex = 0; 
-       
+function popularCategorias() {
+    if (!opcoesEl || dadosProdutos.length === 0) return;
 
-        if (indexSelecionado === 1) {
-            adicionarOpcao("Vidro incolor com acabamento fosco (cor original do alumínio)");
-            adicionarOpcao("Vidro incolor com acabamento com cor (Preto, branco, bronze e grafite)");
-            adicionarOpcao("Vidro com cor (fumê, verde, bronze e espelhado) com acabamento fosco");
-            adicionarOpcao("Vidro com cor com acabamento com cor");
-        } else if (indexSelecionado === 2) {
-            adicionarOpcao("Vidro incolor com acabamento fosco (cor original do alumínio)");
-            adicionarOpcao("Vidro incolor com acabamento com cor (Preto, branco, bronze e grafite)");
-            adicionarOpcao("Vidro com cor (fumê, verde, bronze (Vidro espelhado não tem película))");
-            adicionarOpcao("Vidro com cor com acabamento com cor");
-           
-        } else if (indexSelecionado === 3) {
-            adicionarOpcao("Película e acabamento fosco");
-            adicionarOpcao("Película e acabamento com cor");
-        } else if (indexSelecionado === 4) {
-            adicionarOpcao("6mm");
-            adicionarOpcao("8mm");
-            adicionarOpcao("10mm");
-        } else if (indexSelecionado === 5) {
-            adicionarOpcao("Instalar após limpar o vão e remover os excessos de massa.");
-            adicionarOpcao("Instalar sem a necessidade de limpar o vão ou remover os excessos de massa.");
-        }else if (indexSelecionado === 6) {
-            adicionarOpcao("Espelho comum");
-            adicionarOpcao("Espelho Bizotado")
-        }
+    // Limpa opções existentes (mantém apenas o placeholder)
+    while (opcoesEl.options.length > 1) {
+        opcoesEl.remove(1);
+    }
 
-        
+    // Adiciona categorias do banco de dados
+    dadosProdutos.forEach(cat => {
+        const option = document.createElement("option");
+        option.text = cat.tipo;
+        option.value = cat.tipo;
+        opcoesEl.appendChild(option);
     });
 }
 
-//Adicionar as Subopções e os preços de cada subopção
 
-if(subopcoesEl){
-        subopcoesEl.addEventListener("change", function() {
-            const valor = this.value;
-            valorDinheiro = null;
+// ══════════════════════════════
+//  EVENTOS DE SELEÇÃO
+// ══════════════════════════════
+if (opcoesEl) {
+    opcoesEl.addEventListener("change", function() {
+        const indexSelecionado = this.selectedIndex;
+        opcaoSelecionada = indexSelecionado;
+        document.getElementById("resultado").innerText = "R$ —";
+        limparSubopcoes();
+        subopcoesEl.selectedIndex = 0;
 
-            // Vidro temperado SEM película (opcaoSelecionada === 1)
-            if (opcaoSelecionada === 1) {
-                if(valor === "Vidro incolor com acabamento fosco (cor original do alumínio)"){
-                    valorDinheiro = 400;
-                }
-                if(valor === "Vidro incolor com acabamento com cor (Preto, branco, bronze e grafite)"){
-                    valorDinheiro = 430;
-                }
-                if(valor === "Vidro com cor (fumê, verde, bronze e espelhado) com acabamento fosco"){
-                    valorDinheiro = 450;
-                }
-                if(valor === "Vidro com cor com acabamento com cor"){
-                    valorDinheiro = 500;
-                }
+        // Busca a categoria selecionada nos dados do banco
+        // Index 0 é o placeholder, então o índice da categoria é indexSelecionado - 1
+        const categoriaIndex = indexSelecionado - 1;
+        if (categoriaIndex >= 0 && categoriaIndex < dadosProdutos.length) {
+            const categoria = dadosProdutos[categoriaIndex];
+            categoria.produtos.forEach(produto => {
+                adicionarOpcao(produto.nome);
+            });
+        }
+    });
+}
+
+// Seleção de sub-opção e definição do preço
+if (subopcoesEl) {
+    subopcoesEl.addEventListener("change", function() {
+        const valor = this.value;
+        valorDinheiro = null;
+
+        // Busca o preço na categoria selecionada
+        const categoriaIndex = opcaoSelecionada - 1;
+        if (categoriaIndex >= 0 && categoriaIndex < dadosProdutos.length) {
+            const categoria = dadosProdutos[categoriaIndex];
+            const produto = categoria.produtos.find(p => p.nome === valor);
+            if (produto) {
+                valorDinheiro = produto.preco;
             }
+        }
 
-            // Vidro temperado COM película (opcaoSelecionada === 2)
-            if (opcaoSelecionada === 2) {
-                if(valor === "Vidro incolor com acabamento fosco (cor original do alumínio)"){
-                    valorDinheiro = 420;
-                }
-                if(valor === "Vidro incolor com acabamento com cor (Preto, branco, bronze e grafite)"){
-                    valorDinheiro = 450;
-                }
-                if(valor === "Vidro com cor (fumê, verde, bronze (Vidro espelhado não tem película))"){
-                    valorDinheiro = 470;
-                }
-                if(valor === "Vidro com cor com acabamento com cor"){
-                    valorDinheiro = 520;
-                }
-            }
-
-            // Fechamentos de pia de vidro com película (opcaoSelecionada === 3)
-            if (opcaoSelecionada === 3) {
-                if(valor === "Película e acabamento fosco"){
-                    valorDinheiro = 450;
-                }
-                if(valor === "Película e acabamento com cor"){
-                    valorDinheiro = 500;
-                }
-            }
-
-            // Vidro laminado (opcaoSelecionada === 4)
-            if (opcaoSelecionada === 4) {
-                if(valor === "6mm"){
-                    valorDinheiro = 500;
-                }
-                if(valor === "8mm"){
-                    valorDinheiro = 600;
-                }
-                if(valor === "10mm"){
-                    valorDinheiro = 800;
-                }
-            }
-
-            // Vidro Comum (opcaoSelecionada === 5)
-            if (opcaoSelecionada === 5) {
-                if(valor === "Instalar após limpar o vão e remover os excessos de massa."){
-                    valorDinheiro = 270;
-                }
-                if(valor === "Instalar sem a necessidade de limpar o vão ou remover os excessos de massa."){
-                    valorDinheiro = 240;
-                }
-            }
-
-            // Espelhos (opcaoSelecionada === 6)
-            if (opcaoSelecionada === 6) {
-                if(valor === "Espelho comum"){
-                    valorDinheiro = 300;
-                }
-                if(valor === "Espelho Bizotado"){
-                    valorDinheiro = 350;
-                }
-            }
-
-            if (valorDinheiro !== null) {
+        if (valorDinheiro !== null) {
             document.getElementById("resultado").innerText =
                 "R$ " + valorDinheiro.toFixed(2);
         } else {
             document.getElementById("resultado").innerText = "";
         }
-        
-
-});
-}//fim do if
+    });
+}
 
 function limparSubopcoes() {
-     subopcoesEl.options.length = 1;
+    if (!subopcoesEl) return;
+    subopcoesEl.options.length = 1;
     while (subopcoesEl.options.length > 1) {
-    subopcoesEl.remove(1);
-     
-}}
+        subopcoesEl.remove(1);
+    }
+}
 
-        //Adiciona as Opções de subopções
+//Adiciona as Opções de subopções
 function adicionarOpcao(texto) {
     const option = document.createElement("option");
     option.text = texto;
@@ -272,4 +220,13 @@ function limparCampos() {
     document.getElementById("opcoes").selectedIndex = 0;
     document.getElementById("resultado").innerText = "R$ —";
     
+}
+
+
+// ══════════════════════════════
+//  INICIALIZAÇÃO
+// ══════════════════════════════
+// Carrega os dados do banco quando a página carrega
+if (opcoesEl) {
+    carregarTiposVidro();
 }
