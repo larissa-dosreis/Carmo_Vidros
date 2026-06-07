@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Float, Boolean, DateTime
+from sqlalchemy import Column, Integer, String, Float, Boolean, DateTime, ForeignKey
 from sqlalchemy.orm import declarative_base
 from datetime import datetime
 
@@ -6,38 +6,49 @@ Base = declarative_base()
 
 
 class Produto(Base):
-    """
-    Modelo que mapeia a tabela 'produtos' já existente no Supabase.
-    Colunas: id, created_at, Nome_produto, preco_produto, tipo_produto, id_produto, ativo
-    """
     __tablename__ = 'produtos'
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True)
     created_at = Column(DateTime, default=datetime.utcnow)
     Nome_produto = Column(String, nullable=False)
-    preco_produto = Column(Float, nullable=False)
-    tipo_produto = Column(String, nullable=False)
-    id_produto = Column(Integer)
-    ativo = Column(Boolean, default=True, server_default='true')
+    ativo = Column(Boolean, default=True)
 
     def to_dict(self):
         return {
             'id': self.id,
             'created_at': self.created_at.isoformat() if self.created_at else None,
             'Nome_produto': self.Nome_produto,
-            'preco_produto': self.preco_produto,
-            'tipo_produto': self.tipo_produto,
-            'id_produto': self.id_produto,
-            'ativo': self.ativo if self.ativo is not None else True
+            'ativo': self.ativo
+        }
+
+
+class SubProduto(Base):
+    __tablename__ = 'sub_produtos'
+
+    id = Column(Integer, primary_key=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+    produto_id = Column(
+        Integer,
+        ForeignKey('produtos.id'),
+        nullable=False
+    )
+
+    nome_subproduto = Column(String, nullable=False)
+    preco = Column(Float, nullable=False)
+    ativo = Column(Boolean, default=True) # NOVO CAMPO AQUI
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'produto_id': self.produto_id,
+            'nome_subproduto': self.nome_subproduto,
+            'preco': self.preco,
+            'ativo': self.ativo # NOVO CAMPO AQUI
         }
 
 
 class Usuario(Base):
-    """
-    Modelo para autenticação de usuários admin.
-    Preparado para migração futura — por enquanto usa senha fixa do .env.
-    Quando migrar para banco, basta criar esta tabela e alterar a função de autenticação.
-    """
     __tablename__ = 'usuarios_admin'
 
     id = Column(Integer, primary_key=True, autoincrement=True)

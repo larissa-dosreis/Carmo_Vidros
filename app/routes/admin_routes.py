@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, jsonify, session, redirect, url_for
 from app.config import Config
 from app.db import get_session
-from app.models import Produto
+from app.models import Produto, SubProduto
 from functools import wraps
 
 admin_bp = Blueprint("admin", __name__, url_prefix="/admin")
@@ -95,15 +95,34 @@ def logout():
 @admin_bp.route("/api/produtos", methods=["GET"])
 @login_required
 def listar_produtos():
-    """Retorna todos os produtos agrupados por tipo."""
+
     db_session = get_session()
+
     try:
         produtos = db_session.query(Produto).order_by(
-            Produto.tipo_produto, Produto.Nome_produto
+            Produto.Nome_produto
         ).all()
-        
-        resultado = [p.to_dict() for p in produtos]
+
+        resultado = []
+
+        for produto in produtos:
+
+            subprodutos = db_session.query(SubProduto).filter(
+                SubProduto.produto_id == produto.id
+            ).all()
+
+            resultado.append({
+                "id": produto.id,
+                "Nome_produto": produto.Nome_produto,
+                "ativo": produto.ativo,
+                "subprodutos": [
+                    sp.to_dict()
+                    for sp in subprodutos
+                ]
+            })
+
         return jsonify(resultado)
+
     finally:
         db_session.close()
 
@@ -111,41 +130,32 @@ def listar_produtos():
 @admin_bp.route("/api/produto", methods=["POST"])
 @login_required
 def adicionar_produto():
-    """Adiciona novo tipo de material."""
+
     data = request.get_json()
-    
+
     nome = data.get('Nome_produto', '').strip()
-    tipo = data.get('tipo_produto', '').strip()
-    preco = data.get('preco_produto')
 
-    if not nome or not tipo or preco is None:
-        return jsonify({'error': 'Todos os campos são obrigatórios'}), 400
-
-    try:
-        preco = float(preco)
-    except (ValueError, TypeError):
-        return jsonify({'error': 'Preço inválido'}), 400
+    if not nome:
+        return jsonify({
+            'error': 'Nome obrigatório'
+        }), 400
 
     db_session = get_session()
+
     try:
+
         novo_produto = Produto(
             Nome_produto=nome,
-            tipo_produto=tipo,
-            preco_produto=preco,
             ativo=True
         )
+
         db_session.add(novo_produto)
         db_session.commit()
-        db_session.refresh(novo_produto)
-        
+
         return jsonify({
-            'success': True,
-            'message': 'Produto adicionado com sucesso',
-            'produto': novo_produto.to_dict()
-        }), 201
-    except Exception as e:
-        db_session.rollback()
-        return jsonify({'error': f'Erro ao adicionar: {str(e)}'}), 500
+            'success': True
+        })
+
     finally:
         db_session.close()
 
@@ -153,41 +163,40 @@ def adicionar_produto():
 @admin_bp.route("/api/produto/<int:produto_id>", methods=["PUT"])
 @login_required
 def atualizar_produto(produto_id):
-    """Atualiza preço ou dados de um produto."""
-    data = request.get_json()
-    
-    db_session = get_session()
-    try:
-        produto = db_session.query(Produto).filter_by(id=produto_id).first()
-        
-        if not produto:
-            return jsonify({'error': 'Produto não encontrado'}), 404
 
-        if 'preco_produto' in data:
-            try:
-                produto.preco_produto = float(data['preco_produto'])
-            except (ValueError, TypeError):
-                return jsonify({'error': 'Preço inválido'}), 400
+    data = request.get_json()
+
+    db_session = get_session()
+
+    try:
+        produto = db_session.query(Produto).filter_by(
+            id=produto_id
+        ).first()
+
+        if not produto:
+            return jsonify({
+                'error': 'Produto não encontrado'
+            }), 404
 
         if 'Nome_produto' in data:
             produto.Nome_produto = data['Nome_produto'].strip()
 
-        if 'tipo_produto' in data:
-            produto.tipo_produto = data['tipo_produto'].strip()
-
         db_session.commit()
-        
+
         return jsonify({
             'success': True,
             'message': 'Produto atualizado com sucesso',
             'produto': produto.to_dict()
         })
+
     except Exception as e:
         db_session.rollback()
-        return jsonify({'error': f'Erro ao atualizar: {str(e)}'}), 500
+        return jsonify({
+            'error': f'Erro ao atualizar: {str(e)}'
+        }), 500
+
     finally:
         db_session.close()
-
 
 @admin_bp.route("/api/produto/<int:produto_id>", methods=["DELETE"])
 @login_required
@@ -235,6 +244,99 @@ def toggle_produto(produto_id):
             'success': True,
             'message': f'Produto "{produto.Nome_produto}" {status}',
             'ativo': produto.ativo
+        })
+    except Exception as e:
+        db_session.rollback()
+        return jsonify({'error': f'Erro ao alterar status: {str(e)}'}), 500
+    finally:
+        db_session.close()
+
+
+# ══════════════════════════════
+#  API — CRUD DE SUBPRODUTOS
+# ══════════════════════════════
+
+@admin_bp.route("/api/subproduto", methods=["POST"])
+@login_required
+def adicionar_subproduto():
+    data = request.get_json()
+    db_session = get_session()
+    try:
+        novo_sub = SubProduto(
+            produto_id=data['produto_id'],
+            nome_subproduto=data['nome_subproduto'],
+            preco=data['preco']
+        )
+        db_session.add(novo_sub)
+        db_session.commit()
+        return jsonify({'success': True})
+    except Exception as e:
+        db_session.rollback()
+        return jsonify({'error': str(e)}), 500
+    finally:
+        db_session.close()
+
+
+@admin_bp.route("/api/subproduto/<int:sub_id>", methods=["PUT"])
+@login_required
+def atualizar_preco_subproduto(sub_id):
+    data = request.get_json()
+    db_session = get_session()
+    try:
+        sub = db_session.query(SubProduto).filter_by(id=sub_id).first()
+        if not sub:
+            return jsonify({'error': 'Subproduto não encontrado'}), 404
+            
+        if 'preco' in data:
+            sub.preco = data['preco']
+            
+        db_session.commit()
+        return jsonify({'success': True})
+    except Exception as e:
+        db_session.rollback()
+        return jsonify({'error': str(e)}), 500
+    finally:
+        db_session.close()
+
+
+@admin_bp.route("/api/subproduto/<int:sub_id>", methods=["DELETE"])
+@login_required
+def remover_subproduto(sub_id):
+    db_session = get_session()
+    try:
+        sub = db_session.query(SubProduto).filter_by(id=sub_id).first()
+        if not sub:
+            return jsonify({'error': 'Subproduto não encontrado'}), 404
+            
+        db_session.delete(sub)
+        db_session.commit()
+        return jsonify({'success': True, 'message': 'Item removido com sucesso'})
+    except Exception as e:
+        db_session.rollback()
+        return jsonify({'error': str(e)}), 500
+    finally:
+        db_session.close()
+
+@admin_bp.route("/api/subproduto/<int:sub_id>/toggle", methods=["POST"])
+@login_required
+def toggle_subproduto(sub_id):
+    """Ativa ou desativa um subproduto específico."""
+    db_session = get_session()
+    try:
+        sub = db_session.query(SubProduto).filter_by(id=sub_id).first()
+        
+        if not sub:
+            return jsonify({'error': 'Subproduto não encontrado'}), 404
+
+        # Inverte o estado atual
+        sub.ativo = not (sub.ativo if sub.ativo is not None else True)
+        db_session.commit()
+        
+        status = "ativado" if sub.ativo else "desativado"
+        return jsonify({
+            'success': True,
+            'message': f'Item "{sub.nome_subproduto}" {status}',
+            'ativo': sub.ativo
         })
     except Exception as e:
         db_session.rollback()

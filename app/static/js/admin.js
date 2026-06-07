@@ -1,16 +1,12 @@
 /* ═══════════════════════════════════════════════
-   Carmo Vidros — Admin Panel JavaScript
+   Carmo Vidros — Admin Panel JavaScript (Atualizado)
    ═══════════════════════════════════════════════ */
 
-// ══════════════════════════════
-//  STATE
-// ══════════════════════════════
 let produtos = [];
 let deleteCallback = null;
 
-
 // ══════════════════════════════
-//  TOAST NOTIFICATIONS
+//  TOAST NOTIFICATIONS & LOGIN
 // ══════════════════════════════
 function showToast(message, type = 'success') {
     const container = document.getElementById('toastContainer');
@@ -32,27 +28,18 @@ function showToast(message, type = 'success') {
     }, 3500);
 }
 
-
-// ══════════════════════════════
-//  LOGIN
-// ══════════════════════════════
 function initLogin() {
     const form = document.getElementById('loginForm');
     if (!form) return;
 
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
-
         const username = document.getElementById('loginUsername').value.trim();
         const password = document.getElementById('loginPassword').value;
         const errorEl = document.getElementById('loginError');
         const btn = document.getElementById('loginBtn');
 
-        if (!username || !password) {
-            errorEl.textContent = 'Preencha todos os campos';
-            errorEl.classList.add('show');
-            return;
-        }
+        if (!username || !password) return showToast('Preencha todos os campos', 'error');
 
         btn.disabled = true;
         btn.innerHTML = '<span class="spinner" style="width:20px;height:20px;border-width:2px"></span> Entrando...';
@@ -63,7 +50,6 @@ function initLogin() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ username, password })
             });
-
             const data = await response.json();
 
             if (data.success) {
@@ -82,10 +68,6 @@ function initLogin() {
     });
 }
 
-
-// ══════════════════════════════
-//  LOGOUT
-// ══════════════════════════════
 async function logout() {
     try {
         await fetch('/admin/logout', { method: 'POST' });
@@ -95,9 +77,8 @@ async function logout() {
     }
 }
 
-
 // ══════════════════════════════
-//  TABS
+//  TABS E LOAD DATA
 // ══════════════════════════════
 function initTabs() {
     const tabs = document.querySelectorAll('.admin-tab');
@@ -106,10 +87,8 @@ function initTabs() {
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
             const target = tab.dataset.tab;
-
             tabs.forEach(t => t.classList.remove('active'));
             panels.forEach(p => p.classList.remove('active'));
-
             tab.classList.add('active');
             const panel = document.getElementById(`panel-${target}`);
             if (panel) panel.classList.add('active');
@@ -117,44 +96,45 @@ function initTabs() {
     });
 }
 
-
-// ══════════════════════════════
-//  LOAD PRODUCTS
-// ══════════════════════════════
 async function loadProdutos() {
     try {
         const response = await fetch('/admin/api/produtos');
-        if (response.status === 401) {
-            window.location.href = '/admin/';
-            return;
-        }
+        if (response.status === 401) return window.location.href = '/admin/';
+        
         produtos = await response.json();
+        
         renderPrecos();
         renderEstoque();
         renderStats();
         populateTipoSelect();
+        renderMaterialsTable();
     } catch (err) {
-        showToast('Erro ao carregar produtos', 'error');
+        showToast('Erro ao carregar dados', 'error');
     }
 }
-
 
 // ══════════════════════════════
 //  STATS
 // ══════════════════════════════
 function renderStats() {
-    const total = produtos.length;
-    const ativos = produtos.filter(p => p.ativo !== false).length;
-    const inativos = total - ativos;
-    const categorias = [...new Set(produtos.map(p => p.tipo_produto))].length;
+    let totalItems = 0;
+    let ativos = 0;
+    
+    produtos.forEach(p => {
+        const qty = p.subprodutos ? p.subprodutos.length : 0;
+        totalItems += qty;
+        if (p.ativo) ativos += qty;
+    });
+
+    const categorias = produtos.length;
+    const inativos = totalItems - ativos;
 
     const el = (id) => document.getElementById(id);
-    if (el('statTotal')) el('statTotal').textContent = total;
+    if (el('statTotal')) el('statTotal').textContent = totalItems;
     if (el('statAtivos')) el('statAtivos').textContent = ativos;
     if (el('statInativos')) el('statInativos').textContent = inativos;
     if (el('statCategorias')) el('statCategorias').textContent = categorias;
 
-    // Update tab badge
     const badge = document.getElementById('stockBadge');
     if (badge) {
         badge.textContent = inativos;
@@ -162,101 +142,115 @@ function renderStats() {
     }
 }
 
-
 // ══════════════════════════════
-//  PREÇOS TAB
+//  PREÇOS TAB (AGORA LÊ SUBPRODUTOS)
+// ══════════════════════════════
+// ══════════════════════════════
+//  PREÇOS TAB (AGORA LÊ O STATUS DO SUBPRODUTO)
 // ══════════════════════════════
 function renderPrecos(filter = '') {
     const tbody = document.getElementById('precosTableBody');
     if (!tbody) return;
 
-    const filtered = filter
-        ? produtos.filter(p =>
-            p.Nome_produto.toLowerCase().includes(filter.toLowerCase()) ||
-            p.tipo_produto.toLowerCase().includes(filter.toLowerCase())
-        )
-        : produtos;
-
-    // Group by tipo_produto
-    const grouped = {};
-    filtered.forEach(p => {
-        if (!grouped[p.tipo_produto]) grouped[p.tipo_produto] = [];
-        grouped[p.tipo_produto].push(p);
-    });
-
-    if (Object.keys(grouped).length === 0) {
-        tbody.innerHTML = `
-            <tr><td colspan="4" style="text-align:center;padding:40px;color:var(--text-muted)">
-                Nenhum produto encontrado
-            </td></tr>`;
-        return;
-    }
-
     let html = '';
-    for (const [tipo, prods] of Object.entries(grouped)) {
-        html += `
-            <tr class="category-row">
-                <td colspan="4">
-                    <svg viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
-                    ${tipo}
-                </td>
-            </tr>`;
+    let foundAny = false;
 
-        prods.forEach(p => {
-            const statusClass = p.ativo !== false ? '' : 'style="opacity:0.5"';
+    produtos.forEach(produto => {
+        const matchCategory = produto.Nome_produto.toLowerCase().includes(filter.toLowerCase());
+        const subsFiltrados = produto.subprodutos.filter(sp => 
+            sp.nome_subproduto.toLowerCase().includes(filter.toLowerCase())
+        );
+
+        if (filter && !matchCategory && subsFiltrados.length === 0) return;
+
+        const subsToRender = (filter && !matchCategory) ? subsFiltrados : produto.subprodutos;
+
+        if (subsToRender.length > 0 || matchCategory) {
+            foundAny = true;
             html += `
-                <tr id="row-${p.id}" ${statusClass}>
-                    <td style="padding-left:44px">${p.Nome_produto}</td>
-                    <td>
-                        <span class="price-display" id="price-display-${p.id}">
-                            R$ ${parseFloat(p.preco_produto).toFixed(2)}<small>/m²</small>
-                        </span>
-                        <input type="number" class="price-edit-input" id="price-input-${p.id}"
-                               value="${p.preco_produto}" step="0.01" min="0"
-                               style="display:none" />
-                    </td>
-                    <td>
-                        <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:${p.ativo !== false ? '#16a34a' : '#dc2626'}">
-                            <span style="width:8px;height:8px;border-radius:50%;background:${p.ativo !== false ? '#16a34a' : '#dc2626'}"></span>
-                            ${p.ativo !== false ? 'Ativo' : 'Inativo'}
-                        </span>
-                    </td>
-                    <td>
-                        <span id="actions-view-${p.id}">
-                            <button class="btn-action btn-edit" onclick="editPrice(${p.id})">
-                                <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-                                Editar
-                            </button>
-                        </span>
-                        <span id="actions-edit-${p.id}" style="display:none">
-                            <button class="btn-action btn-save" onclick="savePrice(${p.id})">
-                                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-                                Salvar
-                            </button>
-                            <button class="btn-action btn-cancel" onclick="cancelEdit(${p.id})">
-                                <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                                Cancelar
-                            </button>
-                        </span>
+                <tr class="category-row">
+                    <td colspan="4">
+                        <svg viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                        ${produto.Nome_produto}
                     </td>
                 </tr>`;
-        });
-    }
 
+            subsToRender.forEach(sp => {
+                // Agora lemos sp.ativo em vez de produto.ativo
+                const isAtivo = sp.ativo !== false; 
+                const statusClass = isAtivo ? '' : 'style="opacity:0.5"';
+
+                html += `
+                    <tr id="row-${sp.id}" ${statusClass}>
+                        <td style="padding-left:44px">${sp.nome_subproduto}</td>
+                        <td>
+                            <span class="price-display" id="price-display-${sp.id}">
+                                R$ ${parseFloat(sp.preco).toFixed(2)}<small>/m²</small>
+                            </span>
+                            <input type="number" class="price-edit-input" id="price-input-${sp.id}"
+                                   value="${sp.preco}" step="0.01" min="0" style="display:none" />
+                        </td>
+                        <td>
+                            <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:${isAtivo ? '#16a34a' : '#dc2626'}">
+                                <span style="width:8px;height:8px;border-radius:50%;background:${isAtivo ? '#16a34a' : '#dc2626'}"></span>
+                                ${isAtivo ? 'Ativo' : 'Pausado'}
+                            </span>
+                        </td>
+                        <td>
+                            <span id="actions-view-${sp.id}" style="display:inline-flex; gap:8px;">
+                                <button class="btn-action btn-edit" onclick="editPrice(${sp.id}, ${sp.preco})">
+                                    <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg> Editar
+                                </button>
+                                <button class="btn-action" style="color: ${isAtivo ? '#dc2626' : '#16a34a'}; border-color: transparent;" onclick="toggleSubStock(${sp.id})">
+                                    ${isAtivo ? 'Pausar' : 'Ativar'}
+                                </button>
+                            </span>
+                            <span id="actions-edit-${sp.id}" style="display:none">
+                                <button class="btn-action btn-save" onclick="savePrice(${sp.id})">Salvar</button>
+                                <button class="btn-action btn-cancel" onclick="cancelEdit(${sp.id}, ${sp.preco})">Cancelar</button>
+                            </span>
+                        </td>
+                    </tr>`;
+            });
+        }
+    });
+
+    if (!foundAny) {
+        tbody.innerHTML = `<tr><td colspan="4" style="text-align:center;padding:40px;color:var(--text-muted)">Nenhum produto encontrado</td></tr>`;
+        return;
+    }
     tbody.innerHTML = html;
 }
 
-function editPrice(id) {
-    document.getElementById(`price-display-${id}`).style.display = 'none';
-    document.getElementById(`price-input-${id}`).style.display = 'inline-block';
-    document.getElementById(`actions-view-${id}`).style.display = 'none';
-    document.getElementById(`actions-edit-${id}`).style.display = 'inline';
-    document.getElementById(`price-input-${id}`).focus();
+// Nova função para ativar/desativar o SubProduto
+async function toggleSubStock(id) {
+    try {
+        const response = await fetch(`/admin/api/subproduto/${id}/toggle`, { method: 'POST' });
+        const data = await response.json();
+
+        if (data.success) {
+            showToast(data.message);
+            await loadProdutos(); // Recarrega os dados para atualizar a tabela visualmente
+        } else {
+            showToast(data.error || 'Erro ao alterar status', 'error');
+        }
+    } catch (err) {
+        showToast('Erro de conexão', 'error');
+    }
 }
 
-function cancelEdit(id) {
-    const produto = produtos.find(p => p.id === id);
-    document.getElementById(`price-input-${id}`).value = produto.preco_produto;
+function editPrice(id, currentPrice) {
+    document.getElementById(`price-display-${id}`).style.display = 'none';
+    const input = document.getElementById(`price-input-${id}`);
+    input.style.display = 'inline-block';
+    input.value = currentPrice;
+    document.getElementById(`actions-view-${id}`).style.display = 'none';
+    document.getElementById(`actions-edit-${id}`).style.display = 'inline';
+    input.focus();
+}
+
+function cancelEdit(id, originalPrice) {
+    document.getElementById(`price-input-${id}`).value = originalPrice;
     document.getElementById(`price-display-${id}`).style.display = 'inline';
     document.getElementById(`price-input-${id}`).style.display = 'none';
     document.getElementById(`actions-view-${id}`).style.display = 'inline';
@@ -267,18 +261,14 @@ async function savePrice(id) {
     const input = document.getElementById(`price-input-${id}`);
     const novoPreco = parseFloat(input.value);
 
-    if (isNaN(novoPreco) || novoPreco < 0) {
-        showToast('Preço inválido', 'error');
-        return;
-    }
+    if (isNaN(novoPreco) || novoPreco < 0) return showToast('Preço inválido', 'error');
 
     try {
-        const response = await fetch(`/admin/api/produto/${id}`, {
+        const response = await fetch(`/admin/api/subproduto/${id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ preco_produto: novoPreco })
+            body: JSON.stringify({ preco: novoPreco })
         });
-
         const data = await response.json();
 
         if (data.success) {
@@ -292,22 +282,18 @@ async function savePrice(id) {
     }
 }
 
-
 // ══════════════════════════════
-//  MATERIAIS TAB
+//  MATERIAIS TAB (CRIA CATEGORIA + ITEM)
 // ══════════════════════════════
 function populateTipoSelect() {
     const select = document.getElementById('materialTipo');
     if (!select) return;
 
-    const tipos = [...new Set(produtos.map(p => p.tipo_produto))].sort();
-    
-    // Keep first option (placeholder)
-    select.innerHTML = '<option value="" disabled selected>Selecione ou digite novo...</option>';
-    tipos.forEach(tipo => {
-        select.innerHTML += `<option value="${tipo}">${tipo}</option>`;
+    select.innerHTML = '<option value="" disabled selected>Selecione a Categoria...</option>';
+    produtos.forEach(p => {
+        select.innerHTML += `<option value="${p.id}">${p.Nome_produto}</option>`;
     });
-    select.innerHTML += '<option value="__novo__">+ Nova categoria...</option>';
+    select.innerHTML += '<option value="__novo__">+ Nova Categoria...</option>';
 }
 
 function initMaterialForm() {
@@ -332,34 +318,48 @@ async function adicionarMaterial() {
     const inputNome = document.getElementById('materialNome');
     const inputPreco = document.getElementById('materialPreco');
 
-    let tipo = selectTipo.value;
-    if (tipo === '__novo__') {
-        tipo = inputTipoNovo.value.trim();
-    }
-
-    const nome = inputNome.value.trim();
+    let produtoId = selectTipo.value;
+    const isNovoProduto = (produtoId === '__novo__');
+    const nomeCategoriaNova = inputTipoNovo.value.trim();
+    const nomeSubProduto = inputNome.value.trim();
     const preco = parseFloat(inputPreco.value);
 
-    if (!tipo || !nome || isNaN(preco) || preco <= 0) {
-        showToast('Preencha todos os campos corretamente', 'error');
-        return;
+    if (!nomeSubProduto || isNaN(preco) || preco <= 0 || (isNovoProduto && !nomeCategoriaNova)) {
+        return showToast('Preencha todos os campos corretamente', 'error');
     }
 
     try {
-        const response = await fetch('/admin/api/produto', {
+        // 1. Se for nova categoria, cria a Categoria (Produto) primeiro
+        if (isNovoProduto) {
+            const resProd = await fetch('/admin/api/produto', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ Nome_produto: nomeCategoriaNova })
+            });
+            const dataProd = await resProd.json();
+            if (!dataProd.success) throw new Error(dataProd.error);
+            
+            // Recarrega para obter o ID recém-criado
+            await loadProdutos(); 
+            const novaCategoria = produtos.find(p => p.Nome_produto.toLowerCase() === nomeCategoriaNova.toLowerCase());
+            produtoId = novaCategoria.id;
+        }
+
+        // 2. Cria o Item (SubProduto)
+        const response = await fetch('/admin/api/subproduto', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                tipo_produto: tipo,
-                Nome_produto: nome,
-                preco_produto: preco
+                produto_id: produtoId,
+                nome_subproduto: nomeSubProduto,
+                preco: preco
             })
         });
 
         const data = await response.json();
 
         if (data.success) {
-            showToast('Material adicionado com sucesso');
+            showToast('Item adicionado com sucesso');
             inputNome.value = '';
             inputPreco.value = '';
             inputTipoNovo.value = '';
@@ -367,36 +367,65 @@ async function adicionarMaterial() {
             selectTipo.selectedIndex = 0;
             await loadProdutos();
         } else {
-            showToast(data.error || 'Erro ao adicionar', 'error');
+            showToast(data.error || 'Erro ao adicionar item', 'error');
         }
     } catch (err) {
-        showToast('Erro de conexão', 'error');
+        showToast('Erro de conexão ao adicionar material', 'error');
     }
 }
 
+// ══════════════════════════════
+//  REMOVER SUBPRODUTO
+// ══════════════════════════════
+function renderMaterialsTable() {
+    const tbody = document.getElementById('materiaisTableBody');
+    if (!tbody) return;
 
-// Material list
-function renderMaterialList() {
-    // This is handled by the table in renderPrecos
+    let html = '';
+    produtos.forEach(produto => {
+        if (!produto.subprodutos || produto.subprodutos.length === 0) return;
+
+        html += `
+            <tr class="category-row">
+                <td colspan="4">
+                    <svg viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                    ${produto.Nome_produto}
+                </td>
+            </tr>`;
+
+        produto.subprodutos.forEach(sp => {
+            html += `
+                <tr>
+                    <td style="padding-left:44px">${sp.nome_subproduto}</td>
+                    <td>R$ ${parseFloat(sp.preco).toFixed(2)}/m²</td>
+                    <td>
+                        <span style="color:${produto.ativo ? '#16a34a' : '#dc2626'};font-size:12px;font-weight:600">
+                            ${produto.ativo ? 'Ativo' : 'Inativo'}
+                        </span>
+                    </td>
+                    <td>
+                        <button class="btn-action btn-delete" onclick="confirmDelete(${sp.id}, '${sp.nome_subproduto.replace(/'/g, "\\'")}')">
+                            Remover
+                        </button>
+                    </td>
+                </tr>`;
+        });
+    });
+
+    tbody.innerHTML = html;
 }
 
 function confirmDelete(id, nome) {
     const overlay = document.getElementById('confirmOverlay');
-    const text = document.getElementById('confirmText');
-    
-    text.textContent = `Tem certeza que deseja remover "${nome}"? Esta ação não pode ser desfeita.`;
+    document.getElementById('confirmText').textContent = `Deseja remover o item "${nome}"?`;
     overlay.classList.add('show');
 
     deleteCallback = async function() {
         try {
-            const response = await fetch(`/admin/api/produto/${id}`, {
-                method: 'DELETE'
-            });
-
+            const response = await fetch(`/admin/api/subproduto/${id}`, { method: 'DELETE' });
             const data = await response.json();
-
             if (data.success) {
-                showToast(data.message);
+                showToast('Item removido com sucesso');
                 await loadProdutos();
             } else {
                 showToast(data.error || 'Erro ao remover', 'error');
@@ -404,42 +433,31 @@ function confirmDelete(id, nome) {
         } catch (err) {
             showToast('Erro de conexão', 'error');
         }
-
         closeConfirm();
     };
 }
 
-function executeDelete() {
-    if (deleteCallback) deleteCallback();
-}
-
+function executeDelete() { if (deleteCallback) deleteCallback(); }
 function closeConfirm() {
-    const overlay = document.getElementById('confirmOverlay');
-    overlay.classList.remove('show');
+    document.getElementById('confirmOverlay').classList.remove('show');
     deleteCallback = null;
 }
 
-
 // ══════════════════════════════
-//  ESTOQUE TAB
+//  ESTOQUE TAB (POR CATEGORIA - PRODUTO)
 // ══════════════════════════════
 function renderEstoque(filter = '') {
     const container = document.getElementById('stockGrid');
     if (!container) return;
 
     const filtered = filter
-        ? produtos.filter(p =>
-            p.Nome_produto.toLowerCase().includes(filter.toLowerCase()) ||
-            p.tipo_produto.toLowerCase().includes(filter.toLowerCase())
-        )
+        ? produtos.filter(p => p.Nome_produto.toLowerCase().includes(filter.toLowerCase()))
         : produtos;
 
     if (filtered.length === 0) {
         container.innerHTML = `
             <div class="empty-state" style="grid-column:1/-1">
-                <svg viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
-                <h3>Nenhum produto encontrado</h3>
-                <p>Adicione produtos na aba "Materiais"</p>
+                <h3>Nenhuma categoria encontrada</h3>
             </div>`;
         return;
     }
@@ -450,11 +468,13 @@ function renderEstoque(filter = '') {
         html += `
             <div class="stock-card ${ativo ? '' : 'inactive'}" id="stock-${p.id}">
                 <div class="stock-info">
-                    <div class="stock-tipo">${p.tipo_produto}</div>
+                    <div class="stock-tipo">Categoria Base</div>
                     <div class="stock-nome">${p.Nome_produto}</div>
-                    <div class="stock-preco">R$ ${parseFloat(p.preco_produto).toFixed(2)} /m²</div>
+                    <div style="font-size: 12px; color: #64748b; margin-top:4px;">
+                        ${p.subprodutos.length} itens vinculados
+                    </div>
                     <div class="stock-status ${ativo ? 'ativo' : 'inativo'}">
-                        ${ativo ? '● Disponível' : '● Em falta'}
+                        ${ativo ? '● Disponível' : '● Pausada'}
                     </div>
                 </div>
                 <label class="toggle-switch">
@@ -469,135 +489,40 @@ function renderEstoque(filter = '') {
 
 async function toggleStock(id) {
     try {
-        const response = await fetch(`/admin/api/produto/${id}/toggle`, {
-            method: 'POST'
-        });
-
+        const response = await fetch(`/admin/api/produto/${id}/toggle`, { method: 'POST' });
         const data = await response.json();
 
         if (data.success) {
             showToast(data.message);
-            // Update local state
             const produto = produtos.find(p => p.id === id);
             if (produto) produto.ativo = data.ativo;
             renderEstoque();
             renderPrecos();
             renderStats();
+            renderMaterialsTable();
         } else {
             showToast(data.error || 'Erro ao alterar status', 'error');
-            await loadProdutos(); // Revert
+            await loadProdutos(); 
         }
     } catch (err) {
         showToast('Erro de conexão', 'error');
-        await loadProdutos(); // Revert
+        await loadProdutos(); 
     }
 }
 
-
 // ══════════════════════════════
-//  SEARCH
+//  SEARCH & INIT
 // ══════════════════════════════
 function initSearch() {
     const searchPrecos = document.getElementById('searchPrecos');
     const searchEstoque = document.getElementById('searchEstoque');
-
-    if (searchPrecos) {
-        searchPrecos.addEventListener('input', function() {
-            renderPrecos(this.value);
-        });
-    }
-    if (searchEstoque) {
-        searchEstoque.addEventListener('input', function() {
-            renderEstoque(this.value);
-        });
-    }
+    if (searchPrecos) searchPrecos.addEventListener('input', function() { renderPrecos(this.value); });
+    if (searchEstoque) searchEstoque.addEventListener('input', function() { renderEstoque(this.value); });
 }
 
-
-// ══════════════════════════════
-//  RENDER MATERIAL DELETE LIST
-// ══════════════════════════════
-function renderMaterialsTable() {
-    const tbody = document.getElementById('materiaisTableBody');
-    if (!tbody) return;
-
-    // Group by tipo
-    const grouped = {};
-    produtos.forEach(p => {
-        if (!grouped[p.tipo_produto]) grouped[p.tipo_produto] = [];
-        grouped[p.tipo_produto].push(p);
-    });
-
-    let html = '';
-    for (const [tipo, prods] of Object.entries(grouped)) {
-        html += `
-            <tr class="category-row">
-                <td colspan="4">
-                    <svg viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
-                    ${tipo}
-                </td>
-            </tr>`;
-
-        prods.forEach(p => {
-            html += `
-                <tr>
-                    <td style="padding-left:44px">${p.Nome_produto}</td>
-                    <td>R$ ${parseFloat(p.preco_produto).toFixed(2)}/m²</td>
-                    <td>
-                        <span style="color:${p.ativo !== false ? '#16a34a' : '#dc2626'};font-size:12px;font-weight:600">
-                            ${p.ativo !== false ? 'Ativo' : 'Inativo'}
-                        </span>
-                    </td>
-                    <td>
-                        <button class="btn-action btn-delete" onclick="confirmDelete(${p.id}, '${p.Nome_produto.replace(/'/g, "\\'")}')">
-                            <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
-                            Remover
-                        </button>
-                    </td>
-                </tr>`;
-        });
-    }
-
-    tbody.innerHTML = html;
-}
-
-
-// ══════════════════════════════
-//  OVERRIDES for renderPrecos to also update material table
-// ══════════════════════════════
-const _originalLoadProdutos = loadProdutos;
-loadProdutos = async function() {
-    try {
-        const response = await fetch('/admin/api/produtos');
-        if (response.status === 401) {
-            window.location.href = '/admin/';
-            return;
-        }
-        produtos = await response.json();
-        renderPrecos();
-        renderEstoque();
-        renderStats();
-        populateTipoSelect();
-        renderMaterialsTable();
-    } catch (err) {
-        showToast('Erro ao carregar produtos', 'error');
-    }
-};
-
-
-// ══════════════════════════════
-//  INIT
-// ══════════════════════════════
 document.addEventListener('DOMContentLoaded', function() {
-    // Check which page we're on
-    const loginForm = document.getElementById('loginForm');
-    const dashboard = document.querySelector('.admin-dashboard');
-
-    if (loginForm) {
-        initLogin();
-    }
-
-    if (dashboard) {
+    if (document.getElementById('loginForm')) initLogin();
+    if (document.querySelector('.admin-dashboard')) {
         initTabs();
         initSearch();
         initMaterialForm();

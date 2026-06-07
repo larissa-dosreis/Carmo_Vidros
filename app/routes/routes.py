@@ -1,9 +1,7 @@
-from flask import Blueprint, render_template
-from flask import jsonify
-
+from flask import Blueprint, render_template, jsonify
 from app.services.consultas import buscar_produtos
 from app.db import get_session
-from app.models import Produto
+from app.models import Produto, SubProduto # <-- ADICIONE O SUBPRODUTO AQUI
 
 site_bp = Blueprint("site", __name__)
 
@@ -28,37 +26,47 @@ def get_produtos():
 
 @site_bp.route("/api/tipos_vidro")
 def api_tipos_vidro():
-    """
-    Retorna todos os produtos ativos agrupados por tipo_produto.
-    Usado pela calculadora de orçamento para popular os selects dinamicamente.
-    """
     db_session = get_session()
+
     try:
-        produtos = db_session.query(Produto).filter(
+        # 1. Busca todas as categorias (Produtos) ativas no banco
+        categorias_ativas = db_session.query(Produto).filter(
             Produto.ativo == True
         ).order_by(
-            Produto.tipo_produto, Produto.Nome_produto
+            Produto.Nome_produto
         ).all()
 
-        # Agrupar por tipo_produto
-        categorias = {}
-        for p in produtos:
-            tipo = p.tipo_produto
-            if tipo not in categorias:
-                categorias[tipo] = []
-            categorias[tipo].append({
-                'id': p.id,
-                'nome': p.Nome_produto,
-                'preco': p.preco_produto
-            })
-
         resultado = []
-        for tipo, prods in categorias.items():
-            resultado.append({
-                'tipo': tipo,
-                'produtos': prods
-            })
+
+        for categoria in categorias_ativas:
+            # 2. Para cada categoria, busca apenas os subprodutos que estão ATIVOS
+            subs_ativos = db_session.query(SubProduto).filter(
+                SubProduto.produto_id == categoria.id,
+                SubProduto.ativo == True
+            ).order_by(
+                SubProduto.nome_subproduto
+            ).all()
+
+            # 3. Só adiciona a categoria na resposta final se ela tiver pelo menos 1 subproduto ativo
+            if subs_ativos:
+                lista_produtos = []
+                for sub in subs_ativos:
+                    lista_produtos.append({
+                        'id': sub.id,
+                        'nome': sub.nome_subproduto,
+                        'preco': sub.preco
+                    })
+
+                resultado.append({
+                    'id_categoria': categoria.id,
+                    'tipo': categoria.Nome_produto, # Nome da Categoria (ex: Vidro Temperado)
+                    'produtos': lista_produtos      # Lista dos subprodutos dela
+                })
 
         return jsonify(resultado)
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
     finally:
         db_session.close()
