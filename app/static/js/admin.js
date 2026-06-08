@@ -377,47 +377,63 @@ async function adicionarMaterial() {
 // ══════════════════════════════
 //  REMOVER SUBPRODUTO
 // ══════════════════════════════
+// ══════════════════════════════
+//  REMOVER CATEGORIA E SUBPRODUTO
+// ══════════════════════════════
 function renderMaterialsTable() {
     const tbody = document.getElementById('materiaisTableBody');
     if (!tbody) return;
 
     let html = '';
     produtos.forEach(produto => {
-        if (!produto.subprodutos || produto.subprodutos.length === 0) return;
-
+        // Removi a trava que escondia categorias vazias para você poder deletá-las
+        
+        // Linha da Categoria (com botão de remover)
         html += `
             <tr class="category-row">
-                <td colspan="4">
-                    <svg viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                <td colspan="3" style="font-weight: bold; background: #f8fafc;">
+                    <svg viewBox="0 0 24 24" width="16" height="16" style="margin-right: 8px; vertical-align: middle;"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
                     ${produto.Nome_produto}
+                </td>
+                <td style="background: #f8fafc;">
+                    <button class="btn-action btn-delete" style="font-size: 11px; padding: 4px 8px;" onclick="confirmDeleteCategoria(${produto.id}, '${produto.Nome_produto.replace(/'/g, "\\'")}')">
+                        Excluir Categoria
+                    </button>
                 </td>
             </tr>`;
 
-        produto.subprodutos.forEach(sp => {
-            html += `
-                <tr>
-                    <td style="padding-left:44px">${sp.nome_subproduto}</td>
-                    <td>R$ ${parseFloat(sp.preco).toFixed(2)}/m²</td>
-                    <td>
-                        <span style="color:${produto.ativo ? '#16a34a' : '#dc2626'};font-size:12px;font-weight:600">
-                            ${produto.ativo ? 'Ativo' : 'Inativo'}
-                        </span>
-                    </td>
-                    <td>
-                        <button class="btn-action btn-delete" onclick="confirmDelete(${sp.id}, '${sp.nome_subproduto.replace(/'/g, "\\'")}')">
-                            Remover
-                        </button>
-                    </td>
-                </tr>`;
-        });
+        // Linhas dos Subprodutos
+        if (produto.subprodutos && produto.subprodutos.length > 0) {
+            produto.subprodutos.forEach(sp => {
+                html += `
+                    <tr>
+                        <td style="padding-left:44px">${sp.nome_subproduto}</td>
+                        <td>R$ ${parseFloat(sp.preco).toFixed(2)}/m²</td>
+                        <td>
+                            <span style="color:${sp.ativo !== false ? '#16a34a' : '#dc2626'};font-size:12px;font-weight:600">
+                                ${sp.ativo !== false ? 'Ativo' : 'Inativo'}
+                            </span>
+                        </td>
+                        <td>
+                            <button class="btn-action btn-delete" onclick="confirmDelete(${sp.id}, '${sp.nome_subproduto.replace(/'/g, "\\'")}')">
+                                Remover
+                            </button>
+                        </td>
+                    </tr>`;
+            });
+        } else {
+            // Se a categoria estiver vazia, avisa o usuário
+            html += `<tr><td colspan="4" style="text-align:center; color:#94a3b8; font-size: 13px; padding-left: 44px;">Nenhum item nesta categoria</td></tr>`;
+        }
     });
 
     tbody.innerHTML = html;
 }
 
+// Modal de confirmação para SUBPRODUTO
 function confirmDelete(id, nome) {
     const overlay = document.getElementById('confirmOverlay');
-    document.getElementById('confirmText').textContent = `Deseja remover o item "${nome}"?`;
+    document.getElementById('confirmText').innerHTML = `Deseja remover o item <strong>"${nome}"</strong>?`;
     overlay.classList.add('show');
 
     deleteCallback = async function() {
@@ -426,6 +442,33 @@ function confirmDelete(id, nome) {
             const data = await response.json();
             if (data.success) {
                 showToast('Item removido com sucesso');
+                await loadProdutos();
+            } else {
+                showToast(data.error || 'Erro ao remover', 'error');
+            }
+        } catch (err) {
+            showToast('Erro de conexão', 'error');
+        }
+        closeConfirm();
+    };
+}
+
+// Modal de confirmação para CATEGORIA (Produto Pai)
+function confirmDeleteCategoria(id, nome) {
+    const overlay = document.getElementById('confirmOverlay');
+    document.getElementById('confirmText').innerHTML = `
+        Deseja remover a categoria <strong>"${nome}"</strong>?<br>
+        <span style="color:#ef4444; font-size:13px; display:inline-block; margin-top:8px;">
+            ⚠️ Atenção: Todos os itens vinculados a ela também serão apagados!
+        </span>`;
+    overlay.classList.add('show');
+
+    deleteCallback = async function() {
+        try {
+            const response = await fetch(`/admin/api/produto/${id}`, { method: 'DELETE' });
+            const data = await response.json();
+            if (data.success) {
+                showToast('Categoria removida com sucesso');
                 await loadProdutos();
             } else {
                 showToast(data.error || 'Erro ao remover', 'error');
@@ -592,3 +635,5 @@ function renderLeads(leads) {
         `;
     }).join('');
 }
+
+

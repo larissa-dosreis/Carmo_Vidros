@@ -220,21 +220,26 @@ def atualizar_produto(produto_id):
 @admin_bp.route("/api/produto/<int:produto_id>", methods=["DELETE"])
 @login_required
 def remover_produto(produto_id):
-    """Remove um tipo de material."""
+    """Remove uma categoria (Produto) e todos os seus subprodutos vinculados."""
     db_session = get_session()
     try:
         produto = db_session.query(Produto).filter_by(id=produto_id).first()
         
         if not produto:
-            return jsonify({'error': 'Produto não encontrado'}), 404
+            return jsonify({'error': 'Categoria não encontrada'}), 404
 
         nome = produto.Nome_produto
+        
+        # 1. Primeiro deletamos os subprodutos para não dar erro de ForeignKey
+        db_session.query(SubProduto).filter_by(produto_id=produto_id).delete()
+        
+        # 2. Agora deletamos a categoria em si
         db_session.delete(produto)
         db_session.commit()
         
         return jsonify({
             'success': True,
-            'message': f'Produto "{nome}" removido com sucesso'
+            'message': f'Categoria "{nome}" e seus itens foram removidos'
         })
     except Exception as e:
         db_session.rollback()
@@ -242,34 +247,34 @@ def remover_produto(produto_id):
     finally:
         db_session.close()
 
-
 @admin_bp.route("/api/produto/<int:produto_id>/toggle", methods=["POST"])
 @login_required
 def toggle_produto(produto_id):
-    """Ativa ou desativa um produto (controle de estoque)."""
+    """Ativa ou desativa uma categoria e todas as suas subcategorias juntas."""
     db_session = get_session()
     try:
         produto = db_session.query(Produto).filter_by(id=produto_id).first()
-        
         if not produto:
-            return jsonify({'error': 'Produto não encontrado'}), 404
-
-        # Inverte o estado ativo
-        produto.ativo = not (produto.ativo if produto.ativo is not None else True)
-        db_session.commit()
+            return jsonify({'error': 'Categoria não encontrada'}), 404
         
-        status = "ativado" if produto.ativo else "desativado"
+        # Inverte o status da categoria pai
+        novo_status = not produto.ativo
+        produto.ativo = novo_status
+        
+        # BUSCA E ATUALIZA TODAS AS SUBCATEGORIAS DESTA CATEGORIA
+        db_session.query(SubProduto).filter_by(produto_id=produto_id).update({"ativo": novo_status})
+        
+        db_session.commit()
+        txt_status = "ativados" if novo_status else "desativados"
         return jsonify({
-            'success': True,
-            'message': f'Produto "{produto.Nome_produto}" {status}',
-            'ativo': produto.ativo
+            'success': True, 
+            'message': f'A categoria e todos os seus itens foram {txt_status} com sucesso!'
         })
     except Exception as e:
         db_session.rollback()
         return jsonify({'error': f'Erro ao alterar status: {str(e)}'}), 500
     finally:
         db_session.close()
-
 
 # ══════════════════════════════
 #  API — CRUD DE SUBPRODUTOS
