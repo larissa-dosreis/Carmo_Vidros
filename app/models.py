@@ -2,6 +2,7 @@ from sqlalchemy import Column, Integer, String, Float, Boolean, DateTime, Foreig
 from sqlalchemy.orm import declarative_base
 from datetime import datetime
 
+
 Base = declarative_base()
 
 
@@ -48,14 +49,7 @@ class SubProduto(Base):
         }
 
 
-class Usuario(Base):
-    __tablename__ = 'usuarios_admin'
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    username = Column(String, unique=True, nullable=False)
-    senha_hash = Column(String, nullable=False)
-    ativo = Column(Boolean, default=True)
-    created_at = Column(DateTime, default=datetime.utcnow)
 
 # ... (mantenha os imports e as classes Produto e SubProduto intactas)
 
@@ -68,3 +62,17 @@ class Administrador(Base):
     email_adm = Column(String)
     id_adm = Column(String, unique=True, nullable=False)
     senha_adm = Column(String, nullable=False)
+
+
+
+class ClienteLead(Base):
+    __tablename__ = 'usuario' 
+    __table_args__ = {'extend_existing': True}
+
+    id = Column(Integer, primary_key=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    
+    # Use exatamente os nomes da sua imagem (minúsculos e sem aspas extras)
+    nome_usuario = Column(String, nullable=False)
+    telefone = Column(Integer, nullable=False)
+    FK_subproduto = Column(Integer, nullable=False)

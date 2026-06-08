@@ -1,7 +1,8 @@
-from flask import Blueprint, render_template, jsonify
+from flask import Blueprint, render_template,request, jsonify
 from app.services.consultas import buscar_produtos
 from app.db import get_session
-from app.models import Produto, SubProduto # <-- ADICIONE O SUBPRODUTO AQUI
+from app.models import Produto, SubProduto, ClienteLead # <-- ADICIONE O SUBPRODUTO AQUI
+
 
 site_bp = Blueprint("site", __name__)
 
@@ -68,5 +69,27 @@ def api_tipos_vidro():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+    finally:
+        db_session.close()
+
+
+@site_bp.route("/api/novo_lead", methods=["POST"])
+def salvar_novo_lead():
+    dados = request.get_json()
+    db_session = get_session()
+    
+    try:
+        # Note que agora usamos 'nome_usuario' para bater com o models.py
+        novo_lead = ClienteLead(
+            nome_usuario=dados['Nome_usuario'], 
+            telefone=dados['telefone'],
+            FK_subproduto=dados['FK_subproduto']
+        )
+        db_session.add(novo_lead)
+        db_session.commit()
+        return jsonify({'success': True})
+    except Exception as e:
+        db_session.rollback()
+        return jsonify({'error': str(e)}), 500
     finally:
         db_session.close()

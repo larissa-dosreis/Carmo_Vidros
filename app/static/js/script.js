@@ -26,20 +26,23 @@ async function carregarTiposVidro() {
 function popularCategorias() {
     if (!opcoesEl || dadosProdutos.length === 0) return;
 
-    // Limpa opções existentes (mantém apenas o placeholder)
     while (opcoesEl.options.length > 1) {
         opcoesEl.remove(1);
     }
 
-    // Adiciona categorias do banco de dados
     dadosProdutos.forEach(cat => {
         const option = document.createElement("option");
-        option.text = cat.tipo;
+        
+        // MUDANÇA AQUI: Use 'tipo' porque é o que seu Python envia
+        option.text = cat.tipo; 
         option.value = cat.tipo;
+        
+        // MUDANÇA AQUI: Use 'id_categoria' conforme seu Python envia
+        option.dataset.id = cat.id_categoria; 
+        
         opcoesEl.appendChild(option);
     });
 }
-
 
 // ══════════════════════════════
 //  EVENTOS DE SELEÇÃO
@@ -148,30 +151,61 @@ if (larguraInput) {
 }
 
 function calcular() {
-    
+    // 1. Pega os dados básicos
+    const nome = document.getElementById("nomeCliente").value.trim();
+    const telefone = document.getElementById("telefoneCliente").value.trim();
     const altura = parseMetros(document.getElementById("Altura").value);
     const largura = parseMetros(document.getElementById("Largura").value);
     const opcoes = document.getElementById("opcoes").value;
     const subOpcoes = document.getElementById("subOpcoes").value;
-        //ifs para opções vazias 
+
+    // 2. Validações
+    if (!nome || telefone.length < 14) {
+        alert("Preencha seu Nome e Telefone corretamente para ver o orçamento.");
+        return;
+    }
+
     if (isNaN(altura) || isNaN(largura) || altura <= 0 || largura <= 0) {
         alert("Preencha altura e largura corretamente");
         return;
     }
 
-    if (!opcoesEl.value) {
-    // NÃO selecionou nada
-   alert("Selecione um valor para tipo e subtipo");
+    if (!opcoes || !subOpcoes) {
+        alert("Selecione um tipo e um subtipo de vidro.");
         return;
-} 
-    
+    }
 
+    // 3. Calcula o valor
     const resultado = (altura * largura) * valorDinheiro;
 
-    abrirTela(resultado, altura, largura, valorDinheiro, opcoes, subOpcoes);
+    // 4. Busca o ID do Subproduto corretamente nos dados do banco
+    const categoriaIndex = opcaoSelecionada - 1;
+    const categoria = dadosProdutos[categoriaIndex];
+    
+    // CORREÇÃO AQUI: Procura tanto por 'nome' quanto por 'nome_subproduto'
+    const subprodutoSelecionado = categoria.produtos.find(
+        p => p.nome === subOpcoes || p.nome_subproduto === subOpcoes
+    );
+    
+    // Pega o ID (garante que existe)
+    const idSubProduto = subprodutoSelecionado ? subprodutoSelecionado.id : null;
+
+    if (!idSubProduto) {
+        console.error("ID do subproduto não encontrado. Verifique o console.");
+        console.log("SubOpção procurada:", subOpcoes);
+        console.log("Lista de produtos disponíveis:", categoria.produtos);
+        alert("Erro ao processar o item selecionado. Tente novamente.");
+        return;
+    }
+
+    // 5. Dispara a função para salvar no banco com o ID do subproduto
+    salvarLead(nome, telefone, idSubProduto);
+
+    // 6. Continua o fluxo abrindo a tela de resultados
+    abrirTela(resultado, altura, largura, valorDinheiro, opcoes, subOpcoes, nome, telefone);
 }
 
-function abrirTela(valor, altura, largura, valorDinheiro, opcoes, subOpcoes) {
+function abrirTela(valor, altura, largura, valorDinheiro, opcoes, subOpcoes, nome, telefone) {
     // Formata o valor no padrão brasileiro (ponto para milhar, vírgula para decimal)
     const valorFormatado = valor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
@@ -189,7 +223,8 @@ function abrirTela(valor, altura, largura, valorDinheiro, opcoes, subOpcoes) {
 
     const valorTotalFormatado = valor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-    const mensagem = `Olá! Acabei de fazer um orçamento pelo site e gostaria de dar continuidade.
+    // Substitua apenas a parte de criação da mensagem dentro da abrirTela()
+const mensagem = `Olá! Meu nome é *${nome}*. Acabei de fazer um orçamento pelo site e gostaria de dar continuidade.
 
 Dados do orçamento:
 - Altura: ${alturaFormatada} m
@@ -197,7 +232,7 @@ Dados do orçamento:
 - Tipo: ${opcoes} 
 - Subtipo: ${subOpcoes}
 
-- Valor Total: R$ ${valorTotalFormatado}
+- Valor Total: *R$ ${valorTotalFormatado}*
 
 Poderia me confirmar os detalhes, prazo e forma de pagamento?`;
 
@@ -229,4 +264,46 @@ function limparCampos() {
 // Carrega os dados do banco quando a página carrega
 if (opcoesEl) {
     carregarTiposVidro();
+}
+
+// ══════════════════════════════
+//  MÁSCARA DE TELEFONE
+// ══════════════════════════════
+const telefoneInput = document.getElementById("telefoneCliente");
+if (telefoneInput) {
+    telefoneInput.addEventListener("input", function (e) {
+        // Remove tudo que não é número
+        let x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+        // Aplica a formatação (XX) XXXXX-XXXX
+        e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+    });
+}
+
+
+// ══════════════════════════════
+//  SALVAR LEAD (BANCO DE DADOS)
+// ══════════════════════════════
+async function salvarLead(nome, telefoneFormatado, idProduto) {
+    // Transforma "(37) 99862-8364" em 37998628364 (pois o banco exige int8)
+    const telefoneNumeros = parseInt(telefoneFormatado.replace(/\D/g, ""));
+
+    const dadosLead = {
+        Nome_usuario: nome,
+        telefone: telefoneNumeros,
+        FK_subproduto: parseInt(idProduto)
+    };
+
+    try {
+        // Essa será a rota no seu app.py para receber os dados
+        const response = await fetch('/api/novo_lead', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(dadosLead)
+        });
+        
+        const result = await response.json();
+        console.log("Lead salvo com sucesso no banco:", result);
+    } catch (err) {
+        console.error('Erro ao salvar lead:', err);
+    }
 }

@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request, jsonify, session, redirec
 from werkzeug.security import check_password_hash
 from app.config import Config
 from app.db import get_session
-from app.models import Produto, SubProduto, Administrador
+from app.models import Produto, SubProduto, Administrador,ClienteLead
 from functools import wraps
 
 admin_bp = Blueprint("admin", __name__, url_prefix="/admin")
@@ -360,5 +360,42 @@ def toggle_subproduto(sub_id):
     except Exception as e:
         db_session.rollback()
         return jsonify({'error': f'Erro ao alterar status: {str(e)}'}), 500
+    finally:
+        db_session.close()
+
+
+
+
+@admin_bp.route("/api/leads", methods=["GET"])
+@login_required
+def listar_leads():
+    db_session = get_session()
+    try:
+        # Fazemos um JOIN para cruzar o lead com o subproduto e o produto pai
+        query = db_session.query(
+            ClienteLead, SubProduto, Produto
+        ).join(
+            SubProduto, ClienteLead.FK_subproduto == SubProduto.id
+        ).join(
+            Produto, SubProduto.produto_id == Produto.id
+        ).order_by(
+            ClienteLead.created_at.desc() # Ordena do mais recente para o mais antigo
+        ).all()
+
+        resultado = []
+        for lead, sub, prod in query:
+            resultado.append({
+                "id": lead.id,
+                "data": lead.created_at.strftime("%d/%m/%Y %H:%M") if lead.created_at else "N/A",
+                "nome": lead.nome_usuario,
+                "telefone": lead.telefone,
+                # Junta o nome do Produto com o Subproduto (Ex: Vidro Temperado - Janela 4 folhas)
+                "interesse": f"{prod.Nome_produto} - {sub.nome_subproduto}"
+            })
+
+        return jsonify(resultado)
+
+    except Exception as e:
+        return jsonify({'error': f'Erro ao buscar leads: {str(e)}'}), 500
     finally:
         db_session.close()
