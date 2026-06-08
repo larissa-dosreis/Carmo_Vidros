@@ -14,7 +14,4 @@ class Config:
         f"{os.getenv('SUPABASE_DB')}?sslmode=require"
     )
 
-    # Senha do admin — para autenticação simples via .env
-    # Quando migrar para banco, alterar a função check_auth em admin_routes.py
-    ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "admin123")
-    ADMIN_USERNAME = os.getenv("ADMIN_USERNAME", "admin")
+  

@@ -1,7 +1,8 @@
 from flask import Blueprint, render_template, request, jsonify, session, redirect, url_for
+from werkzeug.security import check_password_hash
 from app.config import Config
 from app.db import get_session
-from app.models import Produto, SubProduto
+from app.models import Produto, SubProduto, Administrador
 from functools import wraps
 
 admin_bp = Blueprint("admin", __name__, url_prefix="/admin")
@@ -67,17 +68,35 @@ def dashboard():
 
 @admin_bp.route("/login", methods=["POST"])
 def login():
-    """Processa login do admin."""
+    """Processa login do admin buscando no banco de dados."""
     data = request.get_json()
-    username = data.get('username', '')
-    password = data.get('password', '')
-
-    if check_auth(username, password):
-        session['admin_logado'] = True
-        session['admin_user'] = username
-        return jsonify({'success': True, 'message': 'Login realizado com sucesso'})
     
-    return jsonify({'success': False, 'message': 'Usuário ou senha incorretos'}), 401
+    # O frontend JS continua mandando 'username', nós só lemos e comparamos com id_adm
+    username_input = data.get('username', '') 
+    password_input = data.get('password', '')
+
+    if not username_input or not password_input:
+        return jsonify({'success': False, 'message': 'Preencha ID e senha'}), 400
+
+    db_session = get_session()
+    
+    try:
+        # Busca o usuário no banco
+        admin_user = db_session.query(Administrador).filter_by(id_adm=username_input).first()
+
+        # Verifica se achou e se a senha criptografada confere
+        if admin_user and check_password_hash(admin_user.senha_adm, password_input):
+            session['admin_logado'] = True
+            session['admin_user'] = admin_user.id_adm
+            return jsonify({'success': True, 'message': 'Login realizado com sucesso'})
+        
+        # Se errou usuário ou senha
+        return jsonify({'success': False, 'message': 'Usuário ou senha incorretos'}), 401
+
+    except Exception as e:
+        return jsonify({'success': False, 'message': f'Erro no banco: {str(e)}'}), 500
+    finally:
+        db_session.close()
 
 
 @admin_bp.route("/logout", methods=["POST"])

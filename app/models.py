@@ -56,3 +56,15 @@ class Usuario(Base):
     senha_hash = Column(String, nullable=False)
     ativo = Column(Boolean, default=True)
     created_at = Column(DateTime, default=datetime.utcnow)
+
+# ... (mantenha os imports e as classes Produto e SubProduto intactas)
+
+class Administrador(Base):
+    __tablename__ = 'administrador'
+
+    id = Column(Integer, primary_key=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    nome_adm = Column(String)
+    email_adm = Column(String)
+    id_adm = Column(String, unique=True, nullable=False)
+    senha_adm = Column(String, nullable=False)
