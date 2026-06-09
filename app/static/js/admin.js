@@ -116,14 +116,24 @@ async function loadProdutos() {
 // ══════════════════════════════
 //  STATS
 // ══════════════════════════════
+// ══════════════════════════════
+//  STATS (CORRIGIDO)
+// ══════════════════════════════
 function renderStats() {
     let totalItems = 0;
     let ativos = 0;
     
     produtos.forEach(p => {
-        const qty = p.subprodutos ? p.subprodutos.length : 0;
-        totalItems += qty;
-        if (p.ativo) ativos += qty;
+        if (p.subprodutos) {
+            totalItems += p.subprodutos.length;
+            
+            // Conta individualmente cada subproduto
+            p.subprodutos.forEach(sp => {
+                if (sp.ativo !== false) {
+                    ativos++;
+                }
+            });
+        }
     });
 
     const categorias = produtos.length;

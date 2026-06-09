@@ -247,34 +247,6 @@ def remover_produto(produto_id):
     finally:
         db_session.close()
 
-@admin_bp.route("/api/produto/<int:produto_id>/toggle", methods=["POST"])
-@login_required
-def toggle_produto(produto_id):
-    """Ativa ou desativa uma categoria e todas as suas subcategorias juntas."""
-    db_session = get_session()
-    try:
-        produto = db_session.query(Produto).filter_by(id=produto_id).first()
-        if not produto:
-            return jsonify({'error': 'Categoria não encontrada'}), 404
-        
-        # Inverte o status da categoria pai
-        novo_status = not produto.ativo
-        produto.ativo = novo_status
-        
-        # BUSCA E ATUALIZA TODAS AS SUBCATEGORIAS DESTA CATEGORIA
-        db_session.query(SubProduto).filter_by(produto_id=produto_id).update({"ativo": novo_status})
-        
-        db_session.commit()
-        txt_status = "ativados" if novo_status else "desativados"
-        return jsonify({
-            'success': True, 
-            'message': f'A categoria e todos os seus itens foram {txt_status} com sucesso!'
-        })
-    except Exception as e:
-        db_session.rollback()
-        return jsonify({'error': f'Erro ao alterar status: {str(e)}'}), 500
-    finally:
-        db_session.close()
 
 # ══════════════════════════════
 #  API — CRUD DE SUBPRODUTOS
