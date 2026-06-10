@@ -21,7 +21,7 @@
 ══════════════════════════════ -->
   <header>
     <nav>
-      <a href="index.html" class="logo">
+      <a href="{{ url_for('site.home') }}" class="logo">
         <img src="{{ url_for('static', filename='fotos/logo.png') }}"
      alt="Carmo Vidros"
      class="logo-img">
@@ -875,7 +875,7 @@
         estimativa rápida.
       </p>
       <div class="prod-cta-actions">
-        <a href="orcamento.html" class="btn-primary">
+        <a href="{{ url_for('site.orcamento') }}" class="btn-primary">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2">
             <rect x="2" y="3" width="20" height="14" rx="2" />
@@ -903,7 +903,7 @@
       <div class="footer-grid">
 
         <div class="footer-brand">
-          <a href="index.html" class="logo">
+          <a href="{{ url_for('site.home') }}" class="logo">
             <img  src="{{ url_for('static', filename='fotos/logo.png') }}" alt="Carmo Vidros" class="logo-img">
             <div class="logo-text">
               <span class="logo-name">Carmo Vidros</span>

@@ -1,2 +1,0 @@
-* pip install supabase  *
-pip install sqlalchemy psycopg2

@@ -18,7 +18,7 @@
 ══════════════════════════════ -->
 <header>
   <nav>
-    <a href="index.html" class="logo">
+    <a href="{{ url_for('site.home') }}" class="logo">
       <img src="{{ url_for('static', filename='fotos/logo.png') }}"
      alt="Carmo Vidros"
      class="logo-img">
@@ -314,7 +314,7 @@
 
       <!-- Coluna: Marca -->
       <div class="footer-brand">
-        <a href="index.html" class="logo">
+        <a href="{{ url_for('site.home') }}" class="logo">
           <img src="{{ url_for('static', filename='fotos/logo.png') }}" alt="Carmo Vidros" class="logo-img">
           <div class="logo-text">
             <span class="logo-name">Carmo Vidros</span>
